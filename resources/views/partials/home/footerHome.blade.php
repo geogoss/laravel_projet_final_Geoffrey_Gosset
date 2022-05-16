@@ -45,7 +45,7 @@
 										<div class="row">
 											<div class="col-sm-6 col-12">
 												<div class="footer-thumb">
-													<a href="#"><img src="img/footer/1.jpg" alt="" /></a>
+													<a href="#"><img src="{{asset('img/footer/1.jpg')}} " alt="" /></a>
 													<div class="footer-thumb-info">
 														<p><a href="#">Furniture Product<br>Name</a></p>
 														<h4 class="price-3">$ 60.00</h4>
@@ -54,7 +54,7 @@
 											</div>
 											<div class="col-sm-6 col-12">
 												<div class="footer-thumb">
-													<a href="#"><img src="img/footer/1.jpg" alt="" /></a>
+													<a href="#"><img src="{{asset('img/footer/1.jpg')}} " alt="" /></a>
 													<div class="footer-thumb-info">
 														<p><a href="#">Furniture Product<br>Name</a></p>
 														<h4 class="price-3">$ 60.00</h4>
@@ -80,10 +80,10 @@
 							</div>
 							<div class="col-md-6">
 								<div class="payment  text-md-end">
-									<a href="#"><img src="img/payment/1.png" alt="" /></a>
-									<a href="#"><img src="img/payment/2.png" alt="" /></a>
-									<a href="#"><img src="img/payment/3.png" alt="" /></a>
-									<a href="#"><img src="img/payment/4.png" alt="" /></a>
+									<a href="#"><img src="{{asset('img/payment/1.png')}} " alt="" /></a>
+									<a href="#"><img src="{{asset('img/payment/2.png')}} " alt="" /></a>
+									<a href="#"><img src="{{asset('img/payment/3.png')}} " alt="" /></a>
+									<a href="#"><img src="{{asset('img/payment/4.png')}} " alt="" /></a>
 								</div>
 							</div>
 						</div>

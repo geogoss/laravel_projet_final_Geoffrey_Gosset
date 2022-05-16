@@ -5,7 +5,7 @@
 						<div class="row">
 							<div class="col-md-4 offset-md-4 col-7">
 								<div class="logo text-md-center">
-									<a href="index.html"><img src=" img/logo/logo.png " alt="" /></a>
+									<a href="index.html"><img src="{{asset('img/logo/logo.png')}} " alt="" /></a>
 								</div>
 							</div>
 							<div class="col-md-4 col-5">
@@ -23,7 +23,7 @@
 												<div class="all-cart-product clearfix">
 													<div class="single-cart clearfix">
 														<div class="cart-photo">
-															<a href="#"><img src="img/cart/1.jpg" alt="" /></a>
+															<a href="#"><img src="{{asset('img/cart/1.jpg')}} " alt="" /></a>
 														</div>
 														<div class="cart-info">
 															<h5><a href="#">dummy product name</a></h5>
@@ -34,7 +34,7 @@
 													</div>
 													<div class="single-cart clearfix">
 														<div class="cart-photo">
-															<a href="#"><img src="img/cart/2.jpg" alt="" /></a>
+															<a href="#"><img src="{{asset('img/cart/2.jpg')}} " alt="" /></a>
 														</div>
 														<div class="cart-info">
 															<h5><a href="#">dummy product name</a></h5>

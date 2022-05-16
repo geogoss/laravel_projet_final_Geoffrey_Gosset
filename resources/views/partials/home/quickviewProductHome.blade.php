@@ -11,7 +11,7 @@
                                  <div class="modal-product">
                                      <div class="product-images">
                                          <div class="main-image images">
-                                             <img alt="#" src="img/product/quickview-photo.jpg"/>
+                                             <img alt="#" src="{{asset('img/product/quickview-photo.jpg')}} "/>
                                          </div>
                                      </div><!-- .product-images -->
  

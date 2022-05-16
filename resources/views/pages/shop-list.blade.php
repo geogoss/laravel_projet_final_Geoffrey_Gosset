@@ -1,0 +1,9 @@
+@extends('layouts.appShop')
+@section('contentShop')
+    @include('partials.shop.headerShop')
+    @include('partials.shop.mobilemenuShop')
+    @include('partials.shop.headingbanner')
+    @include('partials.shop.productShop')
+    @include('partials.shop.footerShop')
+    @include('partials.shop.quickviewProductShop')
+@endsection

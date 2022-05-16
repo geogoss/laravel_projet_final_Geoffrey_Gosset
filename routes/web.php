@@ -21,6 +21,10 @@ Route::get('/home', function () {
     return view('pages.home');
 });
 
+Route::get('/shop', function () {
+    return view('pages.shop-list');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

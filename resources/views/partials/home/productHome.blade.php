@@ -11,7 +11,7 @@
 								<div class="single-product">
 									<div class="product-img">
 										<span class="pro-label new-label">new</span>
-										<a href="single-product.html"><img src="img/product/1.jpg" alt="" /></a>
+										<a href="single-product.html"><img src="{{asset('img/product/1.jpg')}} " alt="" /></a>
 										<div class="product-action clearfix">
 											<a href="#" data-bs-toggle="modal"  data-bs-target="#productModal" title="Quick View"><i class="zmdi zmdi-zoom-in"></i></a>										
 											<a href="cart.html" data-bs-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="zmdi zmdi-shopping-cart-plus"></i></a>
@@ -32,7 +32,7 @@
 								<div class="single-product">
 									<div class="product-img">
 										<span class="pro-label sale-label">Sale</span>
-										<a href="single-product.html"><img src="img/product/2.jpg" alt="" /></a>
+										<a href="single-product.html"><img src="{{asset('img/product/2.jpg')}} " alt="" /></a>
 										<div class="product-action clearfix">
 											<a href="#" data-bs-toggle="modal"  data-bs-target="#productModal" title="Quick View"><i class="zmdi zmdi-zoom-in"></i></a>
 											<a href="cart.html" data-bs-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="zmdi zmdi-shopping-cart-plus"></i></a>
@@ -52,7 +52,7 @@
 								<!-- Single-product start -->
 								<div class="single-product">
 									<div class="product-img">
-										<a href="single-product.html"><img src="img/product/3.jpg" alt="" /></a>
+										<a href="single-product.html"><img src="{{asset('img/product/3.jpg')}} " alt="" /></a>
 										<div class="product-action clearfix">
 											<a href="#" data-bs-toggle="modal"  data-bs-target="#productModal" title="Quick View"><i class="zmdi zmdi-zoom-in"></i></a>
 											<a href="cart.html" data-bs-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="zmdi zmdi-shopping-cart-plus"></i></a>
@@ -72,7 +72,7 @@
 								<!-- Single-product start -->
 								<div class="single-product">
 									<div class="product-img">
-										<a href="single-product.html"><img src="img/product/4.jpg" alt="" /></a>
+										<a href="single-product.html"><img src="{{asset('img/product/4.jpg')}} " alt="" /></a>
 										<div class="product-action clearfix">
 											<a href="#" data-bs-toggle="modal"  data-bs-target="#productModal" title="Quick View"><i class="zmdi zmdi-zoom-in"></i></a>
 											<a href="cart.html" data-bs-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="zmdi zmdi-shopping-cart-plus"></i></a>
@@ -93,7 +93,7 @@
 								<div class="single-product">
 									<div class="product-img">
 										<span class="pro-label new-label">new</span>
-										<a href="single-product.html"><img src="img/product/3.jpg" alt="" /></a>
+										<a href="single-product.html"><img src="{{asset('img/product/3.jpg')}} " alt="" /></a>
 										<div class="product-action clearfix">
 											<a href="#" data-bs-toggle="modal"  data-bs-target="#productModal" title="Quick View"><i class="zmdi zmdi-zoom-in"></i></a>
 											<a href="cart.html" data-bs-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="zmdi zmdi-shopping-cart-plus"></i></a>

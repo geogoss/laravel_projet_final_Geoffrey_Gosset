@@ -35,7 +35,7 @@
 									</div>
 									<div class="col-xl-6 col-md-5">
 										<div class="blog-photo">
-											<a href="#"><img src="img/blog/1.jpg" alt="" /></a>
+											<a href="#"><img src="{{asset('img/blog/1.jpg')}} " alt="" /></a>
 										</div>
 									</div>
 								</div>
@@ -66,7 +66,7 @@
 									</div>
 									<div class="col-xl-6 col-md-5">
 										<div class="blog-photo">
-											<a href="#"><img src="img/blog/2.jpg" alt="" /></a>
+											<a href="#"><img src="{{asset('img/blog/2.jpg')}} " alt="" /></a>
 										</div>
 									</div>
 								</div>
