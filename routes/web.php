@@ -45,6 +45,18 @@ Route::get('/contact', function () {
     return view('pages.contact');
 });
 
+Route::get('/cart', function () {
+    return view('pages.panier.cart');
+});
+
+Route::get('/checkout', function () {
+    return view('pages.panier.checkout');
+});
+
+Route::get('/order', function () {
+    return view('pages.panier.order');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
