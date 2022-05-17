@@ -29,6 +29,18 @@ Route::get('/showProduct', function () {
     return view('pages.showProduct');
 });
 
+Route::get('/blog', function () {
+    return view('pages.blog');
+});
+
+Route::get('/showblog', function () {
+    return view('pages.showBlog');
+});
+
+Route::get('/about', function () {
+    return view('pages.about');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
