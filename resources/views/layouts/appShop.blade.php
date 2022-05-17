@@ -49,8 +49,15 @@
 <body>
     <!-- WRAPPER START -->
     <div class="wrapper bg-dark-white">
+        @include('partials.shop.headerShop')
+        @include('partials.shop.mobilemenuShop')
 
         @yield('contentShop')
+
+        @include('partials.shop.footerShop')
+        @if (!Request::is('/myaccount'))
+            @include('partials.shop.quickviewProductShop')
+        @endif
 
     </div>
     <!-- WRAPPER END -->

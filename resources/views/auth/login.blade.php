@@ -1,4 +1,4 @@
-<x-guest-layout>
+{{-- <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
@@ -52,5 +52,14 @@
                 </x-button>
             </div>
         </form>
+
+        
     </x-auth-card>
-</x-guest-layout>
+</x-guest-layout> --}}
+@extends('layouts.appShop')
+@section('contentShop')
+
+    @include('partials.login.headingbannerLogin')
+    @include('partials.login.shoppingcartLogin')
+
+@endsection

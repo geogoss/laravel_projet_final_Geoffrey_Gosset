@@ -57,6 +57,10 @@ Route::get('/order', function () {
     return view('pages.panier.order');
 });
 
+Route::get('/myaccount', function () {
+    return view('pages.myaccount');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
