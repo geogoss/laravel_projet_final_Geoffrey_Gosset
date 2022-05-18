@@ -61,6 +61,10 @@ Route::get('/myaccount', function () {
     return view('pages.myaccount');
 });
 
+Route::get('/login', function () {
+    return view('auth.login');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

@@ -68,37 +68,11 @@
 				<div class="main-menu  d-none d-md-block">
 					<nav>
 						<ul>
-							<li><a href="index.html">home</a>
-							</li>
-                            <li><a href="#">Shortcodes</a>
-                                <div class="sub-menu menu-scroll">
-                                    <ul>
-                                        <li class="menu-title">Shortcodes</li>
-                                        <li><a href="elements-accordions.html">Accordion</a></li>
-                                        <li><a href="elements-toggles.html">Toggles</a></li>
-                                        <li><a href="elements-tab.html">Tab</a></li>
-                                        <li><a href="elements-product-tab.html">Product Tab</a></li>
-                                        <li><a href="elements-product-tab-2.html">Product Tab 2</a></li>
-                                        <li><a href="elements-carousel.html">product carousel</a></li>
-                                        <li><a href="elements-carousel-2.html">product carousel 2</a></li>
-                                        <li><a href="elements-featured-product.html">Featured Product</a></li>
-                                        <li><a href="elements-featured-product-2.html">Featured Product 2</a></li>
-                                        <li><a href="elements-button.html">Button</a></li>
-                                        <li><a href="elements-table.html">Table</a></li>
-                                        <li><a href="elements-progress-bars.html">Progress Bar</a></li>
-                                        <li><a href="elements-blog.html">Blog</a></li>
-                                        <li><a href="elements-blog-2.html">Blog - 2</a></li>
-                                        <li><a href="elements-team.html">Team</a></li>
-                                        <li><a href="elements-footer.html">Footer</a></li>
-                                        <li><a href="elements-footer-2.html">Footer 2</a></li>
-                                        <li><a href="elements-map.html">Map</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-							<li><a href="shop-list.html">products</a></li>
-							<li><a href="blog.html">blog</a></li>
-							<li><a href="about.html">about us</a></li>
-							<li><a href="contact.html">contact</a></li>
+							<li><a href="/home">home</a></li>
+							<li><a href="/shop">products</a></li>
+							<li><a href="/blog">blog</a></li>
+							<li><a href="/about">about us</a></li>
+							<li><a href="/contact">contact</a></li>
 						</ul>
 					</nav>
 				</div>
