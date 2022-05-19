@@ -16,8 +16,11 @@ class MailboxFactory extends Factory
      */
     public function definition()
     {
+        $faker = $this->faker;
         return [
-            //
+           'author' => $faker->name(),
+           'subject' => $faker->realText($maxNBChars = 20),
+           'content' => $faker->realText($maxNBChars = 140) 
         ];
     }
 }
