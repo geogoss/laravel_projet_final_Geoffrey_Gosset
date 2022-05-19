@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('auteur');
             $table->string('subject');
-            $table->fullText('contenu');
+            $table->longText('contenu');
+            $table->foreignId('product_id')->nullable()->constrained()->nullOnDelete();
             $table->timestamps();
         });
     }

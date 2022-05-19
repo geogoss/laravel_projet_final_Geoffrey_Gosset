@@ -16,7 +16,14 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
 
+            AvatarSeeder::class,
             RoleSeeder::class,
+            TypeSeeder::class,
+            SizeSeeder::class,
+            CommentSeeder::class,
+            TagSeeder::class,
+            CategorieSeeder::class,
+            ImageSeeder::class,
             UserSeeder::class
 
 

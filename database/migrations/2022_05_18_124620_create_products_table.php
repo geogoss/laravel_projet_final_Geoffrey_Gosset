@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->longText('description');
             $table->integer('price');
-            $table->foreignId('categorie_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('type_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('size_id')->nullable()->constrained()->nullOnDelete();
             $table->timestamps();
         });

@@ -16,8 +16,11 @@ class CommentFactory extends Factory
      */
     public function definition()
     {
+        $faker = $this->faker;
         return [
-            //
+            'author' => $faker->name(),
+            'email' => $faker->freeEmail(),
+            'content' => $faker->realText($maxNBChars = 150)
         ];
     }
 }

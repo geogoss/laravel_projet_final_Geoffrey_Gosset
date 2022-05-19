@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Billing;
-use App\Http\Requests\StoreBillingRequest;
-use App\Http\Requests\UpdateBillingRequest;
+use App\Models\Newsletter;
+use App\Http\Requests\StoreNewsletterRequest;
+use App\Http\Requests\UpdateNewsletterRequest;
 
-class BillingController extends Controller
+class NewsletterController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +31,10 @@ class BillingController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreBillingRequest  $request
+     * @param  \App\Http\Requests\StoreNewsletterRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreBillingRequest $request)
+    public function store(StoreNewsletterRequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class BillingController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Billing  $billing
+     * @param  \App\Models\Newsletter  $newsletter
      * @return \Illuminate\Http\Response
      */
-    public function show(Billing $billing)
+    public function show(Newsletter $newsletter)
     {
         //
     }
@@ -53,10 +53,10 @@ class BillingController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Billing  $billing
+     * @param  \App\Models\Newsletter  $newsletter
      * @return \Illuminate\Http\Response
      */
-    public function edit(Billing $billing)
+    public function edit(Newsletter $newsletter)
     {
         //
     }
@@ -64,11 +64,11 @@ class BillingController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateBillingRequest  $request
-     * @param  \App\Models\Billing  $billing
+     * @param  \App\Http\Requests\UpdateNewsletterRequest  $request
+     * @param  \App\Models\Newsletter  $newsletter
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateBillingRequest $request, Billing $billing)
+    public function update(UpdateNewsletterRequest $request, Newsletter $newsletter)
     {
         //
     }
@@ -76,10 +76,10 @@ class BillingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Billing  $billing
+     * @param  \App\Models\Newsletter  $newsletter
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Billing $billing)
+    public function destroy(Newsletter $newsletter)
     {
         //
     }

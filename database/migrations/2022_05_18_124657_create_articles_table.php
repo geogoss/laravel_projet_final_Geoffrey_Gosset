@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('date');
             $table->longText('content');
             $table->foreignId('image_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('tag_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('categorie_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
             $table->timestamps();
         });
     }

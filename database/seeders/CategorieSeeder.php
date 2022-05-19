@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class CategorieSeeder extends Seeder
 {
@@ -14,6 +15,16 @@ class CategorieSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('categories')->insert([
+            [
+                'name' => 'LifeStyle'
+            ],
+            [
+                'name' => 'Room'
+            ],
+            [
+                'name' => 'Kitchen'
+            ],
+        ]);
     }
 }
