@@ -20,7 +20,6 @@ return new class extends Migration
             $table->integer('age');
             $table->string('fonction');
             $table->string('src');
-
             $table->timestamps();
         });
     }

@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('mailboxes', function (Blueprint $table) {
             $table->id();
+            $table->string('author');
+            $table->string('subject');
+            $table->string('content');
             $table->timestamps();
         });
     }
