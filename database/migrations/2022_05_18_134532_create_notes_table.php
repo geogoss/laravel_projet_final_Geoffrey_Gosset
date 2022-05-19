@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('notes', function (Blueprint $table) {
             $table->id();
-            $table->string('auteur');
+            $table->string('author');
             $table->string('subject');
-            $table->longText('contenu');
+            $table->longText('content');
             $table->foreignId('product_id')->nullable()->constrained()->nullOnDelete();
             $table->timestamps();
         });

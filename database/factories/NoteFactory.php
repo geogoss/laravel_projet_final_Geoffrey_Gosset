@@ -16,8 +16,12 @@ class NoteFactory extends Factory
      */
     public function definition()
     {
+        $faker = $this->faker;
         return [
-            
+            'author' => $faker->name(),
+            'subject' => $faker->realText($maxNBChars = 15),
+            'content' => $faker->realText($maxNBChars = 150),
+            'product_id' => $faker->numberBetween($min = 1, $max = 7)
         ];
     }
 }

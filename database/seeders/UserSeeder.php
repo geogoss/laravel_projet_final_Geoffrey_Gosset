@@ -20,12 +20,16 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Gosset',
                 'email' => 'admin@admin.com',
-                'password' => Hash::make('admin@admin.com')
+                'password' => Hash::make('admin@admin.com'),
+                'avatar_id' => 1,
+                'role_id' => 1
             ],
             [
                 'name' => 'Bouvier',
                 'email' => 'member@member.com',
-                'password' => Hash::make('member@member.com')
+                'password' => Hash::make('member@member.com'),
+                'avatar_id' => 2,
+                'role_id' => 4
             ],
         ]);
     }
