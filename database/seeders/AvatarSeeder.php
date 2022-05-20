@@ -16,26 +16,14 @@ class AvatarSeeder extends Seeder
     public function run()
     {
         DB::table('avatars')->insert([
-            [
-                'name' => 'Hang',
-                'src' => 'pokemon0.jpg'
-            ],
-            [
-                'name' => 'Souf',
-                'src' => 'pokemon1.jpg'
-            ],
-            [
-                'name' => 'Mignon',
-                'src' => 'pokemon2.jpg'
-            ],
-            [
-                'name' => 'Naruto',
-                'src' => 'pokemon3.jpg'
-            ],
-            [
-                'name' => 'Sasuke',
-                'src' => 'pokemon4.jpg'
-            ],
+            ['src' => 'user1.jpg'],
+            ['src' => 'user2.jpg'],
+            ['src' => 'user3.jpg'],
+            ['src' => 'user4.jpg'],
+            ['src' => 'user5.jpg'],
+            ['src' => 'user6.jpg'],
+            ['src' => 'user7.jpg'],
+            ['src' => 'user8.jpg'],
         ]);
     }
 }

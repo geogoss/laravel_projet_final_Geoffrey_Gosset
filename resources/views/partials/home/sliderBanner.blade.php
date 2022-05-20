@@ -18,7 +18,7 @@
            <!-- Slider-banner start -->
            <div class="slider-banner">
                <div class="single-banner banner-1">
-                   <a class="banner-thumb" href="#"><img src="{{ asset('images/450x375/meuble1.jpg') }} " alt="" /></a>
+                   <a class="banner-thumb" href="#"><img src="{{'images/450x375/'.$stars->src }} " alt="" /></a>
                    <span class="pro-label new-label">new</span>
                    <span class="price">$50.00</span>
                    <div class="banner-brief">
@@ -28,7 +28,7 @@
                    <a href="#" class="button-one font-16px" data-text="Buy now">Buy now</a>
                </div>
                <div class="single-banner banner-2">
-                   <a class="banner-thumb" href="#"><img src="{{ asset('images/450x375/meuble2.jpg') }} " alt="" /></a>
+                   <a class="banner-thumb" href="#"><img src="{{'images/450x375/'.$last->src }} " alt="" /></a>
                    <div class="banner-brief">
                        <h2 class="banner-title"><a href="#">New Product 2021</a></h2>
                        <p class="hidden-md hidden-sm d-none d-md-block">Lorem Ipsum is simply dummy text of the printing
@@ -141,7 +141,7 @@
                <div class="table-cell">
                    <ul>
                        <li><a class="search-open" href="#" title="Search"><i class="zmdi zmdi-search"></i></a></li>
-                       <li><a href="#" title="Login"><i class="zmdi zmdi-lock"></i></a>
+                       <li><a href="/login" title="Login"><i class="zmdi zmdi-lock"></i></a>
                            <div class="customer-login text-left">
                                <form method="POST" action="{{ route('login') }}" class="col-lg-6">
                                    @csrf
@@ -156,30 +156,30 @@
                                    {{-- lien javaScript pour transformer un bouton en lien alors qu'il est dans le form, je le laisse pour l'info --}}
                                </form>
                            </div>
-                       {{-- </li>
+                       </li>
                        <li>
-                           <a href="#" title="register">
+                           <a href="/login" title="register">
                                <svg style="width:17px;height:17px" viewBox="0 0 24 24">
 						            <path fill="currentColor" d="M15,14C12.33,14 7,15.33 7,18V20H23V18C23,15.33 17.67,14 15,14M6,10V7H4V10H1V12H4V15H6V12H9V10M15,12A4,4 0 0,0 19,8A4,4 0 0,0 15,4A4,4 0 0,0 11,8A4,4 0 0,0 15,12Z" />
                                 </svg>
                             </a>
                            <div class="customer-login text-left">
-                               <form method="POST" action="{{ route('register') }}" class="col-lg-6">
-                                   @csrf
-                                   <h4 class="title-1 title-border text-uppercase mb-30">new customers</h4>
-                                   <p class="text-gray">If you have an account with us, Please login!</p>
-                                   <input type="text" placeholder="Your name here..." name="name">
-                                   <input type="text" placeholder="Email address here..." name="email">
-                                   <input type="password" placeholder="Password">
-                                   <input type="password" placeholder="Confirm password">
-                                   <p class="mb-0">
-                                       <input type="checkbox" id="newsletter" name="newsletter" checked>
-                                       <label for="newsletter"><span>Sign up for our newsletter!</span></label>
-                                   </p>
-                                   <button class="button-one submit-button mt-15" data-text="register"
-                                       type="submit">register</button>
+                            <form method="POST" action="{{ route('register') }}" class="col-lg-6">
+                                @csrf
+                                       <h4 class="title-1 title-border text-uppercase mb-30">new customers</h4>
+                                       <p class="text-gray">If you have an account with us, Please login!</p>
+                                       <input type="text" placeholder="Your name here..." name="name">
+                                       <input type="text" placeholder="Email address here..." name="email">
+                                       <input name="password" type="password" placeholder="Password">
+                                       <input name="password_confirmation" type="password" placeholder="Confirm password">
+                                       <p class="mb-0">
+                                           <input type="checkbox" id="newsletter" name="newsletter" checked>
+                                           <label for="newsletter"><span>Sign up for our newsletter!</span></label>
+                                       </p>
+                                       <button type="submit" data-text="regiter"
+                                           class="button-one submit-button mt-15">register</button>
                                </form>
-                           </div> --}}
+                           </div>
                        </li>
                        <li><a href="/myaccount" title="My-Account"><i class="zmdi zmdi-account text-left"></i></a></li>
                    </ul>

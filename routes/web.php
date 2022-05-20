@@ -17,9 +17,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $prems = Diapo::where('bool', 1 )->first();
-    $diapos = Diapo::where('bool', 0)->inRandomOrder()->limit(2)->get();
-    return view('welcome', compact('diapos', 'prems'));
+    // sliderBanner.blade.php
+    // les 2 variables pour le carousel
+    $prems = Diapo::where('bool', 1 )->first(); #variable $prems -> pour choisir la première image grâce au bouléen 
+    $diapos = Diapo::where('bool', 0)->inRandomOrder()->limit(2)->get(); #$diapos -> pour prendre les autres images grace au bouléen, au hasard et il en prend 2
+    // variable $stars pour l'image star que l'on sélectionne grace à un booléen et que l'on pourra modifier dans le backOffice
+    $stars = Image::where('bool', 1)->first();
+    // variable $last pour prendre le dernier product ajouté dans la table
+    $last = Image::orderby('created_at', 'desc')->first();
+    // 
+    return view('welcome', compact('diapos', 'prems', 'stars', 'last'));
 });
 
 // Route::get('/home', function () {

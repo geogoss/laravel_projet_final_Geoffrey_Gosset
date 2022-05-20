@@ -16,87 +16,6 @@ class ImageSeeder extends Seeder
     public function run()
     {
         DB::table('images')->insert([
-            
-            [
-                'src' => 'user1.jpg',
-                'bool' => false,
-                'product_id' => null,
-            ],
-            [
-                'src' => 'user2.jpg',
-                'bool' => false,
-                'product_id' => null,
-            ],
-            [
-                'src' => 'user3.jpg',
-                'bool' => false,
-                'product_id' => null,
-            ],
-            [
-                'src' => 'user4.jpg',
-                'bool' => false,
-                'product_id' => null,
-            ],
-            [
-                'src' => 'user5.jpg',
-                'bool' => false,
-                'product_id' => null,
-            ],
-            [
-                'src' => 'user6.jpg',
-                'bool' => false,
-                'product_id' => null,
-            ],
-            [
-                'src' => 'user7.jpg',
-                'bool' => false,
-                'product_id' => null,
-            ],
-            [
-                'src' => 'user8.jpg',
-                'bool' => false,
-                'product_id' => null,
-            ],
-            [
-                'src' => 'team1.jpg',
-                'bool' => false,
-                'product_id' => null,
-            ],
-            [
-                'src' => 'team2.jpg',
-                'bool' => false,
-                'product_id' => null,
-            ],
-            [
-                'src' => 'team3.jpg',
-                'bool' => false,
-                'product_id' => null,
-            ],
-            [
-                'src' => 'team4.jpg',
-                'bool' => false,
-                'product_id' => null,
-            ],
-            [
-                'src' => 'team5.jpg',
-                'bool' => false,
-                'product_id' => null,
-            ],
-            [
-                'src' => 'team6.jpg',
-                'bool' => false,
-                'product_id' => null,
-            ],
-            [
-                'src' => 'team7.jpg',
-                'bool' => false,
-                'product_id' => null,
-            ],
-            [
-                'src' => 'team8.jpg',
-                'bool' => false,
-                'product_id' => null,
-            ],
             [
                 'src' => 'meuble1.jpg',
                 'bool' => false,
@@ -114,7 +33,7 @@ class ImageSeeder extends Seeder
             ],
             [
                 'src' => 'meuble4.jpg',
-                'bool' => false,
+                'bool' => true,
                 'product_id' => 4,
             ],
             [
