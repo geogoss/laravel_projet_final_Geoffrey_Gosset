@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('password');
             $table->foreignId('avatar_id')->nullable()->constrained();
             $table->foreignId('role_id')->nullable()->constrained();
+            $table->foreignId('billing_id')->nullable()->constrained();
             $table->rememberToken();
             $table->timestamps();
         });

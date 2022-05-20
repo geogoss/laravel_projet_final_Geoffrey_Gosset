@@ -18,47 +18,47 @@ class BannerSeeder extends Seeder
         DB::table('banners')->insert([
             [
                 'title' => 'Product List View',
-                'image_id' => 71,
+                'src' => 'banner1.jpg',
             ],
             [
                 'title' => 'Blog',
-                'image_id' => 72,
+                'src' => 'banner2.jpg',
             ],
             [
                 'title' => 'About Us',
-                'image_id' => 73,
+                'src' => 'banner3.jpg',
             ],
             [
                 'title' => 'Contact Us',
-                'image_id' => 74,
+                'src' => 'banner4.jpg',
             ],
             [
                 'title' => 'Single-Bloc',
-                'image_id' => 75,
+                'src' => 'banner5.jpg',
             ],
             [
                 'title' => 'Single-Product',
-                'image_id' => 76,
+                'src' => 'banner6.jpg',
             ],
             [
                 'title' => 'Shopping-Cart',
-                'image_id' => 77,
+                'src' => 'banner7.jpg',
             ],
             [
                 'title' => 'Checkout',
-                'image_id' => 78,
+                'src' => 'banner8.jpg',
             ],
             [
                 'title' => 'Order',
-                'image_id' => 79,
+                'src' => 'banner9.jpg',
             ],
             [
                 'title' => 'Register',
-                'image_id' => 80,
+                'src' => 'banner10.jpg',
             ],
             [
                 'title' => 'My Account',
-                'image_id' => 81,
+                'src' => 'banner11.jpg',
             ],
 
         ]);
