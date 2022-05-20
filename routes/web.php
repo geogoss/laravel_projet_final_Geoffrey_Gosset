@@ -25,8 +25,9 @@ Route::get('/', function () {
     $stars = Image::where('bool', 1)->first();
     // variable $last pour prendre le dernier product ajouté dans la table
     $last = Image::orderby('created_at', 'desc')->first();
-    // 
-    return view('welcome', compact('diapos', 'prems', 'stars', 'last'));
+    
+    $products = Image::all();
+    return view('welcome', compact('diapos', 'prems', 'stars', 'last', 'products'));
 });
 
 // Route::get('/home', function () {

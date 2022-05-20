@@ -7,11 +7,12 @@
 								<h2 class="title-border">Featured Products</h2>
 							</div>
 							<div class="product-slider style-1 arrow-left-right">
+								@foreach ($products as $product)
 								<!-- Single-product start -->
 								<div class="single-product">
 									<div class="product-img">
 										<span class="pro-label new-label">new</span>
-										<a href="single-product.html"><img src="{{asset('img/product/1.jpg')}} " alt="" /></a>
+										<a href="single-product.html"><img src="{{'images/featuredProduct/'.$product->src}} " alt="" /></a>
 										<div class="product-action clearfix">
 											<a href="#" data-bs-toggle="modal"  data-bs-target="#productModal" title="Quick View"><i class="zmdi zmdi-zoom-in"></i></a>										
 											<a href="cart.html" data-bs-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="zmdi zmdi-shopping-cart-plus"></i></a>
@@ -19,16 +20,18 @@
 									</div>
 									<div class="product-info clearfix">
 										<div class="fix">
-											<h4 class="post-title floatleft"><a href="#">dummy Product name</a></h4>
-											<p class="floatright hidden-sm d-none d-md-block">Furniture</p>
+											<h4 class="post-title floatleft"><a href="#">{{$product->product->name}} </a></h4>
+											<p class="floatright hidden-sm d-none d-md-block">{{$product->product->type->name}}</p>
 										</div>
 										<div class="fix">
-											<span class="pro-price floatleft">$ 56.20</span>
+											<span class="pro-price floatleft">{{$product->product->price}} €</span>
 										</div>
 									</div>
 								</div>
+									
+								@endforeach
 								<!-- Single-product end -->
-								<!-- Single-product start -->
+								{{-- <!-- Single-product start -->
 								<div class="single-product">
 									<div class="product-img">
 										<span class="pro-label sale-label">Sale</span>
@@ -109,7 +112,7 @@
 										</div>
 									</div>
 								</div>
-								<!-- Single-product end -->
+								<!-- Single-product end --> --}}
 							</div>
 						</div>
 					</div>
