@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Detail;
+use App\Models\Diapo;
+use App\Models\Image;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,12 +17,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $prems = Diapo::where('bool', 1 )->first();
+    $diapos = Diapo::where('bool', 0)->inRandomOrder()->limit(2)->get();
+    return view('welcome', compact('diapos', 'prems'));
 });
 
-Route::get('/home', function () {
-    return view('pages.home');
-});
+// Route::get('/home', function () {
+//     return view('pages.home');
+// });
 
 Route::get('/shop', function () {
     return view('pages.shop-list');

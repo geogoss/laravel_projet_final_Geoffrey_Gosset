@@ -6,7 +6,7 @@
                         <div class="mobile-menu">
                             <nav id="dropdown">
                                 <ul>
-                                    <li><a href="/home">home</a></li>
+                                    <li><a href="/">home</a></li>
                                     <li><a href="/home">shortcodes</a></li>
                                     <li><a href="/shop">products</a></li>
                                     <li><a href="/blog">blog</a></li>

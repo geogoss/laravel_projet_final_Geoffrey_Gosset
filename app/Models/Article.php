@@ -9,9 +9,6 @@ class Article extends Model
 {
     use HasFactory;
 
-    public function tag () {
-        return $this->belongsTo(Tag::class);
-    }
 
     public function categorie () {
         return $this->belongsTo(Categorie::class);

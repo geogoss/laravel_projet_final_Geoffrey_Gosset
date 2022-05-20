@@ -18,7 +18,7 @@
            <!-- Slider-banner start -->
            <div class="slider-banner">
                <div class="single-banner banner-1">
-                   <a class="banner-thumb" href="#"><img src="{{ asset('img/banner/1.jpg') }} " alt="" /></a>
+                   <a class="banner-thumb" href="#"><img src="{{ asset('images/450x375meubleàlaUne/meuble1.jpg') }} " alt="" /></a>
                    <span class="pro-label new-label">new</span>
                    <span class="price">$50.00</span>
                    <div class="banner-brief">
@@ -28,7 +28,7 @@
                    <a href="#" class="button-one font-16px" data-text="Buy now">Buy now</a>
                </div>
                <div class="single-banner banner-2">
-                   <a class="banner-thumb" href="#"><img src="{{ asset('img/banner/2.jpg') }} " alt="" /></a>
+                   <a class="banner-thumb" href="#"><img src="{{ asset('images/450x375meubleàlaUne/meuble2.jpg') }} " alt="" /></a>
                    <div class="banner-brief">
                        <h2 class="banner-title"><a href="#">New Product 2021</a></h2>
                        <p class="hidden-md hidden-sm d-none d-md-block">Lorem Ipsum is simply dummy text of the printing
@@ -44,9 +44,14 @@
            <div class="slider-area">
                <div class="bend niceties preview-2">
                    <div id="ensign-nivoslider" class="slides">
-                       <img src="{{ asset('img/slider/slider-1/1.jpg') }} " alt="" title="#slider-direction-1" />
-                       <img src="{{ asset('img/slider/slider-1/2.jpg') }} " alt="" title="#slider-direction-2" />
-                       <img src="{{ asset('img/slider/slider-1/3.jpg') }} " alt="" title="#slider-direction-3" />
+                    {{-- {{dd($prems)}}  --}}
+
+                    <img src="{{ 'images/1220x800/'. $prems->src}} " alt="" title="#slider-direction-1" />
+                       @foreach ($diapos as $diapo)
+                       {{-- utilisation de $loop->iteration pour le carousel elles passent toutes --}}
+                       <img src="{{ 'images/1220x800/'. $diapo->src}} " alt="" title="#slider-direction-{{$loop->iteration+1}} " />
+                           
+                       @endforeach
                    </div>
                    <!-- direction 1 -->
                    <div id="slider-direction-1" class="t-cn slider-direction">

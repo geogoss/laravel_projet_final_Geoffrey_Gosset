@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('date');
             $table->longText('content');
             $table->boolean('bool')->default(false)->nullable();
-            $table->foreignId('tag_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('categorie_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('blog_id')->nullable()->constrained()->nullOnDelete();
