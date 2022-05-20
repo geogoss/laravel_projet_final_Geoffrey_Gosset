@@ -22,6 +22,8 @@ class ArticleFactory extends Factory
             'date' => $faker->date($format = 'Y-m-d', $max = 'now'),
             'content' => $faker->realText($maxNBChars = 200),
             'categorie_id' => $faker->numberBetween($min = 1, $max = 3),
+            'user_id' => $faker->numberBetween($min = 1, $max = 2),
+            'blog_id' => $faker->numberBetween($min = 1, $max = 11),
         ];
     }
 }

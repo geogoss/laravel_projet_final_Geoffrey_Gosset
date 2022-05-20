@@ -18,7 +18,7 @@
            <!-- Slider-banner start -->
            <div class="slider-banner">
                <div class="single-banner banner-1">
-                   <a class="banner-thumb" href="#"><img src="{{ asset('images/450x375meubleàlaUne/meuble1.jpg') }} " alt="" /></a>
+                   <a class="banner-thumb" href="#"><img src="{{ asset('images/450x375/meuble1.jpg') }} " alt="" /></a>
                    <span class="pro-label new-label">new</span>
                    <span class="price">$50.00</span>
                    <div class="banner-brief">
@@ -28,7 +28,7 @@
                    <a href="#" class="button-one font-16px" data-text="Buy now">Buy now</a>
                </div>
                <div class="single-banner banner-2">
-                   <a class="banner-thumb" href="#"><img src="{{ asset('images/450x375meubleàlaUne/meuble2.jpg') }} " alt="" /></a>
+                   <a class="banner-thumb" href="#"><img src="{{ asset('images/450x375/meuble2.jpg') }} " alt="" /></a>
                    <div class="banner-brief">
                        <h2 class="banner-title"><a href="#">New Product 2021</a></h2>
                        <p class="hidden-md hidden-sm d-none d-md-block">Lorem Ipsum is simply dummy text of the printing

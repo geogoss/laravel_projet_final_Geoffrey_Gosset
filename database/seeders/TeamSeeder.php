@@ -21,84 +21,56 @@ class TeamSeeder extends Seeder
                 'firstname' => 'Denzel',
                 'age' => 28,
                 'fonction' => 'The Big Boss',
-                'src' => 'moi.jpg'
+                'src' => 'team1.jpg'
             ],
             [
                 'name' => 'Bima',
                 'firstname' => 'Alex',
                 'age' => 29,
                 'fonction' => 'RH',
-                'src' => 'alexe.jpg'
+                'src' => 'team2.jpg'
             ],
             [
                 'name' => 'Ninou',
                 'firstname' => 'Alice',
                 'age' => 30,
                 'fonction' => 'RP',
-                'src' => 'alice.jpg'
+                'src' => 'team3.jpg'
             ],
             [
                 'name' => 'Bachi',
                 'firstname' => 'Barbara',
                 'age' => 53,
                 'fonction' => 'Ninja',
-                'src' => 'barbara.jpg'
+                'src' => 'team4.jpg'
             ],
             [
                 'name' => 'boukaji',
                 'firstname' => 'Benjamen',
                 'age' => 36,
                 'fonction' => 'IT',
-                'src' => 'benja.jpg'
+                'src' => 'team5.jpg'
             ],
             [
                 'name' => 'fuja',
                 'firstname' => 'Magali',
                 'age' => 26,
                 'fonction' => 'IT',
-                'src' => 'magali.jpg'
+                'src' => 'team6.jpg'
             ],
             [
                 'name' => 'Nurico',
                 'firstname' => 'Jenny',
                 'age' => 31,
                 'fonction' => 'Hotesse',
-                'src' => 'Jenny.jpg'
+                'src' => 'team7.jpg'
             ],
             [
                 'name' => 'bambin',
                 'firstname' => 'Julie',
                 'age' => 23,
                 'fonction' => 'Directrice Market',
-                'src' => 'julie.jpg'
-            ],
-            [
-                'name' => 'Sangui',
-                'firstname' => 'Mathieu',
-                'age' => 25,
-                'fonction' => 'Market Advisor',
-                'src' => 'mathieu.jpg'
-            ],
-            [
-                'name' => 'Nanni',
-                'firstname' => 'victor',
-                'age' => 50,
-                'fonction' => 'Shell Market',
-                'src' => 'victor.jpg'
-            ],
-            [
-                'name' => 'Mourandi',
-                'firstname' => 'Nadia',
-                'age' => 42,
-                'fonction' => 'Stock Advisor',
-                'src' => 'nadia.jpg'
-            ],
-            [
-                'name' => 'Stannislaw',
-                'firstname' => 'Pierre',
-                'age' => 35,
-                'fonction' => 'Manager',
-                'src' => 'pierre.jpg'
+                'src' => 'team8.jpg'
             ],
         ]);
     }

@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             TeamSeeder::class,
             MailboxSeeder::class,
             ProductSeeder::class,
+            BlogSeeder::class,
             ArticleSeeder::class,
             ImageSeeder::class,
             DetailSeeder::class,
