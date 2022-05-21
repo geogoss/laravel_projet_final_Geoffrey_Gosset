@@ -19,7 +19,11 @@ class ArticleFactory extends Factory
         $faker = $this->faker;
         return [
             'title' => $faker->realText($maxNBChars = 10),
-            'date' => $faker->date($format = 'Y-m-d', $max = 'now'),
+            // 'date' => $faker->date($format = 'Y-m-d', $max = 'now'),
+            'year' => $faker->year($max='now'),
+            'month' => $faker->month(),
+            'dayMonth' => $faker->dayOfMonth(),
+            'dayWeek' => $faker->dayOfWeek(),
             'content' => $faker->realText($maxNBChars = 200),
             'categorie_id' => $faker->numberBetween($min = 1, $max = 3),
             'user_id' => $faker->numberBetween($min = 1, $max = 2),

@@ -54,7 +54,7 @@ class ImageSeeder extends Seeder
             [
                 'src' => 'meuble8.jpg',
                 'bool' => false,
-                'product_id' => 7,
+                'product_id' => 8,
             ],
             
         ]);

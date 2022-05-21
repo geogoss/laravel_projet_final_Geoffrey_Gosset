@@ -22,5 +22,9 @@ class Article extends Model
         return $this->belongsTo(Blog::class);
     }
 
+    public function comment () {
+        return $this->hasMany(Comment::class);
+    }
+
 
 }

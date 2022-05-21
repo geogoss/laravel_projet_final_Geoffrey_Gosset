@@ -16,7 +16,11 @@ return new class extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('date');
+            // $table->string('date');
+            $table->string('year');
+            $table->string('month');
+            $table->string('dayMonth');
+            $table->string('dayWeek');
             $table->longText('content');
             $table->boolean('bool')->default(false)->nullable();
             $table->foreignId('categorie_id')->nullable()->constrained()->nullOnDelete();

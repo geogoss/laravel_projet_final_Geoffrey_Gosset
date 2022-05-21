@@ -20,7 +20,8 @@ class CommentFactory extends Factory
         return [
             'author' => $faker->name(),
             'email' => $faker->freeEmail(),
-            'content' => $faker->realText($maxNBChars = 150)
+            'content' => $faker->realText($maxNBChars = 150),
+            'article_id' => $faker->numberBetween($min=1, $max=11)
         ];
     }
 }

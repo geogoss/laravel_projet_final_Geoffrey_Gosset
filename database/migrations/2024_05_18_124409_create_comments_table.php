@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('author');
             $table->string('email');
             $table->longText('content');
+            $table->foreignId('article_id')->nullable()->constrained();
             $table->timestamps();
         });
     }
