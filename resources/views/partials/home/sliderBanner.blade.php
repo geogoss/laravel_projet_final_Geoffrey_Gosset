@@ -20,10 +20,10 @@
                <div class="single-banner banner-1">
                    <a class="banner-thumb" href="#"><img src="{{'images/450x375/'.$stars->src }} " alt="" /></a>
                    <span class="pro-label new-label">new</span>
-                   <span class="price">$50.00</span>
+                   <span class="price">{{$stars->product->price}} $</span>
                    <div class="banner-brief">
-                       <h2 class="banner-title"><a href="#">Product name</a></h2>
-                       <p class="mb-0">Furniture</p>
+                       <h2 class="banner-title"><a href="#">{{$stars->product->name}}</a></h2>
+                       <p class="mb-0">{{$stars->product->type}}</p>
                    </div>
                    <a href="#" class="button-one font-16px" data-text="Buy now">Buy now</a>
                </div>

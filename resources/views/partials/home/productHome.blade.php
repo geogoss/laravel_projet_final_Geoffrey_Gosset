@@ -36,7 +36,7 @@
 								</div>
 									
 								@endforeach
-								<!-- Single-product end --> --}}
+								<!-- Single-product end -->
 							</div>
 						</div>
 					</div>

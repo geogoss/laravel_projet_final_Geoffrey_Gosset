@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Article;
+use App\Models\Comment;
 use App\Models\Detail;
 use App\Models\Diapo;
 use App\Models\Image;
@@ -28,12 +29,12 @@ Route::get('/', function () {
     $stars = Image::where('bool', 1)->first();
     // variable $last pour prendre le dernier product ajouté dans la table
     $last = Image::orderby('created_at', 'desc')->first();
-    // variable $products pour prendre les products 270 x 270 5 au hasard
-    $products = Image::all()->where('product_id', '<', 6);
-
-    $articles = Article::all()->random(2);
-    // $comments = Article::where('article_id', ); # trouver une solution pour compter les comments
-    return view('welcome', compact('diapos', 'prems', 'stars', 'last', 'products', 'articles'));
+    // variable $products pour prendre les products 270 x 270 -> 5 au hasard
+    $products = Image::all()->random(5);
+    // variable pour le blog de la page home
+    $articles = Article::all()->random(2); #prendre 2 images d'article au hasard
+    $comments = Comment::all(); # trouver une solution pour compter les comments
+    return view('welcome', compact('diapos', 'prems', 'stars', 'last', 'products', 'articles', 'comments'));
 });
 
 // Route::get('/home', function () {

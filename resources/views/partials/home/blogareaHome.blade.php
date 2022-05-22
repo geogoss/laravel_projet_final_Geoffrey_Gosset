@@ -31,7 +31,9 @@
                                        </div>
                                        <div class="like-share fix">
                                            <a href="#"><i class="zmdi zmdi-favorite"></i><span>89 Like</span></a>
-                                           <a href="#"><i class="zmdi zmdi-comments"></i><span> Comments</span></a>
+                                           <a href="#"><i class="zmdi zmdi-comments"></i><span>
+												????												   
+											</span></a>
                                            <a href="#"><i class="zmdi zmdi-share"></i><span>29 Share</span></a>
                                        </div>
 

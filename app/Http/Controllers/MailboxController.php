@@ -36,7 +36,12 @@ class MailboxController extends Controller
      */
     public function store(StoreMailboxRequest $request)
     {
-        //
+        $mailbox = new Mailbox();
+        $mailbox->author = $request->author;
+        $mailbox->subject = $request->subject;
+        $mailbox->content = $request->content;
+        $mailbox->save();
+        return redirect()->back();
     }
 
     /**
