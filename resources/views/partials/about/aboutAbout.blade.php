@@ -5,23 +5,15 @@
 					<div class="row">
 						<div class="col-lg-6">
 							<div class="about-photo">
-								<img src="{{asset('img/bg/about.png')}} " alt="" />
+								<img src="{{'images/aboutUs/'.$infos[0]->src}} " alt="" />
 							</div>
 						</div>
 						<div class="col-lg-6">
 							<div class="about-brief bg-dark-white">
-								<h4 class="title-1 title-border text-uppercase mb-30">about hurst</h4>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-									incididunt ut labore et dolore magn aliqua. Ut enim ad minim veniam, ommodo
-									consequa. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-									is be deserunt mollit anim id est laborum.</p>
-								<p>Sed ut perspiciatis unde omnis iste natus error sit. voluptatem accusantium
-									doloremque laudantium, totam remes aperiam, eaque ipsa quae ab illo inventore
-									veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-								<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-									consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.Nemo enim ipsam
-									voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
-									magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+								<h4 class="title-1 title-border text-uppercase mb-30">{{$infos[0]->title}}</h4>
+								<p>{{$infos[0]->content1}}</p>
+								<p>{{$infos[0]->content2}}</p>
+								<p>{{$infos[0]->content3}}</p>
 							</div>
 						</div>
 					</div>

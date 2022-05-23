@@ -36,6 +36,7 @@
 											</span></a>
                                            <a href="#"><i class="zmdi zmdi-share"></i><span>29 Share</span></a>
                                        </div>
+									   
 
                                        <p>{{ Str::limit($article->content, 110, $end = '.......') }}</p>
                                        <a href="#" class="button-2 text-dark-red">Read more</a>

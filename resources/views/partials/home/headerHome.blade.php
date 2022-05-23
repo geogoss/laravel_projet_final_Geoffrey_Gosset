@@ -74,6 +74,7 @@
        <div class="main-menu  d-none d-md-block">
            <nav>
                <ul>
+                   <li><a href="/dashboard">Dashboard</a></li>
                    <li><a href="/">home</a></li>
                    <li><a href="/shop">products</a></li>
                    <li><a href="/blog">blog</a></li>

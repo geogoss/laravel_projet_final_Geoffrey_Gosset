@@ -1,10 +1,12 @@
 <?php
 
 use App\Models\Article;
+use App\Models\Banner;
 use App\Models\Comment;
 use App\Models\Detail;
 use App\Models\Diapo;
 use App\Models\Image;
+use App\Models\Info;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -34,55 +36,101 @@ Route::get('/', function () {
     // variable pour le blog de la page home
     $articles = Article::all()->random(2); #prendre 2 images d'article au hasard
     $comments = Comment::all(); # trouver une solution pour compter les comments
-    return view('welcome', compact('diapos', 'prems', 'stars', 'last', 'products', 'articles', 'comments'));
+    // variable $infos pour le about us dans le footer
+    $infos = Info::all();
+    return view('welcome', compact('diapos', 'prems', 'stars', 'last', 'products', 'articles', 'comments', 'infos'));
 });
 
 // Route::get('/home', function () {
 //     return view('pages.home');
 // });
 
+// Partie front ========================================================================
 Route::get('/shop', function () {
-    return view('pages.shop-list');
+    $infos = Info::all();
+    $banners = Banner::all();
+    return view('pages.shop-list', compact('infos', 'banners'));
 });
 
 Route::get('/showProduct', function () {
-    return view('pages.showProduct');
+    $infos = Info::all();
+    return view('pages.showProduct', compact('infos'));
 });
 
 Route::get('/blog', function () {
-    return view('pages.blog');
+    $infos = Info::all();
+    return view('pages.blog', compact('infos'));
 });
 
 Route::get('/showblog', function () {
-    return view('pages.showBlog');
+    $infos = Info::all();
+    return view('pages.showBlog', compact('infos'));
 });
 
 Route::get('/about', function () {
-    return view('pages.about');
+    $infos = Info::all();
+    return view('pages.about', compact('infos'));
 });
 
 Route::get('/contact', function () {
-    return view('pages.contact');
+    $infos = Info::all();
+    return view('pages.contact', compact('infos'));
 });
 
 Route::get('/cart', function () {
-    return view('pages.panier.cart');
+    $infos = Info::all();
+    return view('pages.panier.cart', compact('infos'));
 });
 
 Route::get('/checkout', function () {
-    return view('pages.panier.checkout');
+    $infos = Info::all();
+    return view('pages.panier.checkout', compact('infos'));
 });
 
 Route::get('/order', function () {
-    return view('pages.panier.order');
+    $infos = Info::all();
+    return view('pages.panier.order', compact('infos'));
 });
 
 Route::get('/myaccount', function () {
-    return view('pages.myaccount');
+    $infos = Info::all();
+    return view('pages.myaccount', compact('infos'));
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $infos = Info::all();
+    return view('dashboard', compact('infos'));
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+
+// Partie back ========================================================================
+
+Route::get('/backHome', function () {
+    $infos = Info::all();
+    return view('pages.backoffice.backHome', compact('infos'));
+});
+Route::get('/backProduct', function () {
+    $infos = Info::all();
+    return view('pages.backoffice.backProduct', compact('infos'));
+});
+Route::get('/backBlog', function () {
+    $infos = Info::all();
+    return view('pages.backoffice.backBlog', compact('infos'));
+});
+Route::get('/backAbout', function () {
+    $infos = Info::all();
+    return view('pages.backoffice.backAbout', compact('infos'));
+});
+Route::get('/backContact', function () {
+    $infos = Info::all();
+    return view('pages.backoffice.backContact', compact('infos'));
+});
+Route::get('/backPanier', function () {
+    $infos = Info::all();
+    return view('pages.backoffice.backPanier', compact('infos'));
+});
+
+
+
