@@ -7,7 +7,7 @@
 								<nav id="dropdown">
 									<ul>
 										<li><a href="/">home</a></li>
-										<li><a href="/shop">product</a></li>
+										<li><a href="/product">product</a></li>
 										<li><a href="/blog">blog</a></li>
 										<li><a href="/about">about us</a></li>
 										<li><a href="/contact">contact</a></li>

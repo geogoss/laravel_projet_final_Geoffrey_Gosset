@@ -5,9 +5,9 @@
                     <div class="col-lg-3 order-2 order-lg-1">
                         <!-- Widget-Search start -->
                         <aside class="widget widget-search mb-30">
-                            <form action="#">
-                                <input type="text" placeholder="Search here..." />
-                                <button type="submit">
+                            <form action="/search" method="GET">
+                                <input type="text" placeholder="Search here..." name="q" />
+                                <button type="submit" class="fa fa-search" aria-hidden="true">
                                     <i class="zmdi zmdi-search"></i>
                                 </button>
                             </form>
@@ -20,16 +20,10 @@
                             </div>
                             <div id="cat-treeview" class="widget-info product-cat boxscrol2">
                                 <ul>
-                                    <li><span>Chair</span>
-                                    </li>
-                                    <li><span>Table</span>
-                                    </li>
-                                    <li><span>Accessories</span>
-                                    </li>
-                                    <li><span>Decoration</span>
-                                    </li>
-                                    <li><span>Cabinet</span>
-                                    </li>
+                                    @foreach ($types as $type)
+                                        <li><span>{{ $type->name }}</span></li>
+                                    @endforeach
+
                                 </ul>
                             </div>
                         </aside>
@@ -41,11 +35,9 @@
                             </div>
                             <div class="widget-info size-filter clearfix">
                                 <ul>
-                                    <li><a href="#">M</a></li>
-                                    <li><a class="active" href="#">S</a></li>
-                                    <li><a href="#">L</a></li>
-                                    <li><a href="#">SL</a></li>
-                                    <li><a href="#">XL</a></li>
+                                    @foreach ($sizes as $size)
+                                        <li><a href="#">{{ $size->name }} </a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </aside>
@@ -67,389 +59,147 @@
                             <div class="tab-content">
                                 <div class="tab-pane" id="grid-view">
                                     <div class="row">
-                                        <!-- Single-product start -->
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="single-product">
-                                                <div class="product-img">
-                                                    <span class="pro-label new-label">new</span>
-                                                    <span class="pro-price-2">$ 56.20</span>
-                                                    <a href="single-product.html"><img src="{{asset('img/product/6.jpg')}} "
-                                                            alt="" /></a>
-                                                </div>
-                                                <div class="product-info clearfix text-center">
-                                                    <div class="fix">
-                                                        <h4 class="post-title"><a href="#">dummy Product name</a>
-                                                        </h4>
+                                        @foreach ($products as $product)
+                                            <!-- Single-product start -->
+                                            <div class="col-lg-4 col-md-6">
+                                                <a href="/product/{{ $product->id }} ">
+                                                    <div class="single-product">
+                                                        <div class="product-img">
+                                                            {{-- condition pour afficher les étiquette 'NEW' ou 'SALE' --}}
+                                                            @if ($product->state == 'SALE')
+                                                                <span
+                                                                    class="pro-label sale-label">{{ $product->state }}</span>
+                                                            @elseif ($product->state == 'NEW')
+                                                                <span
+                                                                    class="pro-label new-label">{{ $product->state }}
+                                                                </span>
+                                                            @else
+                                                            @endif
+
+                                                            <span class="pro-price-2">{{ $product->price }}
+                                                                €</span>
+                                                            <a href="/product/{{$product->id}} ">
+                                                                @foreach ($product->image as $item)
+                                                                    <img src="{{ 'images/270x270/' . $item->src }} "
+                                                                        alt="" />
+                                                                @endforeach
+                                                            </a>
+                                                        </div>
+                                                        <div class="product-info clearfix text-center">
+                                                            <div class="fix">
+                                                                <h4 class="post-title"><a
+                                                                        href="/product/{{$product->id}} ">{{ $product->name }}</a>
+                                                                </h4>
+                                                            </div>
+                                                            <div class="product-action clearfix">
+                                                                <a href="#" data-bs-toggle="modal"
+                                                                    data-bs-target="#productModal" title="Quick View"><i
+                                                                        class="zmdi zmdi-zoom-in"></i></a>
+                                                                <a href="cart.html" data-bs-toggle="tooltip"
+                                                                    data-placement="top" title="Add To Cart"><i
+                                                                        class="zmdi zmdi-shopping-cart-plus"></i></a>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="product-action clearfix">
-                                                        <a href="#" data-bs-toggle="modal"
-                                                            data-bs-target="#productModal" title="Quick View"><i
-                                                                class="zmdi zmdi-zoom-in"></i></a>
-                                                        <a href="cart.html" data-bs-toggle="tooltip"
-                                                            data-placement="top" title="Add To Cart"><i
-                                                                class="zmdi zmdi-shopping-cart-plus"></i></a>
-                                                    </div>
-                                                </div>
+                                                </a>
                                             </div>
+                                            <!-- Single-product end -->
+                                        @endforeach
+                                        <div class=" d-flex justify-content-center">
+                                            {{ $products->links('pagination::bootstrap-4') }}
+
                                         </div>
-                                        <!-- Single-product end -->
-                                        <!-- Single-product start -->
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="single-product">
-                                                <div class="product-img">
-                                                    <span class="pro-label sale-label">Sale</span>
-                                                    <span class="pro-price-2">$ 56.20</span>
-                                                    <a href="single-product.html"><img src="{{asset('img/product/3.jpg')}} "
-                                                            alt="" /></a>
-                                                </div>
-                                                <div class="product-info clearfix text-center">
-                                                    <div class="fix">
-                                                        <h4 class="post-title"><a href="#">dummy Product name</a>
-                                                        </h4>
-                                                    </div>
-                                                    <div class="product-action clearfix">
-                                                        <a href="#" data-bs-toggle="modal"
-                                                            data-bs-target="#productModal" title="Quick View"><i
-                                                                class="zmdi zmdi-zoom-in"></i></a>
-                                                        <a href="cart.html" data-bs-toggle="tooltip"
-                                                            data-placement="top" title="Add To Cart"><i
-                                                                class="zmdi zmdi-shopping-cart-plus"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Single-product end -->
-                                        <!-- Single-product start -->
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="single-product">
-                                                <div class="product-img">
-                                                    <span class="pro-label new-label">new</span>
-                                                    <span class="pro-price-2">$ 56.20</span>
-                                                    <a href="single-product.html"><img src="{{asset('img/product/11.jpg')}} "
-                                                            alt="" /></a>
-                                                </div>
-                                                <div class="product-info clearfix text-center">
-                                                    <div class="fix">
-                                                        <h4 class="post-title"><a href="#">dummy Product name</a>
-                                                        </h4>
-                                                    </div>
-                                                    <div class="product-action clearfix">
-                                                        <a href="#" data-bs-toggle="modal"
-                                                            data-bs-target="#productModal" title="Quick View"><i
-                                                                class="zmdi zmdi-zoom-in"></i></a>
-                                                        <a href="cart.html" data-bs-toggle="tooltip"
-                                                            data-placement="top" title="Add To Cart"><i
-                                                                class="zmdi zmdi-shopping-cart-plus"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Single-product end -->
-                                        <!-- Single-product start -->
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="single-product">
-                                                <div class="product-img">
-                                                    <span class="pro-label new-label">new</span>
-                                                    <span class="pro-price-2">$ 56.20</span>
-                                                    <a href="single-product.html"><img src="{{asset('img/product/2.jpg')}} "
-                                                            alt="" /></a>
-                                                </div>
-                                                <div class="product-info clearfix text-center">
-                                                    <div class="fix">
-                                                        <h4 class="post-title"><a href="#">dummy Product name</a>
-                                                        </h4>
-                                                    </div>
-                                                    <div class="product-action clearfix">
-                                                        <a href="#" data-bs-toggle="modal"
-                                                            data-bs-target="#productModal" title="Quick View"><i
-                                                                class="zmdi zmdi-zoom-in"></i></a>
-                                                        <a href="cart.html" data-bs-toggle="tooltip"
-                                                            data-placement="top" title="Add To Cart"><i
-                                                                class="zmdi zmdi-shopping-cart-plus"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Single-product end -->
-                                        <!-- Single-product start -->
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="single-product">
-                                                <div class="product-img">
-                                                    <span class="pro-price-2">$ 56.20</span>
-                                                    <a href="single-product.html"><img src="{{asset('img/product/1.jpg')}} "
-                                                            alt="" /></a>
-                                                </div>
-                                                <div class="product-info clearfix text-center">
-                                                    <div class="fix">
-                                                        <h4 class="post-title"><a href="#">dummy Product name</a>
-                                                        </h4>
-                                                    </div>
-                                                    <div class="product-action clearfix">
-                                                        <a href="#" data-bs-toggle="modal"
-                                                            data-bs-target="#productModal" title="Quick View"><i
-                                                                class="zmdi zmdi-zoom-in"></i></a>
-                                                        <a href="cart.html" data-bs-toggle="tooltip"
-                                                            data-placement="top" title="Add To Cart"><i
-                                                                class="zmdi zmdi-shopping-cart-plus"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Single-product end -->
-                                        <!-- Single-product start -->
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="single-product">
-                                                <div class="product-img">
-                                                    <span class="pro-label new-label">new</span>
-                                                    <span class="pro-price-2">$ 56.20</span>
-                                                    <a href="single-product.html"><img src="{{asset('img/product/12.jpg')}} "
-                                                            alt="" /></a>
-                                                </div>
-                                                <div class="product-info clearfix text-center">
-                                                    <div class="fix">
-                                                        <h4 class="post-title"><a href="#">dummy Product name</a>
-                                                        </h4>
-                                                    </div>
-                                                    <div class="product-action clearfix">
-                                                        <a href="#" data-bs-toggle="modal"
-                                                            data-bs-target="#productModal" title="Quick View"><i
-                                                                class="zmdi zmdi-zoom-in"></i></a>
-                                                        <a href="cart.html" data-bs-toggle="tooltip"
-                                                            data-placement="top" title="Add To Cart"><i
-                                                                class="zmdi zmdi-shopping-cart-plus"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Single-product end -->
                                     </div>
                                 </div>
                                 <div class="tab-pane active" id="list-view">
                                     <div class="row shop-list">
-                                        <!-- Single-product start -->
-                                        <div class="col-lg-12">
-                                            <div class="single-product clearfix">
-                                                <div class="product-img">
-                                                    <span class="pro-label new-label">new</span>
-                                                    <span class="pro-price-2">$ 56.20</span>
-                                                    <a href="single-product.html"><img src="{{asset('img/product/6.jpg')}} "
-                                                            alt="" /></a>
-                                                </div>
-                                                <div class="product-info">
-                                                    <div class="fix">
-                                                        <h4 class="post-title floatleft"><a href="#">dummy Product
-                                                                name</a></h4>
-                                                    </div>
-                                                    <div class="fix mb-20">
-                                                        <span class="pro-price">$ 56.20</span>
-                                                        <span class="old-price font-16px ml-10"><del>$
-                                                                96.20</del></span>
-                                                    </div>
-                                                    <div class="product-description">
-                                                        <p>There are many variations of passages of Lorem Ipsum
-                                                            available, but the majority have be suffered alteration in
-                                                            some form, by injected humour, or randomised words which
-                                                            donot look even slightly believable. If you are going to use
-                                                            a passage of Lorem Ipsum, you neede be sure there isn't
-                                                            anythin going to use a passage embarrassing.</p>
-                                                    </div>
-                                                    <div class="clearfix">
-                                                        <div class="cart-plus-minus">
-                                                            <input type="text" value="02" name="qtybutton"
-                                                                class="cart-plus-minus-box">
+                                        @foreach ($products as $product)
+                                            <!-- Single-product start -->
+                                            <div class="col-lg-12">
+                                                <a href="/product/{{ $product->id }} ">
+                                                    <div class="single-product clearfix">
+                                                        <div class="product-img">
+                                                            {{-- condition pour afficher les étiquette 'NEW' ou 'SALE' --}}
+                                                            @if ($product->state == 'SALE')
+                                                                <span
+                                                                    class="pro-label sale-label">{{ $product->state }}</span>
+                                                            @elseif ($product->state == 'NEW')
+                                                                <span
+                                                                    class="pro-label new-label">{{ $product->state }}
+                                                                </span>
+                                                            @else
+                                                            @endif
+
+                                                            {{-- Condition pour afficher la promo si il y en a une --}}
+                                                            {{-- Ici product discount = 0 quand pas de promo --}}
+                                                            @if ($product->discount == 0)
+                                                                <span class="pro-price-2">{{ $product->price }}
+                                                                    €</span>
+                                                            @else
+                                                                <span class="pro-price-2">{{ $product->discount }}
+                                                                    €</span>
+                                                            @endif
+
+                                                            <a href="/product/{{ $product->id }} ">
+                                                                @foreach ($product->image as $item)
+                                                                    <img src="{{ 'images/270x270/' . $item->src }} "
+                                                                        alt="" />
+                                                                @endforeach
+                                                            </a>
                                                         </div>
-                                                        <div class="product-action clearfix">
-                                                            <a href="#" data-bs-toggle="modal"
-                                                                data-bs-target="#productModal" title="Quick View"><i
-                                                                    class="zmdi zmdi-zoom-in"></i></a>
-                                                            <a href="cart.html" data-bs-toggle="tooltip"
-                                                                data-placement="top" title="Add To Cart"><i
-                                                                    class="zmdi zmdi-shopping-cart-plus"></i></a>
+                                                        <div class="product-info">
+                                                            <div class="fix">
+                                                                <h4 class="post-title floatleft"><a
+                                                                        href="#">{{ $product->name }} </a></h4>
+                                                            </div>
+                                                            <div class="fix mb-20">
+                                                                {{-- rebelotte avec affichage de la promo s'il y en a une --}}
+                                                                @if ($product->discount == 0)
+                                                                    <span
+                                                                        class="pro-price">{{ $product->price }}
+                                                                        €</span>
+                                                                @else
+                                                                    <span
+                                                                        class="pro-price">{{ $product->discount }}
+                                                                        €</span>
+                                                                    <span class="old-price font-16px ml-10"><del>{{ $product->price }}
+                                                                            € </del></span>
+                                                                @endif
+                                                            </div>
+                                                            <div class="product-description">
+                                                                <p>{{ $product->content }} </p>
+                                                            </div>
+                                                            <div class="clearfix">
+                                                                <div class="cart-plus-minus">
+                                                                    <input type="text" value="02" name="qtybutton"
+                                                                        class="cart-plus-minus-box">
+                                                                </div>
+                                                                <div class="product-action clearfix">
+                                                                    <a href="#" data-bs-toggle="modal"
+                                                                        data-bs-target="#productModal"
+                                                                        title="Quick View"><i
+                                                                            class="zmdi zmdi-zoom-in"></i></a>
+                                                                    <a href="cart.html" data-bs-toggle="tooltip"
+                                                                        data-placement="top" title="Add To Cart"><i
+                                                                            class="zmdi zmdi-shopping-cart-plus"></i></a>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </a>
                                             </div>
+                                            <!-- Single-product end -->
+                                        @endforeach
+
+                                        <div class=" d-flex justify-content-center">
+                                            {{ $products->links('pagination::bootstrap-4') }}
+
                                         </div>
-                                        <!-- Single-product end -->
-                                        <!-- Single-product start -->
-                                        <div class="col-lg-12">
-                                            <div class="single-product clearfix">
-                                                <div class="product-img">
-                                                    <span class="pro-label new-label">new</span>
-                                                    <span class="pro-price-2">$ 56.20</span>
-                                                    <a href="single-product.html"><img src="{{asset('img/product/3.jpg')}} "
-                                                            alt="" /></a>
-                                                </div>
-                                                <div class="product-info">
-                                                    <div class="fix">
-                                                        <h4 class="post-title floatleft"><a href="#">dummy Product
-                                                                name</a></h4>
-                                                    </div>
-                                                    <div class="fix mb-20">
-                                                        <span class="pro-price">$ 56.20</span>
-                                                    </div>
-                                                    <div class="product-description">
-                                                        <p>There are many variations of passages of Lorem Ipsum
-                                                            available, but the majority have be suffered alteration in
-                                                            some form, by injected humour, or randomised words which
-                                                            donot look even slightly believable. If you are going to use
-                                                            a passage of Lorem Ipsum, you neede be sure there isn't
-                                                            anythin going to use a passage embarrassing.</p>
-                                                    </div>
-                                                    <div class="clearfix">
-                                                        <div class="cart-plus-minus">
-                                                            <input type="text" value="02" name="qtybutton"
-                                                                class="cart-plus-minus-box">
-                                                        </div>
-                                                        <div class="product-action clearfix">
-                                                            <a href="#" data-bs-toggle="modal"
-                                                                data-bs-target="#productModal" title="Quick View"><i
-                                                                    class="zmdi zmdi-zoom-in"></i></a>
-                                                            <a href="cart.html" data-bs-toggle="tooltip"
-                                                                data-placement="top" title="Add To Cart"><i
-                                                                    class="zmdi zmdi-shopping-cart-plus"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Single-product end -->
-                                        <!-- Single-product start -->
-                                        <div class="col-lg-12">
-                                            <div class="single-product clearfix">
-                                                <div class="product-img">
-                                                    <span class="pro-label new-label">new</span>
-                                                    <span class="pro-price-2">$ 56.20</span>
-                                                    <a href="single-product.html"><img src="{{asset('img/product/2.jpg')}} "
-                                                            alt="" /></a>
-                                                </div>
-                                                <div class="product-info">
-                                                    <div class="fix">
-                                                        <h4 class="post-title floatleft"><a href="#">dummy Product
-                                                                name</a></h4>
-                                                    </div>
-                                                    <div class="fix mb-20">
-                                                        <span class="pro-price">$ 56.20</span>
-                                                    </div>
-                                                    <div class="product-description">
-                                                        <p>There are many variations of passages of Lorem Ipsum
-                                                            available, but the majority have be suffered alteration in
-                                                            some form, by injected humour, or randomised words which
-                                                            donot look even slightly believable. If you are going to use
-                                                            a passage of Lorem Ipsum, you neede be sure there isn't
-                                                            anythin going to use a passage embarrassing.</p>
-                                                    </div>
-                                                    <div class="clearfix">
-                                                        <div class="cart-plus-minus">
-                                                            <input type="text" value="02" name="qtybutton"
-                                                                class="cart-plus-minus-box">
-                                                        </div>
-                                                        <div class="product-action clearfix">
-                                                            <a href="#" data-bs-toggle="modal"
-                                                                data-bs-target="#productModal" title="Quick View"><i
-                                                                    class="zmdi zmdi-zoom-in"></i></a>
-                                                            <a href="cart.html" data-bs-toggle="tooltip"
-                                                                data-placement="top" title="Add To Cart"><i
-                                                                    class="zmdi zmdi-shopping-cart-plus"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Single-product end -->
-                                        <!-- Single-product start -->
-                                        <div class="col-lg-12">
-                                            <div class="single-product clearfix">
-                                                <div class="product-img">
-                                                    <span class="pro-label new-label">new</span>
-                                                    <span class="pro-price-2">$ 56.20</span>
-                                                    <a href="single-product.html"><img src="{{asset('img/product/10.jpg')}} "
-                                                            alt="" /></a>
-                                                </div>
-                                                <div class="product-info">
-                                                    <div class="fix">
-                                                        <h4 class="post-title floatleft"><a href="#">dummy Product
-                                                                name</a></h4>
-                                                    </div>
-                                                    <div class="fix mb-20">
-                                                        <span class="pro-price">$ 56.20</span>
-                                                        <span class="old-price font-16px ml-10"><del>$
-                                                                96.20</del></span>
-                                                    </div>
-                                                    <div class="product-description">
-                                                        <p>There are many variations of passages of Lorem Ipsum
-                                                            available, but the majority have be suffered alteration in
-                                                            some form, by injected humour, or randomised words which
-                                                            donot look even slightly believable. If you are going to use
-                                                            a passage of Lorem Ipsum, you neede be sure there isn't
-                                                            anythin going to use a passage embarrassing.</p>
-                                                    </div>
-                                                    <div class="clearfix">
-                                                        <div class="cart-plus-minus">
-                                                            <input type="text" value="02" name="qtybutton"
-                                                                class="cart-plus-minus-box">
-                                                        </div>
-                                                        <div class="product-action clearfix">
-                                                            <a href="#" data-bs-toggle="modal"
-                                                                data-bs-target="#productModal" title="Quick View"><i
-                                                                    class="zmdi zmdi-zoom-in"></i></a>
-                                                            <a href="cart.html" data-bs-toggle="tooltip"
-                                                                data-placement="top" title="Add To Cart"><i
-                                                                    class="zmdi zmdi-shopping-cart-plus"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Single-product end -->
-                                        <!-- Single-product start -->
-                                        <div class="col-lg-12">
-                                            <div class="single-product clearfix">
-                                                <div class="product-img">
-                                                    <span class="pro-label new-label">new</span>
-                                                    <span class="pro-price-2">$ 56.20</span>
-                                                    <a href="single-product.html"><img src="{{asset('img/product/12.jpg')}} "
-                                                            alt="" /></a>
-                                                </div>
-                                                <div class="product-info">
-                                                    <div class="fix">
-                                                        <h4 class="post-title floatleft"><a href="#">dummy Product
-                                                                name</a></h4>
-                                                    </div>
-                                                    <div class="fix mb-20">
-                                                        <span class="pro-price">$ 56.20</span>
-                                                    </div>
-                                                    <div class="product-description">
-                                                        <p>There are many variations of passages of Lorem Ipsum
-                                                            available, but the majority have be suffered alteration in
-                                                            some form, by injected humour, or randomised words which
-                                                            donot look even slightly believable. If you are going to use
-                                                            a passage of Lorem Ipsum, you neede be sure there isn't
-                                                            anythin going to use a passage embarrassing.</p>
-                                                    </div>
-                                                    <div class="clearfix">
-                                                        <div class="cart-plus-minus">
-                                                            <input type="text" value="02" name="qtybutton"
-                                                                class="cart-plus-minus-box">
-                                                        </div>
-                                                        <div class="product-action clearfix">
-                                                            <a href="#" data-bs-toggle="modal"
-                                                                data-bs-target="#productModal" title="Quick View"><i
-                                                                    class="zmdi zmdi-zoom-in"></i></a>
-                                                            <a href="cart.html" data-bs-toggle="tooltip"
-                                                                data-placement="top" title="Add To Cart"><i
-                                                                    class="zmdi zmdi-shopping-cart-plus"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Single-product end -->
                                     </div>
                                 </div>
                             </div>
                             <!-- Pagination start -->
-                            <div class="shop-pagination  text-center">
+                            {{-- <div class="shop-pagination  text-center">
                                 <div class="pagination">
                                     <ul>
                                         <li><a href="#"><i class="zmdi zmdi-long-arrow-left"></i></a></li>
@@ -461,7 +211,7 @@
                                         <li><a href="#"><i class="zmdi zmdi-long-arrow-right"></i></a></li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> --}}
                             <!-- Pagination end -->
                         </div>
                         <!-- Shop-Content End -->

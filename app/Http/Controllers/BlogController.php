@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Http\Requests\StoreBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
+use App\Models\Article;
+use App\Models\Info;
 
 class BlogController extends Controller
 {
@@ -15,7 +17,9 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
+        $infos = Info::all();
+        $articles = Article::all();
+        return view('pages.blog', compact('infos', 'articles'));
     }
 
     /**

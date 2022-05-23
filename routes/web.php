@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ProductController;
 use App\Models\Article;
 use App\Models\Banner;
 use App\Models\Comment;
@@ -7,7 +9,10 @@ use App\Models\Detail;
 use App\Models\Diapo;
 use App\Models\Image;
 use App\Models\Info;
-use Illuminate\Support\Facades\Request;
+use App\Models\Product;
+use App\Models\Size;
+use App\Models\Type;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,21 +51,32 @@ Route::get('/', function () {
 // });
 
 // Partie front ========================================================================
-Route::get('/shop', function () {
-    $infos = Info::all();
-    $banners = Banner::all();
-    return view('pages.shop-list', compact('infos', 'banners'));
-});
+// Route::get('/shop', function (Request $request) {
+//     $infos = Info::all();
+//     $banners = Banner::all();
+//     $types = Type::all();
+//     $sizes = Size::all();
+//     $products = Product::paginate(5);
+//     $q = $request->input('q');
+//     $products = Product::where('name', 'like', '%$q%')
+//         ->orWhere('price', 'like', '%$q%')
+//         ->paginate(5);
+//     return view('pages.shop-list', compact('infos', 'banners', 'types', 'sizes', 'products'));
+// });
+// Route::get('/showProduct', function () {
+    //     $infos = Info::all();
+    //     return view('pages.showProduct', compact('infos'));
+    // });
+      
+    // Route::get('/blog', function () {
+        //     $infos = Info::all();
+        //     return view('pages.blog', compact('infos'));
+        // });
 
-Route::get('/showProduct', function () {
-    $infos = Info::all();
-    return view('pages.showProduct', compact('infos'));
-});
 
-Route::get('/blog', function () {
-    $infos = Info::all();
-    return view('pages.blog', compact('infos'));
-});
+Route::get('/search', [ProductController::class, 'search']);
+Route::resource('product', ProductController::class);
+Route::resource('/blog', BlogController::class);
 
 Route::get('/showblog', function () {
     $infos = Info::all();
@@ -131,6 +147,5 @@ Route::get('/backPanier', function () {
     $infos = Info::all();
     return view('pages.backoffice.backPanier', compact('infos'));
 });
-
 
 
