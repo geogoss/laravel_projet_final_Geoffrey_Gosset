@@ -29,10 +29,14 @@ class ProductController extends Controller
         $sizes = Size::all();
         
         $q = $request->input('q');
-        $products = Product::where('name', 'like', '%$q%')
-            ->orWhere('price', 'like', '%$q%')
+        $products = Product::where('name', 'like', "%$q%")
+            ->orWhere('price', 'like', "%$q%")
             ->paginate(5);
-        return view('pages.searchProduct', compact('products', 'infos', 'banners', 'types', 'sizes'));
+        $produits = Product::where('name', 'like', "%$q%")
+        ->orWhere('discount', 'like', "%$q%")
+        ->paginate(6);
+
+        return view('pages.shop-list', compact('produits','products', 'infos', 'banners', 'types', 'sizes'));
     }
 
 
@@ -43,8 +47,10 @@ class ProductController extends Controller
         $types = Type::all();
         $sizes = Size::all();
         $products = Product::paginate(5);
+        $produits = Product::paginate(6);
+        $banners = Banner::all();
 
-        return view('pages.shop-list', compact('products', 'infos', 'banners', 'types', 'sizes'));
+        return view('pages.shop-list', compact('produits','products', 'infos', 'banners', 'types', 'sizes', 'banners'));
     }
 
     /**

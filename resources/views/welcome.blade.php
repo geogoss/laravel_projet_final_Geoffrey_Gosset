@@ -9,5 +9,5 @@
     @include('partials.home.blogareaHome')
     @include('partials.home.subscriveHome')
     @include('partials.home.footerHome')
-    @include('partials.home.quickviewProductHome')
+    {{-- @include('partials.home.quickviewProductHome') --}}
 @endsection

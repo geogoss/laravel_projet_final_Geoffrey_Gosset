@@ -21,7 +21,7 @@
                             <div id="cat-treeview" class="widget-info product-cat boxscrol2">
                                 <ul>
                                     @foreach ($types as $type)
-                                        <li><span>{{ $type->name }}</span></li>
+                                        <li><a href="">{{ $type->name }}</a></li>
                                     @endforeach
 
                                 </ul>
@@ -59,27 +59,27 @@
                             <div class="tab-content">
                                 <div class="tab-pane" id="grid-view">
                                     <div class="row">
-                                        @foreach ($products as $product)
+                                        @foreach ($produits as $produit)
                                             <!-- Single-product start -->
                                             <div class="col-lg-4 col-md-6">
-                                                <a href="/product/{{ $product->id }} ">
+                                                <a href="/product/{{ $produit->id }} ">
                                                     <div class="single-product">
                                                         <div class="product-img">
                                                             {{-- condition pour afficher les étiquette 'NEW' ou 'SALE' --}}
-                                                            @if ($product->state == 'SALE')
+                                                            @if ($produit->state == 'SALE')
                                                                 <span
-                                                                    class="pro-label sale-label">{{ $product->state }}</span>
-                                                            @elseif ($product->state == 'NEW')
+                                                                    class="pro-label sale-label">{{ $produit->state }}</span>
+                                                            @elseif ($produit->state == 'NEW')
                                                                 <span
-                                                                    class="pro-label new-label">{{ $product->state }}
+                                                                    class="pro-label new-label">{{ $produit->state }}
                                                                 </span>
                                                             @else
                                                             @endif
 
-                                                            <span class="pro-price-2">{{ $product->price }}
+                                                            <span class="pro-price-2">{{ $produit->price }}
                                                                 €</span>
-                                                            <a href="/product/{{$product->id}} ">
-                                                                @foreach ($product->image as $item)
+                                                            <a href="/product/{{ $produit->id }} ">
+                                                                @foreach ($produit->image as $item)
                                                                     <img src="{{ 'images/270x270/' . $item->src }} "
                                                                         alt="" />
                                                                 @endforeach
@@ -88,7 +88,7 @@
                                                         <div class="product-info clearfix text-center">
                                                             <div class="fix">
                                                                 <h4 class="post-title"><a
-                                                                        href="/product/{{$product->id}} ">{{ $product->name }}</a>
+                                                                        href="/product/{{ $produit->id }} ">{{ $produit->name }}</a>
                                                                 </h4>
                                                             </div>
                                                             <div class="product-action clearfix">
@@ -105,10 +105,6 @@
                                             </div>
                                             <!-- Single-product end -->
                                         @endforeach
-                                        <div class=" d-flex justify-content-center">
-                                            {{ $products->links('pagination::bootstrap-4') }}
-
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="tab-pane active" id="list-view">
@@ -176,7 +172,7 @@
                                                                 </div>
                                                                 <div class="product-action clearfix">
                                                                     <a href="#" data-bs-toggle="modal"
-                                                                        data-bs-target="#productModal"
+                                                                        data-bs-target="#productModal{{ $product->id }}"
                                                                         title="Quick View"><i
                                                                             class="zmdi zmdi-zoom-in"></i></a>
                                                                     <a href="cart.html" data-bs-toggle="tooltip"
@@ -190,18 +186,13 @@
                                             </div>
                                             <!-- Single-product end -->
                                         @endforeach
-
-                                        <div class=" d-flex justify-content-center">
-                                            {{ $products->links('pagination::bootstrap-4') }}
-
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- Pagination start -->
-                            {{-- <div class="shop-pagination  text-center">
+                            <div class="shop-pagination  text-center">
                                 <div class="pagination">
-                                    <ul>
+                                    {{-- <ul>
                                         <li><a href="#"><i class="zmdi zmdi-long-arrow-left"></i></a></li>
                                         <li><a href="#">01</a></li>
                                         <li><a class="active" href="#">02</a></li>
@@ -209,9 +200,10 @@
                                         <li><a href="#">04</a></li>
                                         <li><a href="#">05</a></li>
                                         <li><a href="#"><i class="zmdi zmdi-long-arrow-right"></i></a></li>
-                                    </ul>
+                                    </ul> --}}
+                                    {{ $products->links() }}
                                 </div>
-                            </div> --}}
+                            </div>
                             <!-- Pagination end -->
                         </div>
                         <!-- Shop-Content End -->
@@ -220,3 +212,6 @@
             </div>
         </div>
         <!-- PRODUCT-AREA END -->
+        @foreach ($products as $product)
+            @include('partials.shop.quickviewProductShop')
+        @endforeach

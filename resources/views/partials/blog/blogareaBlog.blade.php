@@ -40,10 +40,10 @@
                        <div class="col-lg-4 col-md-6">
                            <div class="single-blog mb-30">
                                <div class="blog-photo">
-                                   <a href="#"><img src="{{ 'images/320x200/'. $article->blog->src }} " alt="" /></a>
-                                   <div class="like-share text-center fix">
+                                   <a href="#"><img src="{{ 'images/270x230/'. $article->blog->src }} " alt="" /></a>
+								   <div class="like-share text-center fix">
                                        <a href="#"><i class="zmdi zmdi-favorite"></i><span>89 Like</span></a>
-                                       <a href="#"><i class="zmdi zmdi-comments"></i><span>59 Comments</span></a>
+                                       <a href="#"><i class="zmdi zmdi-comments"></i><span>{{$article->comment->count()}} </span></a>
                                    </div>
                                </div>
                                <div class="blog-info">
@@ -68,7 +68,7 @@
                        <!-- Pagination start -->
                        <div class="shop-pagination  text-center">
                            <div class="pagination">
-                               <ul>
+                               {{-- <ul>
                                    <li><a href="#"><i class="zmdi zmdi-long-arrow-left"></i></a></li>
                                    <li><a href="#">01</a></li>
                                    <li><a class="active" href="#">02</a></li>
@@ -77,7 +77,8 @@
                                    <li><a href="#">05</a></li>
                                    <li><a class="active" href="#"><i class="zmdi zmdi-long-arrow-right"></i></a>
                                    </li>
-                               </ul>
+                               </ul> --}}
+							   {{$articles->links()}}
                            </div>
                        </div>
                        <!-- Pagination end -->

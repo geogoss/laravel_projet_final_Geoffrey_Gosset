@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\Banner;
 use App\Models\Info;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
@@ -19,7 +20,8 @@ class AuthenticatedSessionController extends Controller
     public function create()
     {
         $infos = Info::all();
-        return view('auth.login', compact('infos'));
+        $banners = Banner::all();
+        return view('auth.login', compact('infos', 'banners'));
     }
 
     /**

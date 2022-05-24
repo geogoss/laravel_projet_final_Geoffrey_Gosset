@@ -18,7 +18,7 @@
 
 @extends('layouts.appBack')
 @section('contentBack')
-    <p class="text-center my-5 display-5 mt-5">Bienvenue dans le Dashboard</p>
+    @include('partials.backoffice.backBanner')
     <p class="text-center my-5 fs-2">Choisissez la partie du site pour laquelle vous souhaitez apporter des modifications</p>
     @include('partials.backoffice.backNavbar')
     

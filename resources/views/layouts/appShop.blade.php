@@ -55,9 +55,9 @@
         @yield('contentShop')
 
         @include('partials.shop.footerShop')
-        @if (!Request::is('/myaccount'))
+        {{-- @if (!Request::is('/myaccount'))
             @include('partials.shop.quickviewProductShop')
-        @endif
+        @endif --}}
 
     </div>
     <!-- WRAPPER END -->

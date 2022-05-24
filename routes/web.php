@@ -37,13 +37,14 @@ Route::get('/', function () {
     // variable $last pour prendre le dernier product ajouté dans la table
     $last = Image::orderby('created_at', 'desc')->first();
     // variable $products pour prendre les products 270 x 270 -> 5 au hasard
-    $products = Image::all()->random(5);
+    $products = Product::all()->random(5);
     // variable pour le blog de la page home
     $articles = Article::all()->random(2); #prendre 2 images d'article au hasard
     $comments = Comment::all(); # trouver une solution pour compter les comments
     // variable $infos pour le about us dans le footer
     $infos = Info::all();
-    return view('welcome', compact('diapos', 'prems', 'stars', 'last', 'products', 'articles', 'comments', 'infos'));
+    $banners = Banner::all();
+    return view('welcome', compact('diapos', 'prems', 'stars', 'last', 'products', 'articles', 'comments', 'infos', 'banners'));
 });
 
 // Route::get('/home', function () {
@@ -75,7 +76,7 @@ Route::get('/', function () {
 
 
 Route::get('/search', [ProductController::class, 'search']);
-Route::resource('product', ProductController::class);
+Route::resource('/product', ProductController::class);
 Route::resource('/blog', BlogController::class);
 
 Route::get('/showblog', function () {
@@ -85,12 +86,14 @@ Route::get('/showblog', function () {
 
 Route::get('/about', function () {
     $infos = Info::all();
-    return view('pages.about', compact('infos'));
+    $banners = Banner::all();
+    return view('pages.about', compact('infos', 'banners'));
 });
 
 Route::get('/contact', function () {
     $infos = Info::all();
-    return view('pages.contact', compact('infos'));
+    $banners = Banner::all();
+    return view('pages.contact', compact('infos', 'banners'));
 });
 
 Route::get('/cart', function () {
@@ -115,7 +118,8 @@ Route::get('/myaccount', function () {
 
 Route::get('/dashboard', function () {
     $infos = Info::all();
-    return view('dashboard', compact('infos'));
+    $banners = Banner::all();
+    return view('dashboard', compact('infos', 'banners'));
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
