@@ -24,10 +24,7 @@ class DetailSeeder extends Seeder
                 'src' => 'details2.jpg',
                 'bool' => false,
             ],
-            [
-                'src' => 'details3.jpg',
-                'bool' => false,
-            ],
+            
             [
                 'src' => 'details4.jpg',
                 'bool' => false,

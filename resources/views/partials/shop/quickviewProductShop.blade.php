@@ -1,32 +1,41 @@
         <!-- QUICKVIEW PRODUCT -->
         <div id="quickview-wrapper">
             <!-- Modal -->
-            <div class="modal fade" id="productModal{{$product->id}}" tabindex="-1" role="dialog">
+            <div class="modal fade" id="productModal{{ $product->id }}" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="close" data-bs-dismiss="modal"
-                                aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
                         </div>
                         <div class="modal-body">
                             <div class="modal-product">
                                 <div class="product-images">
                                     <div class="main-image images">
-                                        <img alt="#" src="{{asset('img/product/quickview-photo.jpg')}} " />
+                                        <img alt="#"
+                                            src="{{ asset('images/370x450/' . $product->image[0]->src) }} " />
                                     </div>
                                 </div><!-- .product-images -->
 
                                 <div class="product-info">
-                                    <h1>Aenean eu tristique</h1>
+                                    <h1>{{ $product->name }}</h1>
                                     <div class="price-box-3">
                                         <hr />
                                         <div class="s-price-box">
-                                            <span class="new-price">$160.00</span>
-                                            <span class="old-price">$190.00</span>
+                                            @if ($product->discount == 0)
+                                                <span class="new-price">{{ $product->price }}
+                                                    €</span>
+                                            @else
+                                                <span class="new-price">{{ $product->discount }}
+                                                    €</span>
+                                                <span class="old-price font-16px ml-10"><del>{{ $product->price }}
+                                                        € </del></span>
+                                            @endif
+
                                         </div>
                                         <hr />
                                     </div>
-                                    <a href="shop.html" class="see-all">See all features</a>
+                                    <a href="/product/{{ $product->id }}" class="see-all">See all features</a>
                                     <div class="quick-add-to-cart">
                                         <form method="post" class="cart">
                                             <div class="numbers-row">
@@ -36,10 +45,7 @@
                                                 cart</button>
                                         </form>
                                     </div>
-                                    <div class="quick-desc">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec
-                                        est tristique auctor. Donec non est at libero.
-                                    </div>
+                                    <div class="quick-desc">{{ Str::limit($product->description, 110, $end = '.......') }}</div>
                                     <div class="social-sharing">
                                         <div class="widget widget_socialsharing_widget">
                                             <h3 class="widget-title-modal">Share this product</h3>

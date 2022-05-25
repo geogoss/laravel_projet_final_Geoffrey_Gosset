@@ -7,22 +7,12 @@
                    <div class="single-product clearfix">
                        <!-- Single-pro-slider Big-photo start -->
                        <div class="single-pro-slider single-big-photo view-lightbox slider-for">
-                           <div>
-                               @foreach ($product->image as $item)
-                                   <img src="{{ 'images/370x450/' . $item->src }} " alt="" />
-                                   <a class="view-full-screen" href="{{ 'images/370x450/' . $item->src }} "
-                                       data-lightbox="roadtrip" data-title="My caption">
-                                       <i class="zmdi zmdi-zoom-in"></i>
-                                   </a>
-                               @endforeach
-
-                               {{-- <img src="{{asset('images/370x450/meuble1.jpg')}} " alt="" />
-										<a class="view-full-screen" href="{{asset('images/370x450/meuble1.jpg')}} "  data-lightbox="roadtrip" data-title="My caption">
-											<i class="zmdi zmdi-zoom-in"></i>
-										</a> --}}
-
-                           </div>
-
+                           {{-- Groose image du show --}}
+                           <img src="{{ asset('images/370x450/' . $product->image[0]->src) }} " alt="" />
+                           <a class="view-full-screen" href="{{ asset('images/370x450/' . $product->image[0]->src) }} "
+                               data-lightbox="roadtrip" data-title="My caption">
+                               <i class="zmdi zmdi-zoom-in"></i>
+                           </a>
                        </div>
                        <!-- Single-pro-slider Big-photo end -->
                        <div class="product-info">
@@ -30,10 +20,19 @@
                                <h4 class="post-title floatleft">{{ $product->name }} </h4>
                            </div>
                            <div class="fix mb-20">
-                               <span class="pro-price">{{ $product->price }} € </span>
+                               @if ($product->discount == 0)
+                                   <span class="pro-price">{{ $product->price }}
+                                       €</span>
+                               @else
+                                   <span class="pro-price">{{ $product->discount }}
+                                       €</span>
+                                   <span class="old-price font-16px ml-10"><del>{{ $product->price }}
+                                           € </del></span>
+                               @endif
+
                            </div>
                            <div class="product-description">
-                               <p>{{ $product->content }} </p>
+                               <p>{{ $product->description }} </p>
                            </div>
                            <!-- Size start -->
                            <div class="size-filter single-pro-size mb-35 clearfix">
@@ -48,7 +47,7 @@
                                    <input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
                                </div>
                                <div class="product-action clearfix">
-                                   <a href="#" data-bs-toggle="modal" data-bs-target="#productModal"
+                                   <a href="#" data-bs-toggle="modal" data-bs-target="#productModal{{ $product->id }} "
                                        title="Quick View"><i class="zmdi zmdi-zoom-in"></i></a>
                                    <a href="cart.html" data-bs-toggle="tooltip" data-placement="top"
                                        title="Add To Cart"><i class="zmdi zmdi-shopping-cart-plus"></i></a>
@@ -58,7 +57,7 @@
                            <div class="single-pro-slider single-sml-photo slider-nav">
                                @foreach ($details as $detail)
                                    <div>
-                                       <img src="{{ 'images/70x83/' . $detail->src }} " alt="" />
+                                       <img src="{{ asset('images/70x83/' . $detail->src) }} " alt="" />
                                    </div>
                                @endforeach
 
@@ -198,3 +197,6 @@
        </div>
    </div>
    <!-- PRODUCT-AREA END -->
+
+@include('partials.shop.quickviewProductShop')
+
