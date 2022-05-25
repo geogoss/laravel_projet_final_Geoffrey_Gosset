@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Article;
-use App\Http\Requests\StoreArticleRequest;
-use App\Http\Requests\UpdateArticleRequest;
-use App\Models\Banner;
-use App\Models\Info;
+use App\Models\Foto;
+use App\Http\Requests\StoreFotoRequest;
+use App\Http\Requests\UpdateFotoRequest;
 
-class ArticleController extends Controller
+class FotoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -33,10 +31,10 @@ class ArticleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreArticleRequest  $request
+     * @param  \App\Http\Requests\StoreFotoRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreArticleRequest $request)
+    public function store(StoreFotoRequest $request)
     {
         //
     }
@@ -44,23 +42,21 @@ class ArticleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Article  $article
+     * @param  \App\Models\Foto  $foto
      * @return \Illuminate\Http\Response
      */
-    public function show(Article $article)
+    public function show(Foto $foto)
     {
-        $infos = Info::all();
-        $banners = Banner::all();
-        return view('pages.showBlog', compact('article', 'infos', 'banners'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Article  $article
+     * @param  \App\Models\Foto  $foto
      * @return \Illuminate\Http\Response
      */
-    public function edit(Article $article)
+    public function edit(Foto $foto)
     {
         //
     }
@@ -68,11 +64,11 @@ class ArticleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateArticleRequest  $request
-     * @param  \App\Models\Article  $article
+     * @param  \App\Http\Requests\UpdateFotoRequest  $request
+     * @param  \App\Models\Foto  $foto
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateArticleRequest $request, Article $article)
+    public function update(UpdateFotoRequest $request, Foto $foto)
     {
         //
     }
@@ -80,10 +76,10 @@ class ArticleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Article  $article
+     * @param  \App\Models\Foto  $foto
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Article $article)
+    public function destroy(Foto $foto)
     {
         //
     }

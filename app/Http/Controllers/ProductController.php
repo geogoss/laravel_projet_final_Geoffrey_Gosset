@@ -86,6 +86,7 @@ class ProductController extends Controller
         $details = Detail::all();
         $image = Image::all();
         $banners = Banner::all();
+        
         return view('pages.showProduct', compact('product', 'infos', 'details', 'image', 'banners'));
     }
 

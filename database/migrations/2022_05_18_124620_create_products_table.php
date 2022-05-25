@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('discount')->nullable();
             $table->foreignId('type_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('size_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
             $table->timestamps();
         });
     }

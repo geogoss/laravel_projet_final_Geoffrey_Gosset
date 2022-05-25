@@ -53,7 +53,9 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
-        //
+        // $infos = Info::all();
+        // $banners = Banner::all();
+        // return view('pages.showBlog', compact('blog', 'banners', 'infos'));
     }
 
     /**

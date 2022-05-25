@@ -18,10 +18,17 @@ class NoteFactory extends Factory
     {
         $faker = $this->faker;
         return [
+            'year' => $faker->year($max='now'),
+            'month' => $faker->monthName($max = 'now'),
+            'dayMonth' => $faker->dayOfMonth(),
+            'dayWeek' => $faker->dayOfWeek(),
+            'hour' => $faker->time($format = 'h:i', $max = 'now'),
+            'pm' => $faker->amPm($max = 'now'),
             'author' => $faker->name(),
             'subject' => $faker->realText($maxNBChars = 15),
-            'content' => $faker->realText($maxNBChars = 150),
-            'product_id' => $faker->numberBetween($min = 1, $max = 7)
+            'content' => $faker->realText($maxNBChars = 200),
+            'product_id' => $faker->numberBetween($min = 1, $max = 7),
+            'foto_id' => $faker->numberBetween($min = 1, $max = 38)
         ];
     }
 }

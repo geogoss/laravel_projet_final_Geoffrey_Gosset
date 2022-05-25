@@ -13,4 +13,8 @@ class Note extends Model
         return $this->belongsTo(Product::class);
     }
 
+    public function foto () {
+        return $this->belongsTo(Foto::class);
+    }
+
 }

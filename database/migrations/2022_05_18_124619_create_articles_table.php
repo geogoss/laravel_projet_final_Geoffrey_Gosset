@@ -21,7 +21,8 @@ return new class extends Migration
             $table->string('month');
             $table->string('dayMonth');
             $table->string('dayWeek');
-            $table->longText('content');
+            $table->longText('content1');
+            $table->longText('content2');
             $table->boolean('bool')->default(false)->nullable();
             $table->foreignId('categorie_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();

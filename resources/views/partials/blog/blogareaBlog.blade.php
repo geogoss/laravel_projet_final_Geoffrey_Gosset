@@ -38,27 +38,34 @@
                    @foreach ($articles as $article)
                        <!-- Single-blog start -->
                        <div class="col-lg-4 col-md-6">
-                           <div class="single-blog mb-30">
-                               <div class="blog-photo">
-                                   <a href="#"><img src="{{ 'images/270x230/'. $article->blog->src }} " alt="" /></a>
-								   <div class="like-share text-center fix">
-                                       <a href="#"><i class="zmdi zmdi-favorite"></i><span>89 Like</span></a>
-                                       <a href="#"><i class="zmdi zmdi-comments"></i><span>{{$article->comment->count()}} </span></a>
-                                   </div>
-                               </div>
-                               <div class="blog-info">
-                                   <div class="post-meta fix">
-                                       <div class="post-date floatleft"><span class="text-dark-red">{{$article->dayMonth}} </span></div>
-                                       <div class="post-year floatleft">
-                                           <p class="text-uppercase text-dark-red mb-0">{{$article->month}} , {{$article->year}} </p>
-                                           <h4 class="post-title"><a href="#" tabindex="0">{{$article->name}}
-                                                   {{$article->year}}</a></h4>
+                           <a href="/article/{{ $article->id }}">
+                               <div class="single-blog mb-30">
+                                   <div class="blog-photo">
+                                       <a href="/article/{{$article->id}}"><img src="{{ 'images/270x230/' . $article->blog->src }} "
+                                               alt="" /></a>
+                                       <div class="like-share text-center fix">
+                                           <a href="#"><i class="zmdi zmdi-favorite"></i><span>89 Like</span></a>
+                                           <a href="#"><i
+                                                   class="zmdi zmdi-comments"></i><span>{{ $article->comment->count() }}
+                                               </span></a>
                                        </div>
                                    </div>
-                                   <p>{{$article->content}} </p>
-                                   <a href="#" class="button-2 text-dark-red">Read more...</a>
+                                   <div class="blog-info">
+                                       <div class="post-meta fix">
+                                           <div class="post-date floatleft"><span
+                                                   class="text-dark-red">{{ $article->dayMonth }} </span></div>
+                                           <div class="post-year floatleft">
+                                               <p class="text-uppercase text-dark-red mb-0">{{ $article->month }} ,
+                                                   {{ $article->year }} </p>
+                                               <h4 class="post-title"><a href="#" tabindex="0">{{ $article->name }}
+                                                       {{ $article->year }}</a></h4>
+                                           </div>
+                                       </div>
+                                       <p>{{ $article->content }} </p>
+                                       <a href="#" class="button-2 text-dark-red">Read more...</a>
+                                   </div>
                                </div>
-                           </div>
+                           </a>
                        </div>
                        <!-- Single-blog end -->
                    @endforeach
@@ -78,7 +85,7 @@
                                    <li><a class="active" href="#"><i class="zmdi zmdi-long-arrow-right"></i></a>
                                    </li>
                                </ul> --}}
-							   {{$articles->links()}}
+                               {{ $articles->links() }}
                            </div>
                        </div>
                        <!-- Pagination end -->

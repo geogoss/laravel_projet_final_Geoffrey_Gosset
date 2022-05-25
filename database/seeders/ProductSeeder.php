@@ -26,6 +26,7 @@ class ProductSeeder extends Seeder
               'discount' => 199,
               'type_id' => 1,
               'size_id' => 3,  
+              'user_id' => 2,  
             ],
             [
               'name' => 'Chair White',
@@ -36,7 +37,8 @@ class ProductSeeder extends Seeder
               'state' => 'NEW',
               'discount' => 0,
               'type_id' => 1,
-              'size_id' => 3,  
+              'size_id' => 3,
+              'user_id' => 1,  
             ],
             [
               'name' => 'Chair Grey',
@@ -47,7 +49,8 @@ class ProductSeeder extends Seeder
               'state' => 'NEW',
               'discount' => 0,
               'type_id' => 1,
-              'size_id' => 3,  
+              'size_id' => 3,
+              'user_id' => 2,  
             ],
             [
               'name' => 'Chair Green',
@@ -58,7 +61,8 @@ class ProductSeeder extends Seeder
               'state' => 'SALE',
               'discount' => 499,
               'type_id' => 1,
-              'size_id' => 4,  
+              'size_id' => 4,
+              'user_id' => 1,  
             ],
             [
               'name' => 'Chair Plastic White',
@@ -69,7 +73,8 @@ class ProductSeeder extends Seeder
               'state' => null,
               'discount' => 69,
               'type_id' => 4,
-              'size_id' => 2,  
+              'size_id' => 2,
+              'user_id' => 2,  
             ],
             [
               'name' => 'Divan Orange',
@@ -80,7 +85,8 @@ class ProductSeeder extends Seeder
               'state' => null,
               'discount' => 0,
               'type_id' => 3,
-              'size_id' => 5,  
+              'size_id' => 5,
+              'user_id' => 1,  
             ],
             [
               'name' => 'Table',
@@ -91,7 +97,8 @@ class ProductSeeder extends Seeder
               'state' => 'NEW',
               'discount' => 169,
               'type_id' => 2,
-              'size_id' => 4,  
+              'size_id' => 4,
+              'user_id' => 2,  
             ],
             [
               'name' => 'Plateau whit',
@@ -102,7 +109,8 @@ class ProductSeeder extends Seeder
               'state' => 'SALE',
               'discount' => 0,
               'type_id' => 5,
-              'size_id' => 1,  
+              'size_id' => 1,
+              'user_id' => 1,  
             ],
         ]);
     }

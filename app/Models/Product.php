@@ -24,4 +24,8 @@ class Product extends Model
         public function note () {
             return $this->hasMany(Note::class);
         }
+
+        public function user () {
+            return $this->belongsTo(User::class);
+        }
 }

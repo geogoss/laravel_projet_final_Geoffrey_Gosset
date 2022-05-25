@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProductController;
 use App\Models\Article;
@@ -74,15 +75,16 @@ Route::get('/', function () {
         //     return view('pages.blog', compact('infos'));
         // });
 
+        // Route::get('/showblog', function () {
+        //     $infos = Info::all();
+        //     return view('pages.showBlog', compact('infos'));
+        // });
 
 Route::get('/search', [ProductController::class, 'search']);
 Route::resource('/product', ProductController::class);
 Route::resource('/blog', BlogController::class);
+Route::resource('/article', ArticleController::class);
 
-Route::get('/showblog', function () {
-    $infos = Info::all();
-    return view('pages.showBlog', compact('infos'));
-});
 
 Route::get('/about', function () {
     $infos = Info::all();

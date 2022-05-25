@@ -47,8 +47,9 @@
                                    <input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
                                </div>
                                <div class="product-action clearfix">
-                                   <a href="#" data-bs-toggle="modal" data-bs-target="#productModal{{ $product->id }} "
-                                       title="Quick View"><i class="zmdi zmdi-zoom-in"></i></a>
+                                   <a href="#" data-bs-toggle="modal"
+                                       data-bs-target="#productModal{{ $product->id }} " title="Quick View"><i
+                                           class="zmdi zmdi-zoom-in"></i></a>
                                    <a href="cart.html" data-bs-toggle="tooltip" data-placement="top"
                                        title="Add To Cart"><i class="zmdi zmdi-shopping-cart-plus"></i></a>
                                </div>
@@ -105,48 +106,47 @@
                                        <ul class="product-comments clearfix">
                                            <li class="mb-30">
                                                <div class="pro-reviewer">
-                                                   <img src="{{ asset('img/reviewer/1.jpg') }} " alt="" />
+                                                   <img src="{{ asset('images/90x100/'.$product->user->avatar->src) }} "
+                                                       alt="" />
                                                </div>
                                                <div class="pro-reviewer-comment">
                                                    <div class="fix">
                                                        <div class="floatleft mbl-center">
-                                                           <h5 class="text-uppercase mb-0"><strong>Gerald
-                                                                   Barnes</strong></h5>
-                                                           <p class="reply-date">27 Jun, 2021 at 2:30pm</p>
+                                                           <h5 class="text-uppercase mb-0">
+                                                               <strong>{{ $product->note[0]->author }} </strong>
+                                                           </h5>
+                                                           <p class="reply-date">{{$product->note[0]->dayMonth}} {{$product->note[0]->month}}, {{$product->note[0]->year}} at {{$product->note[0]->hour}}{{$product->note[0]->pm}}</p>
                                                        </div>
                                                        <div class="comment-reply floatright">
                                                            <a href="#"><i class="zmdi zmdi-mail-reply"></i></a>
                                                            <a href="#"><i class="zmdi zmdi-close"></i></a>
                                                        </div>
                                                    </div>
-                                                   <p class="mb-0">Lorem ipsum dolor sit amet, consectetur
-                                                       adipiscing elit. Integer accumsan egestas elese ifend. Phasellus
-                                                       a felis at est bibendum feugiat ut eget eni Praesent et messages
-                                                       in con sectetur posuere dolor non.</p>
+                                                   <p class="mb-0">{{$product->note[0]->content}} </p>
                                                </div>
                                            </li>
-                                           <li class="threaded-comments">
-                                               <div class="pro-reviewer">
-                                                   <img src="{{ asset('img/reviewer/1.jpg') }} " alt="" />
-                                               </div>
-                                               <div class="pro-reviewer-comment">
-                                                   <div class="fix">
-                                                       <div class="floatleft mbl-center">
-                                                           <h5 class="text-uppercase mb-0"><strong>Gerald
-                                                                   Barnes</strong></h5>
-                                                           <p class="reply-date">27 Jun, 2021 at 2:30pm</p>
-                                                       </div>
-                                                       <div class="comment-reply floatright">
-                                                           <a href="#"><i class="zmdi zmdi-mail-reply"></i></a>
-                                                           <a href="#"><i class="zmdi zmdi-close"></i></a>
-                                                       </div>
+                                           @foreach ($product->note as $item)
+                                               <li class="threaded-comments">
+                                                   <div class="pro-reviewer">
+                                                       <img src="{{ asset('images/personnes/'.$item->foto->src) }} " alt="" />
                                                    </div>
-                                                   <p class="mb-0">Lorem ipsum dolor sit amet, consectetur
-                                                       adipiscing elit. Integer accumsan egestas elese ifend. Phasellus
-                                                       a felis at est bibendum feugiat ut eget eni Praesent et messages
-                                                       in con sectetur posuere dolor non.</p>
-                                               </div>
-                                           </li>
+                                                   <div class="pro-reviewer-comment">
+                                                       <div class="fix">
+                                                           <div class="floatleft mbl-center">
+                                                               <h5 class="text-uppercase mb-0"><strong>{{$item->author}} </strong></h5>
+                                                               <p class="reply-date">{{$item->dayMonth}} {{$item->month}}, {{$item->year}} at {{$item->hour}}{{$item->pm}}</p>
+                                                           </div>
+                                                           <div class="comment-reply floatright">
+                                                               <a href="#"><i class="zmdi zmdi-mail-reply"></i></a>
+                                                               <a href="#"><i class="zmdi zmdi-close"></i></a>
+                                                           </div>
+                                                       </div>
+                                                       <p class="mb-0">{{$item->content}} </p>
+                                                   </div>
+                                               </li>
+                                           @endforeach
+
+
                                        </ul>
                                    </div>
                                    <div class="leave-review">
@@ -198,5 +198,4 @@
    </div>
    <!-- PRODUCT-AREA END -->
 
-@include('partials.shop.quickviewProductShop')
-
+   @include('partials.shop.quickviewProductShop')
