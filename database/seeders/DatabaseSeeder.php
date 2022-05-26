@@ -23,7 +23,6 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             TypeSeeder::class,
             SizeSeeder::class,
-            TagSeeder::class,
             CategorieSeeder::class,
             TeamSeeder::class,
             MailboxSeeder::class,
@@ -32,11 +31,13 @@ class DatabaseSeeder extends Seeder
             NoteSeeder::class,
             BlogSeeder::class,
             ArticleSeeder::class,
+            TagSeeder::class,
             CommentSeeder::class,
             ImageSeeder::class,
             DetailSeeder::class,
             DiapoSeeder::class,
             BannerSeeder::class,
+            ArticleTagSeeder::class,
 
         ]);
     }

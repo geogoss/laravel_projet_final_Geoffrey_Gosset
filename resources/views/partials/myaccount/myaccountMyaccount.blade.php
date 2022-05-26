@@ -14,9 +14,16 @@
 										<div id="my-info" class="panel-collapse collapse show" data-bs-parent="#accordion">
 											<div class="panel-body">
 												<div class="billing-details shop-cart-table">
+													@if (Auth::check())
+													<input type="text" placeholder="{{Auth::user()->name}}">
+													<input type="text" placeholder="{{Auth::user()->email}}">
+													<input type="text" placeholder="{{Auth::user()->phone}}">
+													@else
 													<input type="text" placeholder="Your name here...">
 													<input type="text" placeholder="Email address here...">
 													<input type="text" placeholder="Phone here...">
+													@endif
+													
 													<input type="text" placeholder="Company neme here...">
 													<select class="custom-select mb-15">
 														<option>Contry</option>

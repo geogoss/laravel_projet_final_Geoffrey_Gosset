@@ -22,7 +22,7 @@ class FotoSeeder extends Seeder
             ['src' => 'alice.jpg'],
             ['src' => 'barbara.jpg'],
             ['src' => 'benja.jpg'],
-            ['src' => 'benjabernadette.jpg'],
+            ['src' => 'bernadette.jpg'],
             ['src' => 'bibou.jpg'],
             ['src' => 'bruno.jpg'],
             ['src' => 'cathy.jpg'],

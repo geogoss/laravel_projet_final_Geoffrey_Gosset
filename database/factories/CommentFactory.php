@@ -18,10 +18,17 @@ class CommentFactory extends Factory
     {
         $faker = $this->faker;
         return [
+            'year' => $faker->year($max='now'),
+            'month' => $faker->monthName($max = 'now'),
+            'dayMonth' => $faker->dayOfMonth(),
+            'dayWeek' => $faker->dayOfWeek(),
+            'hour' => $faker->time($format = 'h:i', $max = 'now'),
+            'pm' => $faker->amPm($max = 'now'),
             'author' => $faker->name(),
             'email' => $faker->freeEmail(),
-            'content' => $faker->realText($maxNBChars = 150),
-            'article_id' => $faker->numberBetween($min=1, $max=11)
+            'content' => $faker->realText($maxNBChars = 250),
+            'article_id' => $faker->numberBetween($min=1, $max=11),
+            'foto_id' => $faker->numberBetween($min = 1, $max = 38)
         ];
     }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TeamController;
 use App\Models\Article;
 use App\Models\Banner;
 use App\Models\Comment;
@@ -84,13 +85,14 @@ Route::get('/search', [ProductController::class, 'search']);
 Route::resource('/product', ProductController::class);
 Route::resource('/blog', BlogController::class);
 Route::resource('/article', ArticleController::class);
+Route::resource('/team', TeamController::class);
 
 
-Route::get('/about', function () {
-    $infos = Info::all();
-    $banners = Banner::all();
-    return view('pages.about', compact('infos', 'banners'));
-});
+// Route::get('/about', function () {
+//     $infos = Info::all();
+//     $banners = Banner::all();
+//     return view('pages.about', compact('infos', 'banners'));
+// });
 
 Route::get('/contact', function () {
     $infos = Info::all();
@@ -115,7 +117,8 @@ Route::get('/order', function () {
 
 Route::get('/myaccount', function () {
     $infos = Info::all();
-    return view('pages.myaccount', compact('infos'));
+    $banners = Banner::all();
+    return view('pages.myaccount', compact('infos', 'banners'));
 });
 
 Route::get('/dashboard', function () {
@@ -143,7 +146,8 @@ Route::get('/backBlog', function () {
 });
 Route::get('/backAbout', function () {
     $infos = Info::all();
-    return view('pages.backoffice.backAbout', compact('infos'));
+    $banners = Banner::all();
+    return view('pages.backoffice.backAbout', compact('infos', 'banners'));
 });
 Route::get('/backContact', function () {
     $infos = Info::all();

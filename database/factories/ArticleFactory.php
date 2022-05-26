@@ -24,6 +24,8 @@ class ArticleFactory extends Factory
             'month' => $faker->monthName($max = 'now'),
             'dayMonth' => $faker->dayOfMonth(),
             'dayWeek' => $faker->dayOfWeek(),
+            'hour' => $faker->time($format = 'h:i', $max = 'now'),
+            'pm' => $faker->amPm($max = 'now'),
             'content1' => $faker->realText($maxNBChars = 450),
             'content2' => $faker->realText($maxNBChars = 750),
             'categorie_id' => $faker->numberBetween($min = 1, $max = 3),

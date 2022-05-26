@@ -77,7 +77,7 @@
                         <li><a href="/">home</a></li>
                         <li><a href="/product">products</a></li>
                         <li><a href="/blog">blog</a></li>
-                        <li><a href="/about">about us</a></li>
+                        <li><a href="/team">about us</a></li>
                         <li><a href="/contact">contact</a></li>
                     </ul>
                 </nav>

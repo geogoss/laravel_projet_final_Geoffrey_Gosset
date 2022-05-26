@@ -13,4 +13,8 @@ class Comment extends Model
         return $this->belongsTo(Article::class);
     }
 
+    public function foto () {
+        return $this->belongsTo(Foto::class);
+    }
+
 }

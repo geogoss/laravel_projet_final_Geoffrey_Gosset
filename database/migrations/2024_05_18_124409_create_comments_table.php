@@ -15,10 +15,17 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
+            $table->string('year');
+            $table->string('month');
+            $table->string('dayMonth');
+            $table->string('dayWeek');
+            $table->string('hour');
+            $table->string('pm');
             $table->string('author');
             $table->string('email');
             $table->longText('content');
             $table->foreignId('article_id')->nullable()->constrained();
+            $table->foreignId('foto_id')->nullable()->constrained();
             $table->timestamps();
         });
     }

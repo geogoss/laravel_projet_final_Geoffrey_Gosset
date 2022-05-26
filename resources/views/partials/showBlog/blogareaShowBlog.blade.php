@@ -36,10 +36,11 @@
                                        <a href="#"><i class="zmdi zmdi-dribbble"></i></a>
                                        <a href="#"><i class="zmdi zmdi-instagram"></i></a>
                                    </div>
+
                                    <div class="post-share post-tag floatright">
                                        <span class="text-uppercase"><strong>tags</strong></span>
                                        @foreach ($article->tag as $item)
-                                           <a href="#">{{$item->name}}</a>
+                                           <a href="#">{{ $item->name }}</a>
                                        @endforeach
                                    </div>
                                </div>
@@ -49,48 +50,43 @@
                                        <ul class="product-comments clearfix">
                                            <li class="mb-30">
                                                <div class="pro-reviewer">
-                                                   <img src="{{ asset('img/reviewer/1.jpg') }} " alt="" />
+                                                   <img src="{{ asset('images/personnes/moi.jpg') }} " alt="" />
                                                </div>
                                                <div class="pro-reviewer-comment">
                                                    <div class="fix">
                                                        <div class="floatleft mbl-center">
-                                                           <h5 class="text-uppercase mb-0"><strong>Gerald
-                                                                   Barnes</strong></h5>
-                                                           <p class="reply-date">27 Jun, 2021 at 2:30pm</p>
+                                                           <h5 class="text-uppercase mb-0"><strong>{{$article->comment[0]->author}}</strong></h5>
+                                                           <p class="reply-date">{{$article->comment[0]->dayMonth}} {{$article->comment[0]->month}}, {{$article->comment[0]->year}} at {{$article->comment[0]->hour}}{{$article->comment[0]->pm}}</p>
                                                        </div>
                                                        <div class="comment-reply floatright">
                                                            <a href="#"><i class="zmdi zmdi-mail-reply"></i></a>
                                                            <a href="#"><i class="zmdi zmdi-close"></i></a>
                                                        </div>
                                                    </div>
-                                                   <p class="mb-0">Lorem ipsum dolor sit amet, consectetur
-                                                       adipiscing elit. Integer accumsan egestas elese ifend. Phasellus
-                                                       a felis at est bibendum feugiat ut eget eni Praesent et messages
-                                                       in con sectetur posuere dolor non.</p>
+                                                   <p class="mb-0">{{$article->comment[0]->content}}</p>
                                                </div>
                                            </li>
+										   @foreach ($article->comment as $item)
                                            <li class="threaded-comments">
                                                <div class="pro-reviewer">
-                                                   <img src="{{ asset('img/reviewer/1.jpg') }} " alt="" />
+                                                   <img src="{{ asset('images/personnes/'.$item->foto->src) }} " alt="" />
                                                </div>
                                                <div class="pro-reviewer-comment">
                                                    <div class="fix">
                                                        <div class="floatleft mbl-center">
-                                                           <h5 class="text-uppercase mb-0"><strong>Gerald
-                                                                   Barnes</strong></h5>
-                                                           <p class="reply-date">27 Jun, 2021 at 2:30pm</p>
+                                                           <h5 class="text-uppercase mb-0"><strong>{{$item->author}}</strong></h5>
+                                                           <p class="reply-date">{{$item->dayMonth}} {{$item->month}}, {{$item->year}} at {{$item->hour}} {{$item->pm}}</p>
                                                        </div>
                                                        <div class="comment-reply floatright">
                                                            <a href="#"><i class="zmdi zmdi-mail-reply"></i></a>
                                                            <a href="#"><i class="zmdi zmdi-close"></i></a>
                                                        </div>
                                                    </div>
-                                                   <p class="mb-0">Lorem ipsum dolor sit amet, consectetur
-                                                       adipiscing elit. Integer accumsan egestas elese ifend. Phasellus
-                                                       a felis at est bibendum feugiat ut eget eni Praesent et messages
-                                                       in con sectetur posuere dolor non.</p>
+                                                   <p class="mb-0">{{$item->content}}</p>
                                                </div>
                                            </li>
+											   
+										   @endforeach
                                        </ul>
                                    </div>
                                    <div class="leave-review">

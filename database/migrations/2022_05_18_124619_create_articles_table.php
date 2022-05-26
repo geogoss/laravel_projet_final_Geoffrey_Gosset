@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('month');
             $table->string('dayMonth');
             $table->string('dayWeek');
+            $table->string('hour');
+            $table->string('pm');
             $table->longText('content1');
             $table->longText('content2');
             $table->boolean('bool')->default(false)->nullable();

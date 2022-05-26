@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Team;
 use App\Http\Requests\StoreTeamRequest;
 use App\Http\Requests\UpdateTeamRequest;
+use App\Models\Banner;
+use App\Models\Info;
 
 class TeamController extends Controller
 {
@@ -15,7 +17,14 @@ class TeamController extends Controller
      */
     public function index()
     {
-        //
+        $infos = Info::all();
+        $banners = Banner::all(); 
+        $chiefs = Team::where('fonction', 'The Big Boss')->first();   
+        $teams = Team::where(function ($query) {
+            $query->where('fonction', '!=', 'The Big Boss');
+        })
+        ->get();
+        return view('pages.about', compact('infos', 'banners' ,'teams', 'chiefs'));
     }
 
     /**

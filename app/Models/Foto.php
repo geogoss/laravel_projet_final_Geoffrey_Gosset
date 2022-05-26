@@ -13,5 +13,9 @@ class Foto extends Model
         return $this->hasMany(Note::class);
     }
 
+    public function comment () {
+        return $this->hasMany(Comment::class);
+    }
+
 
 }

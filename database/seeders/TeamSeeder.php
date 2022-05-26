@@ -21,20 +21,23 @@ class TeamSeeder extends Seeder
                 'firstname' => 'Denzel',
                 'age' => 28,
                 'fonction' => 'The Big Boss',
-                'src' => 'team1.jpg'
+                'content' => 'There are many variations of passage of Lorem Ipsum available, but the in majority have suffered.',
+                'src' => 'team2.jpg'
             ],
             [
                 'name' => 'Bima',
                 'firstname' => 'Alex',
                 'age' => 29,
                 'fonction' => 'RH',
-                'src' => 'team2.jpg'
+                'content' => 'There are many variations of passage of Lorem Ipsum available, but the in majority have suffered.',
+                'src' => 'team1.jpg'
             ],
             [
                 'name' => 'Ninou',
                 'firstname' => 'Alice',
                 'age' => 30,
                 'fonction' => 'RP',
+                'content' => 'There are many variations of passage of Lorem Ipsum available, but the in majority have suffered.',
                 'src' => 'team3.jpg'
             ],
             [
@@ -42,6 +45,7 @@ class TeamSeeder extends Seeder
                 'firstname' => 'Barbara',
                 'age' => 53,
                 'fonction' => 'Ninja',
+                'content' => 'There are many variations of passage of Lorem Ipsum available, but the in majority have suffered.',
                 'src' => 'team4.jpg'
             ],
             [
@@ -49,6 +53,7 @@ class TeamSeeder extends Seeder
                 'firstname' => 'Benjamen',
                 'age' => 36,
                 'fonction' => 'IT',
+                'content' => 'There are many variations of passage of Lorem Ipsum available, but the in majority have suffered.',
                 'src' => 'team5.jpg'
             ],
             [
@@ -56,6 +61,7 @@ class TeamSeeder extends Seeder
                 'firstname' => 'Magali',
                 'age' => 26,
                 'fonction' => 'IT',
+                'content' => 'There are many variations of passage of Lorem Ipsum available, but the in majority have suffered.',
                 'src' => 'team6.jpg'
             ],
             [
@@ -63,6 +69,7 @@ class TeamSeeder extends Seeder
                 'firstname' => 'Jenny',
                 'age' => 31,
                 'fonction' => 'Hotesse',
+                'content' => 'There are many variations of passage of Lorem Ipsum available, but the in majority have suffered.',
                 'src' => 'team7.jpg'
             ],
             [
@@ -70,6 +77,7 @@ class TeamSeeder extends Seeder
                 'firstname' => 'Julie',
                 'age' => 23,
                 'fonction' => 'Directrice Market',
+                'content' => 'There are many variations of passage of Lorem Ipsum available, but the in majority have suffered.',
                 'src' => 'team8.jpg'
             ],
         ]);
