@@ -270,6 +270,36 @@ pre {
 .main-menu > nav {}
 .main-menu > nav > ul {}
 .main-menu > nav > ul > li {}
+/* gcbdzub */
+.main-menu > nav > ul > li > form> a {
+  background: transparent none repeat scroll 0 0;
+  color: #666;
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 45px;
+  padding: 0 0 0 70px;
+  position:relative;
+  text-transform: uppercase;
+  z-index: 1;
+}
+.main-menu > nav > ul > li > form > a::before {
+  background: #c8a165 none repeat scroll 0 0;
+  content: "";
+  height: 100%;
+  left: -100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+.main-menu > nav > ul > li:hover > form > a {
+  color: #fff;
+}
+.main-menu > nav > ul > li:hover > form > a::before {
+  left: 0;
+}
+/* cdzubcuy */
 .main-menu > nav > ul > li > a {
   background: transparent none repeat scroll 0 0;
   color: #666;

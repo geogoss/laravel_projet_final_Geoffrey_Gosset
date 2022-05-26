@@ -33,6 +33,18 @@ class User extends Authenticatable
         return $this->hasMany(Product::class);
     }
 
+    public function country () {
+        return $this->belongsTo(Country::class);
+    }
+
+    public function state () {
+        return $this->belongsTo(State::class);
+    }
+
+    public function city () {
+        return $this->belongsTo(City::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *

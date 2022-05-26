@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Article;
-use App\Http\Requests\StoreArticleRequest;
-use App\Http\Requests\UpdateArticleRequest;
-use App\Models\Banner;
-use App\Models\Comment;
-use App\Models\Info;
+use App\Models\State;
+use App\Http\Requests\StoreStateRequest;
+use App\Http\Requests\UpdateStateRequest;
 
-class ArticleController extends Controller
+class StateController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,10 +31,10 @@ class ArticleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreArticleRequest  $request
+     * @param  \App\Http\Requests\StoreStateRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreArticleRequest $request)
+    public function store(StoreStateRequest $request)
     {
         //
     }
@@ -45,24 +42,21 @@ class ArticleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Article  $article
+     * @param  \App\Models\State  $state
      * @return \Illuminate\Http\Response
      */
-    public function show(Article $article)
+    public function show(State $state)
     {
-        $infos = Info::all();
-        $banners = Banner::all();
-        $comments = Comment::orderBy('id', 'desc')->paginate(6);
-        return view('pages.showBlog', compact('article', 'infos', 'banners', 'comments'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Article  $article
+     * @param  \App\Models\State  $state
      * @return \Illuminate\Http\Response
      */
-    public function edit(Article $article)
+    public function edit(State $state)
     {
         //
     }
@@ -70,11 +64,11 @@ class ArticleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateArticleRequest  $request
-     * @param  \App\Models\Article  $article
+     * @param  \App\Http\Requests\UpdateStateRequest  $request
+     * @param  \App\Models\State  $state
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateArticleRequest $request, Article $article)
+    public function update(UpdateStateRequest $request, State $state)
     {
         //
     }
@@ -82,10 +76,10 @@ class ArticleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Article  $article
+     * @param  \App\Models\State  $state
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Article $article)
+    public function destroy(State $state)
     {
         //
     }

@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Article;
-use App\Http\Requests\StoreArticleRequest;
-use App\Http\Requests\UpdateArticleRequest;
-use App\Models\Banner;
-use App\Models\Comment;
-use App\Models\Info;
+use App\Models\City;
+use App\Http\Requests\StoreCityRequest;
+use App\Http\Requests\UpdateCityRequest;
 
-class ArticleController extends Controller
+class CityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,10 +31,10 @@ class ArticleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreArticleRequest  $request
+     * @param  \App\Http\Requests\StoreCityRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreArticleRequest $request)
+    public function store(StoreCityRequest $request)
     {
         //
     }
@@ -45,24 +42,21 @@ class ArticleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Article  $article
+     * @param  \App\Models\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function show(Article $article)
+    public function show(City $city)
     {
-        $infos = Info::all();
-        $banners = Banner::all();
-        $comments = Comment::orderBy('id', 'desc')->paginate(6);
-        return view('pages.showBlog', compact('article', 'infos', 'banners', 'comments'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Article  $article
+     * @param  \App\Models\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function edit(Article $article)
+    public function edit(City $city)
     {
         //
     }
@@ -70,11 +64,11 @@ class ArticleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateArticleRequest  $request
-     * @param  \App\Models\Article  $article
+     * @param  \App\Http\Requests\UpdateCityRequest  $request
+     * @param  \App\Models\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateArticleRequest $request, Article $article)
+    public function update(UpdateCityRequest $request, City $city)
     {
         //
     }
@@ -82,10 +76,10 @@ class ArticleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Article  $article
+     * @param  \App\Models\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Article $article)
+    public function destroy(City $city)
     {
         //
     }

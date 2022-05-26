@@ -6,13 +6,16 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TeamController;
 use App\Models\Article;
 use App\Models\Banner;
+use App\Models\City;
 use App\Models\Comment;
+use App\Models\Country;
 use App\Models\Detail;
 use App\Models\Diapo;
 use App\Models\Image;
 use App\Models\Info;
 use App\Models\Product;
 use App\Models\Size;
+use App\Models\State;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -118,7 +121,10 @@ Route::get('/order', function () {
 Route::get('/myaccount', function () {
     $infos = Info::all();
     $banners = Banner::all();
-    return view('pages.myaccount', compact('infos', 'banners'));
+    $countries = Country::all();
+    $states = State::all();
+    $cities = City::all();
+    return view('pages.myaccount', compact('infos', 'banners', 'countries', 'states', 'cities'));
 });
 
 Route::get('/dashboard', function () {

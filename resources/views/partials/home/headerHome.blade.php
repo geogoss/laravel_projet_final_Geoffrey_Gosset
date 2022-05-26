@@ -82,6 +82,7 @@
                    <li><a href="/contact">contact</a></li>
                    <li><a href="{{route('login')}} ">Login</a></li>
                    <!-- Authentication -->
+                   <li>
                        <form method="POST" action="{{ route('logout') }}">
                            @csrf
                            <a href="route('logout')" onclick="event.preventDefault();
@@ -89,6 +90,7 @@
                                {{ __('Log Out') }}
                            </a>
                        </form>                       
+                   </li>
                </ul>
            </nav>
        </div>

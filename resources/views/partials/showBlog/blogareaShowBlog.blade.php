@@ -48,47 +48,35 @@
                                    <div class="customer-review mb-60">
                                        <h3 class="tab-title title-border mb-30">Customer comments</h3>
                                        <ul class="product-comments clearfix">
-                                           <li class="mb-30">
-                                               <div class="pro-reviewer">
-                                                   <img src="{{ asset('images/personnes/moi.jpg') }} " alt="" />
-                                               </div>
-                                               <div class="pro-reviewer-comment">
-                                                   <div class="fix">
-                                                       <div class="floatleft mbl-center">
-                                                           <h5 class="text-uppercase mb-0"><strong>{{$article->comment[0]->author}}</strong></h5>
-                                                           <p class="reply-date">{{$article->comment[0]->dayMonth}} {{$article->comment[0]->month}}, {{$article->comment[0]->year}} at {{$article->comment[0]->hour}}{{$article->comment[0]->pm}}</p>
-                                                       </div>
-                                                       <div class="comment-reply floatright">
-                                                           <a href="#"><i class="zmdi zmdi-mail-reply"></i></a>
-                                                           <a href="#"><i class="zmdi zmdi-close"></i></a>
-                                                       </div>
+
+                                           @foreach ($article->comment as $item)
+                                               <li
+                                                   class=" {{ $loop->iteration == 1 ? 'mb-30' : 'threaded-comments' }}">
+                                                   <div class="pro-reviewer">
+                                                       <img src="{{ asset('images/personnes/' . $item->foto->src) }} "
+                                                           alt="" />
                                                    </div>
-                                                   <p class="mb-0">{{$article->comment[0]->content}}</p>
-                                               </div>
-                                           </li>
-										   @foreach ($article->comment as $item)
-                                           <li class="threaded-comments">
-                                               <div class="pro-reviewer">
-                                                   <img src="{{ asset('images/personnes/'.$item->foto->src) }} " alt="" />
-                                               </div>
-                                               <div class="pro-reviewer-comment">
-                                                   <div class="fix">
-                                                       <div class="floatleft mbl-center">
-                                                           <h5 class="text-uppercase mb-0"><strong>{{$item->author}}</strong></h5>
-                                                           <p class="reply-date">{{$item->dayMonth}} {{$item->month}}, {{$item->year}} at {{$item->hour}} {{$item->pm}}</p>
+                                                   <div class="pro-reviewer-comment">
+                                                       <div class="fix">
+                                                           <div class="floatleft mbl-center">
+                                                               <h5 class="text-uppercase mb-0">
+                                                                   <strong>{{ $item->author }}</strong></h5>
+                                                               <p class="reply-date">{{ $item->dayMonth }}
+                                                                   {{ $item->month }}, {{ $item->year }} at
+                                                                   {{ $item->hour }} {{ $item->pm }}</p>
+                                                           </div>
+                                                           <div class="comment-reply floatright">
+                                                               <a href="#"><i class="zmdi zmdi-mail-reply"></i></a>
+                                                               <a href="#"><i class="zmdi zmdi-close"></i></a>
+                                                           </div>
                                                        </div>
-                                                       <div class="comment-reply floatright">
-                                                           <a href="#"><i class="zmdi zmdi-mail-reply"></i></a>
-                                                           <a href="#"><i class="zmdi zmdi-close"></i></a>
-                                                       </div>
+                                                       <p class="mb-0">{{ $item->content }}</p>
                                                    </div>
-                                                   <p class="mb-0">{{$item->content}}</p>
-                                               </div>
-                                           </li>
-											   
-										   @endforeach
-                                       </ul>
-                                   </div>
+                                               </li>
+                                           @endforeach
+                                        </ul>
+                                    </div>
+                                    
                                    <div class="leave-review">
                                        <h3 class="tab-title title-border mb-30">Leave your reviw</h3>
                                        <div class="reply-box">
