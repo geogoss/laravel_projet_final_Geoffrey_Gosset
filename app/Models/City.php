@@ -13,4 +13,9 @@ class City extends Model
         return $this->hasMany(User::class);
     } 
 
+    public function billing () {
+        return $this->hasMany(Billing::class);
+    } 
+
+
 }

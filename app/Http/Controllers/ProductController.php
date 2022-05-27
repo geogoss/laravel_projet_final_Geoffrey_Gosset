@@ -9,6 +9,7 @@ use App\Models\Banner;
 use App\Models\Detail;
 use App\Models\Image;
 use App\Models\Info;
+use App\Models\Note;
 use App\Models\Size;
 use App\Models\Type;
 use Illuminate\Http\Request;
@@ -86,8 +87,8 @@ class ProductController extends Controller
         $details = Detail::all();
         $image = Image::all();
         $banners = Banner::all();
-        
-        return view('pages.showProduct', compact('product', 'infos', 'details', 'image', 'banners'));
+        $notes = Note::orderBy('id', 'desc')->limit(5)->get();
+        return view('pages.showProduct', compact('product', 'infos', 'details', 'image', 'banners', 'notes'));
     }
 
     /**

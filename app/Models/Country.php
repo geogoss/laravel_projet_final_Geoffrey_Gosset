@@ -11,6 +11,10 @@ class Country extends Model
 
     public function user () {
         return $this->hasMany(User::class);
+    }
+
+    public function billing () {
+        return $this->hasMany(Billing::class);
     } 
 
 

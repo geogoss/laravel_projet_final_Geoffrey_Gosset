@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('fonction');
             $table->string('content');
             $table->string('src');
+            $table->foreignId('foto_id')->nullable()->constrained();
             $table->timestamps();
         });
     }

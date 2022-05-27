@@ -17,5 +17,8 @@ class Foto extends Model
         return $this->hasMany(Comment::class);
     }
 
+    public function team () {
+        return $this->hasOne(Team::class);
+    }
 
 }

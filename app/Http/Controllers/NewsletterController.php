@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Newsletter;
 use App\Http\Requests\StoreNewsletterRequest;
 use App\Http\Requests\UpdateNewsletterRequest;
+use App\Mail\MessageGoogle;
+use Illuminate\Support\Facades\Mail;
 
 class NewsletterController extends Controller
 {
@@ -36,7 +38,16 @@ class NewsletterController extends Controller
      */
     public function store(StoreNewsletterRequest $request)
     {
-        //
+        $newsletter = new Newsletter();
+        $newsletter->email = $request->email;
+        $newsletter->save();
+        $mail = [
+            'email' => $request->email,
+            'message' => 'vous êtes bien inscrit',
+        ];
+        Mail::to($request->email)->send(new MessageGoogle($mail));
+
+        return redirect()->back();
     }
 
     /**

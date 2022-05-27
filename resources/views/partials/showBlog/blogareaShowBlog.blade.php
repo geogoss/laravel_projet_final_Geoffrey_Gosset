@@ -49,13 +49,14 @@
                                        <h3 class="tab-title title-border mb-30">Customer comments</h3>
                                        <ul class="product-comments clearfix">
 
-                                           @foreach ($article->comment as $item)
+                                           @foreach ($comments as $item)
                                                <li
                                                    class=" {{ $loop->iteration == 1 ? 'mb-30' : 'threaded-comments' }}">
                                                    <div class="pro-reviewer">
                                                        <img src="{{ asset('images/personnes/' . $item->foto->src) }} "
                                                            alt="" />
                                                    </div>
+                                                   
                                                    <div class="pro-reviewer-comment">
                                                        <div class="fix">
                                                            <div class="floatleft mbl-center">

@@ -18,7 +18,7 @@
                                        <span class="pro-label new-label">{{ $product->state }} </span>
                                    @else
                                    @endif
-                                   <a href="single-product.html"><img
+                                   <a href="/product/{{$product->id}} "><img
                                            src="{{ 'images/270x270/' . $product->image[0]->src }}" alt="" /></a>
 
                                    <div class="product-action clearfix">

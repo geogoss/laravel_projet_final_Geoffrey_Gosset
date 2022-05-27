@@ -22,10 +22,11 @@ class TeamController extends Controller
         $chiefs = Team::where('fonction', 'The Big Boss')->first();   
         $teams = Team::where(function ($query) {
             $query->where('fonction', '!=', 'The Big Boss');
-        })
+        })->inRandomOrder()->limit(3)
         ->get();
         return view('pages.about', compact('infos', 'banners' ,'teams', 'chiefs'));
     }
+
 
     /**
      * Show the form for creating a new resource.

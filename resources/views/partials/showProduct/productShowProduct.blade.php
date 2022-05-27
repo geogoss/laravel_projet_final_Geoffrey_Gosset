@@ -104,29 +104,9 @@
                                    <div class="customer-review mb-60">
                                        <h3 class="tab-title title-border mb-30">Customer review</h3>
                                        <ul class="product-comments clearfix">
-                                           <li class="mb-30">
-                                               <div class="pro-reviewer">
-                                                   <img src="{{ asset('images/90x100/'.$product->user->avatar->src) }} "
-                                                       alt="" />
-                                               </div>
-                                               <div class="pro-reviewer-comment">
-                                                   <div class="fix">
-                                                       <div class="floatleft mbl-center">
-                                                           <h5 class="text-uppercase mb-0">
-                                                               <strong>{{ $product->note[0]->author }} </strong>
-                                                           </h5>
-                                                           <p class="reply-date">{{$product->note[0]->dayMonth}} {{$product->note[0]->month}}, {{$product->note[0]->year}} at {{$product->note[0]->hour}}{{$product->note[0]->pm}}</p>
-                                                       </div>
-                                                       <div class="comment-reply floatright">
-                                                           <a href="#"><i class="zmdi zmdi-mail-reply"></i></a>
-                                                           <a href="#"><i class="zmdi zmdi-close"></i></a>
-                                                       </div>
-                                                   </div>
-                                                   <p class="mb-0">{{$product->note[0]->content}} </p>
-                                               </div>
-                                           </li>
-                                           @foreach ($product->note as $item)
-                                               <li class="threaded-comments">
+                                           
+                                           @foreach ($notes as $item)
+                                               <li class="{{$loop->iteration == 1 ? 'mb-30' : 'threaded-comments' }} ">
                                                    <div class="pro-reviewer">
                                                        <img src="{{ asset('images/personnes/'.$item->foto->src) }} " alt="" />
                                                    </div>

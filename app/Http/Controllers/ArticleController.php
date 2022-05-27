@@ -52,7 +52,7 @@ class ArticleController extends Controller
     {
         $infos = Info::all();
         $banners = Banner::all();
-        $comments = Comment::orderBy('id', 'desc')->paginate(6);
+        $comments = Comment::orderBy('id', 'desc')->limit(5)->get();
         return view('pages.showBlog', compact('article', 'infos', 'banners', 'comments'));
     }
 

@@ -17,25 +17,32 @@
        <div class="banner-left floatleft">
            <!-- Slider-banner start -->
            <div class="slider-banner">
-               <div class="single-banner banner-1">
-                   <a class="banner-thumb" href="#"><img src="{{'images/450x375/'.$stars->src }} " alt="" /></a>
-                   <span class="pro-label new-label">new</span>
-                   <span class="price">{{$stars->product->price}} $</span>
-                   <div class="banner-brief">
-                       <h2 class="banner-title"><a href="#">{{$stars->product->name}}</a></h2>
-                       <p class="mb-0">{{$stars->product->type->name}}</p>
-                   </div>
-                   <a href="#" class="button-one font-16px" data-text="Buy now">Buy now</a>
-               </div>
-               <div class="single-banner banner-2">
-                   <a class="banner-thumb" href="#"><img src="{{'images/450x375/'.$last->src }} " alt="" /></a>
-                   <div class="banner-brief">
-                       <h2 class="banner-title"><a href="#">New Product 2021</a></h2>
-                       <p class="hidden-md hidden-sm d-none d-md-block">Lorem Ipsum is simply dummy text of the printing
-                           and types sate industry. Lorem Ipsum has been the industry.</p>
+               <a href="/product/{{ $stars->id }} ">
+                   <div class="single-banner banner-1">
+                       <a class="banner-thumb" href="/product/{{ $stars->id }} "><img
+                               src="{{ 'images/450x375/' . $stars->src }} " alt="" /></a>
+                       <span class="pro-label new-label">new</span>
+                       <span class="price">{{ $stars->product->price }} $</span>
+                       <div class="banner-brief">
+                           <h2 class="banner-title"><a href="#">{{ $stars->product->name }}</a></h2>
+                           <p class="mb-0">{{ $stars->product->type->name }}</p>
+                       </div>
                        <a href="#" class="button-one font-16px" data-text="Buy now">Buy now</a>
                    </div>
-               </div>
+               </a>
+               <a href="/product/{{ $last->id }} ">
+                   <div class="single-banner banner-2">
+                       <a class="banner-thumb" href="/product/{{ $last->id }}"><img src="{{ 'images/450x375/' . $last->src }} "
+                               alt="" /></a>
+                       <div class="banner-brief">
+                           <h2 class="banner-title"><a href="#">New Product 2021</a></h2>
+                           <p class="hidden-md hidden-sm d-none d-md-block">Lorem Ipsum is simply dummy text of the
+                               printing
+                               and types sate industry. Lorem Ipsum has been the industry.</p>
+                           <a href="#" class="button-one font-16px" data-text="Buy now">Buy now</a>
+                       </div>
+                   </div>
+               </a>
            </div>
            <!-- Slider-banner end -->
        </div>
@@ -44,13 +51,13 @@
            <div class="slider-area">
                <div class="bend niceties preview-2">
                    <div id="ensign-nivoslider" class="slides">
-                    {{-- {{dd($prems)}}  --}}
+                       {{-- {{dd($prems)}} --}}
 
-                    <img src="{{ 'images/1220x800/'. $prems->src}} " alt="" title="#slider-direction-1" />
+                       <img src="{{ 'images/1220x800/' . $prems->src }} " alt="" title="#slider-direction-1" />
                        @foreach ($diapos as $diapo)
-                       {{-- utilisation de $loop->iteration pour le carousel elles passent toutes --}}
-                       <img src="{{ 'images/1220x800/'. $diapo->src}} " alt="" title="#slider-direction-{{$loop->iteration+1}} " />
-                           
+                           {{-- utilisation de $loop->iteration pour le carousel elles passent toutes --}}
+                           <img src="{{ 'images/1220x800/' . $diapo->src }} " alt=""
+                               title="#slider-direction-{{ $loop->iteration + 1 }} " />
                        @endforeach
                    </div>
                    <!-- direction 1 -->
@@ -160,24 +167,25 @@
                        <li>
                            <a href="/login" title="register">
                                <svg style="width:17px;height:17px" viewBox="0 0 24 24">
-						            <path fill="currentColor" d="M15,14C12.33,14 7,15.33 7,18V20H23V18C23,15.33 17.67,14 15,14M6,10V7H4V10H1V12H4V15H6V12H9V10M15,12A4,4 0 0,0 19,8A4,4 0 0,0 15,4A4,4 0 0,0 11,8A4,4 0 0,0 15,12Z" />
-                                </svg>
-                            </a>
+                                   <path fill="currentColor"
+                                       d="M15,14C12.33,14 7,15.33 7,18V20H23V18C23,15.33 17.67,14 15,14M6,10V7H4V10H1V12H4V15H6V12H9V10M15,12A4,4 0 0,0 19,8A4,4 0 0,0 15,4A4,4 0 0,0 11,8A4,4 0 0,0 15,12Z" />
+                               </svg>
+                           </a>
                            <div class="customer-login text-left">
-                            <form method="POST" action="{{ route('register') }}" class="col-lg-6">
-                                @csrf
-                                       <h4 class="title-1 title-border text-uppercase mb-30">new customers</h4>
-                                       <p class="text-gray">If you have an account with us, Please login!</p>
-                                       <input type="text" placeholder="Your name here..." name="name">
-                                       <input type="text" placeholder="Email address here..." name="email">
-                                       <input name="password" type="password" placeholder="Password">
-                                       <input name="password_confirmation" type="password" placeholder="Confirm password">
-                                       <p class="mb-0">
-                                           <input type="checkbox" id="newsletter" name="newsletter" checked>
-                                           <label for="newsletter"><span>Sign up for our newsletter!</span></label>
-                                       </p>
-                                       <button type="submit" data-text="regiter"
-                                           class="button-one submit-button mt-15">register</button>
+                               <form method="POST" action="{{ route('register') }}" class="col-lg-6">
+                                   @csrf
+                                   <h4 class="title-1 title-border text-uppercase mb-30">new customers</h4>
+                                   <p class="text-gray">If you have an account with us, Please login!</p>
+                                   <input type="text" placeholder="Your name here..." name="name">
+                                   <input type="text" placeholder="Email address here..." name="email">
+                                   <input name="password" type="password" placeholder="Password">
+                                   <input name="password_confirmation" type="password" placeholder="Confirm password">
+                                   <p class="mb-0">
+                                       <input type="checkbox" id="newsletter" name="newsletter" checked>
+                                       <label for="newsletter"><span>Sign up for our newsletter!</span></label>
+                                   </p>
+                                   <button type="submit" data-text="regiter"
+                                       class="button-one submit-button mt-15">register</button>
                                </form>
                            </div>
                        </li>

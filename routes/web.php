@@ -2,8 +2,11 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\UserController;
 use App\Models\Article;
 use App\Models\Banner;
 use App\Models\City;
@@ -13,6 +16,7 @@ use App\Models\Detail;
 use App\Models\Diapo;
 use App\Models\Image;
 use App\Models\Info;
+use App\Models\Newsletter;
 use App\Models\Product;
 use App\Models\Size;
 use App\Models\State;
@@ -31,6 +35,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+// Partie front ========================================================================
+// Welcome/Home
 Route::get('/', function () {
     
     // sliderBanner.blade.php
@@ -49,60 +56,39 @@ Route::get('/', function () {
     // variable $infos pour le about us dans le footer
     $infos = Info::all();
     $banners = Banner::all();
-    return view('welcome', compact('diapos', 'prems', 'stars', 'last', 'products', 'articles', 'comments', 'infos', 'banners'));
+    $newsletters = Newsletter::all();
+    return view('welcome', compact('diapos', 'prems', 'stars', 'last', 'products', 'articles', 'comments', 'infos', 'banners', 'newsletters'));
 });
 
-// Route::get('/home', function () {
-//     return view('pages.home');
-// });
-
-// Partie front ========================================================================
-// Route::get('/shop', function (Request $request) {
-//     $infos = Info::all();
-//     $banners = Banner::all();
-//     $types = Type::all();
-//     $sizes = Size::all();
-//     $products = Product::paginate(5);
-//     $q = $request->input('q');
-//     $products = Product::where('name', 'like', '%$q%')
-//         ->orWhere('price', 'like', '%$q%')
-//         ->paginate(5);
-//     return view('pages.shop-list', compact('infos', 'banners', 'types', 'sizes', 'products'));
-// });
-// Route::get('/showProduct', function () {
-    //     $infos = Info::all();
-    //     return view('pages.showProduct', compact('infos'));
-    // });
-      
-    // Route::get('/blog', function () {
-        //     $infos = Info::all();
-        //     return view('pages.blog', compact('infos'));
-        // });
-
-        // Route::get('/showblog', function () {
-        //     $infos = Info::all();
-        //     return view('pages.showBlog', compact('infos'));
-        // });
-
+// Products
 Route::get('/search', [ProductController::class, 'search']);
 Route::resource('/product', ProductController::class);
+// Articles
 Route::resource('/blog', BlogController::class);
 Route::resource('/article', ArticleController::class);
+// About us
 Route::resource('/team', TeamController::class);
+// Newsletter
+Route::resource('newsletter', NewsletterController::class);
 
-
-// Route::get('/about', function () {
-//     $infos = Info::all();
-//     $banners = Banner::all();
-//     return view('pages.about', compact('infos', 'banners'));
-// });
-
+// My account
+Route::resource('/user', UserController::class);
+Route::get('/myaccount', function () {
+    $infos = Info::all();
+    $banners = Banner::all();
+    $countries = Country::all();
+    $states = State::all();
+    $cities = City::all();
+    return view('pages.myaccount', compact('infos', 'banners', 'countries', 'states', 'cities'));
+})->middleware(['auth']);
+// Contact
 Route::get('/contact', function () {
     $infos = Info::all();
     $banners = Banner::all();
     return view('pages.contact', compact('infos', 'banners'));
 });
 
+// Panier
 Route::get('/cart', function () {
     $infos = Info::all();
     return view('pages.panier.cart', compact('infos'));
@@ -118,15 +104,8 @@ Route::get('/order', function () {
     return view('pages.panier.order', compact('infos'));
 });
 
-Route::get('/myaccount', function () {
-    $infos = Info::all();
-    $banners = Banner::all();
-    $countries = Country::all();
-    $states = State::all();
-    $cities = City::all();
-    return view('pages.myaccount', compact('infos', 'banners', 'countries', 'states', 'cities'));
-});
 
+// Dashboard
 Route::get('/dashboard', function () {
     $infos = Info::all();
     $banners = Banner::all();
@@ -134,6 +113,14 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+
+
+
+// Partie Mailing ========================================================================
+Route::get('/message', [MessageController::class, 'formMessageGoogle']);
+Route::post('/message/send', [MessageController::class, 'sendMessageGoogle'])->name('send.message.google');
+
 
 
 // Partie back ========================================================================
