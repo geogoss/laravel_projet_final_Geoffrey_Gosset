@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\AvatarController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\NewsletterController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UserController;
 use App\Models\Article;
 use App\Models\Banner;
+use App\Models\Billing;
 use App\Models\City;
 use App\Models\Comment;
 use App\Models\Country;
@@ -37,6 +39,7 @@ use Illuminate\Support\Facades\Route;
 
 
 // Partie front ========================================================================
+// Pages principales
 // Welcome/Home
 Route::get('/', function () {
     
@@ -96,7 +99,12 @@ Route::get('/cart', function () {
 
 Route::get('/checkout', function () {
     $infos = Info::all();
-    return view('pages.panier.checkout', compact('infos'));
+    $billing = Billing::all();
+    $countries = Country::all();
+    $states = State::all();
+    $cities = City::all();
+
+    return view('pages.panier.checkout', compact('infos', 'billing', 'countries', 'states', 'cities'));
 });
 
 Route::get('/order', function () {
@@ -115,7 +123,8 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 
-
+// Controller particulier
+Route::resource('/avatar', AvatarController::class);
 
 // Partie Mailing ========================================================================
 Route::get('/message', [MessageController::class, 'formMessageGoogle']);

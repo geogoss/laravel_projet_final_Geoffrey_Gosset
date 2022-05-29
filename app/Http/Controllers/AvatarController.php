@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Avatar;
 use App\Http\Requests\StoreAvatarRequest;
 use App\Http\Requests\UpdateAvatarRequest;
+use Illuminate\Support\Facades\Storage;
 
 class AvatarController extends Controller
 {
@@ -36,7 +37,11 @@ class AvatarController extends Controller
      */
     public function store(StoreAvatarRequest $request)
     {
-        //
+        $avatar = new Avatar();
+        $avatar->src = $request->file('src')->hashName();
+        Storage::put('public/avatar', $request->file('src'));
+        $avatar->save();
+        return redirect()->back();
     }
 
     /**
@@ -81,6 +86,7 @@ class AvatarController extends Controller
      */
     public function destroy(Avatar $avatar)
     {
-        //
+        $avatar->delete();
+        return redirect()->back();
     }
 }

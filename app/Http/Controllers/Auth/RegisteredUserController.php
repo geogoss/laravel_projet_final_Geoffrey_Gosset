@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Avatar;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -20,7 +21,8 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        $avatars = Avatar::all();
+        return view('auth.register', compact('avatars'));
     }
 
     /**
@@ -41,6 +43,7 @@ class RegisteredUserController extends Controller
 
         $user = User::create([
             'name' => $request->name,
+            'avatar_id' => $request->avatar_id,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);

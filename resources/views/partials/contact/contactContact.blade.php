@@ -47,16 +47,4 @@
            </div>
        </div>
    </div>
-   @if (session()->has('text'))
-	<p>{{ session('text') }}</p>
-	@endif
-
-	<form url="{{ route('send.message.google') }}" method="POST" >
-		<label for="message" >Message</label>
-		{{ @csrf_field() }}
-		<p>
-			<textarea name="message" id="message" rows="4" placeholder="Message à envoyer ici" ></textarea>
-			{{ $errors->first('message', ":message")}}
-		</p>
-		<button type="submit" >Envoyer</button>
-	</form>
+ 

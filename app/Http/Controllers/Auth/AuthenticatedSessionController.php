@@ -4,11 +4,14 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Mail\MessageGoogle;
+use App\Models\Avatar;
 use App\Models\Banner;
 use App\Models\Info;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -21,7 +24,8 @@ class AuthenticatedSessionController extends Controller
     {
         $infos = Info::all();
         $banners = Banner::all();
-        return view('auth.login', compact('infos', 'banners'));
+        $avatars = Avatar::all();
+        return view('auth.login', compact('infos', 'banners', 'avatars'));
     }
 
     /**
@@ -36,6 +40,12 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        $mail = [
+            'email' => $request->email,
+            'message' => 'vous êtes bien inscrit',
+        ];
+        Mail::to($request->email)->send(new MessageGoogle($mail));
+        
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 

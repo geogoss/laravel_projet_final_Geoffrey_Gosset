@@ -11,7 +11,7 @@ use App\Mail\MessageGoogle;
 
 class MessageController extends Controller
 {
-    // Le formulaire du message
+    // Le formulaire du message (que je n'ai pas utilisé puisque j'ai repris celui de la template)
 	public function formMessageGoogle () {
 		return view("forms.message-google");
 	}

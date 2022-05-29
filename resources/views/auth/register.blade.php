@@ -19,6 +19,22 @@
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
             </div>
 
+            <!-- avatar_id -->
+            <div>
+                <x-label for="avatar_id" :value="__('avatar_id')" />
+                <div>
+                    <label class="text-gray-700 dark:text-gray-200" for="username">avatar_id</label>
+                    <select name="avatar_id" type="text" class="form-select" id="addTreeInputLatin"
+                        aria-describedby="addTreeInputLatinHelp">
+                        @foreach ($avatars as $avatar)
+                        <option value="{{$avatar->id}}">{{$avatar->name}} </option>
+                            
+                        @endforeach
+                    </select>
+                </div>
+
+            </div>
+
             <!-- Email Address -->
             <div class="mt-4">
                 <x-label for="email" :value="__('Email')" />
