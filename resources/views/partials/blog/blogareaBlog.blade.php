@@ -53,12 +53,12 @@
                                    <div class="blog-info">
                                        <div class="post-meta fix">
                                            <div class="post-date floatleft"><span
-                                                   class="text-dark-red">{{ $article->dayMonth }} </span></div>
+                                                   class="text-dark-red">{{ $article->created_at->format('d') }} </span></div>
                                            <div class="post-year floatleft">
-                                               <p class="text-uppercase text-dark-red mb-0">{{ $article->month }} ,
-                                                   {{ $article->year }} </p>
+                                               <p class="text-uppercase text-dark-red mb-0">{{ $article->created_at->format('m') }} ,
+                                                   {{ $article->created_at->format('o') }} </p>
                                                <h4 class="post-title"><a href="#" tabindex="0">{{ $article->name }}
-                                                       {{ $article->year }}</a></h4>
+                                                       {{ $article->created_at->format('o') }}</a></h4>
                                            </div>
                                        </div>
                                        <p>{{ $article->content }} </p>

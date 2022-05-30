@@ -11,3 +11,4 @@
     @include('partials.home.footerHome')
     {{-- @include('partials.home.quickviewProductHome') --}}
 @endsection
+

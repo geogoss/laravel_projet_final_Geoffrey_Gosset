@@ -18,8 +18,8 @@
                                            comments</span></a>
                                </div>
                                <div class="post-date post-date-2">
-                                   <span class="text-dark-red">{{ $article->dayMonth }}</span>
-                                   <span class="text-dark-red text-uppercase">{{ $article->month }}</span>
+                                   <span class="text-dark-red">{{ $article->created_at->format('m') }}</span>
+                                   <span class="text-dark-red text-uppercase">{{ $article->created_at->format('F') }}</span>
                                </div>
                            </div>
                            <div class="blog-info blog-details-info">
