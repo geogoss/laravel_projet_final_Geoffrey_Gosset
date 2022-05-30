@@ -46,7 +46,7 @@ class NewsletterController extends Controller
             'message' => 'vous êtes bien inscrit',
         ];
         Mail::to($request->email)->send(new MessageGoogle($mail));
-
+        
         return redirect()->back();
     }
 

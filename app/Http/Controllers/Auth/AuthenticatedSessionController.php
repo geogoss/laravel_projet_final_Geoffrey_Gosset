@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Mail\MessageGoogle;
 use App\Models\Avatar;
 use App\Models\Banner;
+use App\Models\Billing;
 use App\Models\Info;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
@@ -36,15 +37,12 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
+
+
         $request->authenticate();
 
         $request->session()->regenerate();
 
-        $mail = [
-            'email' => $request->email,
-            'message' => 'vous êtes bien inscrit',
-        ];
-        Mail::to($request->email)->send(new MessageGoogle($mail));
         
         return redirect()->intended(RouteServiceProvider::HOME);
     }

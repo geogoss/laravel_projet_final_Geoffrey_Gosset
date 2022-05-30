@@ -24,31 +24,32 @@
 
                            <div class="mb-3">
                                <label class="text-gray-700 dark:text-gray-200" for="username">photo de profil</label>
-                               <select name="avatar_id" type="text" class="form-select" 
-                                   @foreach ($avatars as $avatar)
-                                       <option value="{{ $avatar->id }}">{{ $avatar->src }} </option>
-                                   @endforeach
-                               </select>
+                               <select name="avatar_id" type="text" class="form-select"
+                                   @foreach ($avatars as $avatar) <option value="{{ $avatar->id }}">{{ $avatar->src }} </option> @endforeach
+                                   </select>
                            </div>
 
                            <input type="text" placeholder="Email address here..." name="email">
                            <input name="password" type="password" placeholder="Password">
                            <input name="password_confirmation" type="password" placeholder="Confirm password">
-                           <p class="mb-0">
-                               <input type="checkbox" id="newsletter" name="newsletter" checked>
-                               <label for="newsletter"><span>Sign up for our newsletter!</span></label>
-                           </p>
+                           <form action="/newsletter" method="POST">
+                               @csrf
+                               <p class="mb-0">
+                                   <input type="checkbox" id="newsletter" name="newsletter" checked>
+                                   <label for="newsletter"><span>Sign up for our newsletter!</span></label>
+                                </p>
+
+                           </form>
                            <button type="submit" data-text="register"
                                class="button-one submit-button mt-15">register</button>
                        </div>
                    </form>
                    <form action="/avatar" method="POST" enctype="multipart/form-data">
-                    @csrf
+                       @csrf
 
-                    <input class="mb-3" type="file" name="src">
-                    <button type="submit" data-text="register"
-                        class="button-one submit-button mt-15">Upload</button>
-                </form>
+                       <input class="mb-3" type="file" name="src">
+                       <button type="submit" data-text="register" class="button-one submit-button mt-15">Upload</button>
+                   </form>
                </div>
            </div>
        </div>

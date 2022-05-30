@@ -22,111 +22,56 @@
                                                <div class="billing-details pr-20">
                                                    <h4 class="title-1 title-border text-uppercase mb-30">billing details
                                                    </h4>
-                                                   @if (Auth::check())
-                                                       @if (Auth::user()->billing == null)
-													   <input type="text" placeholder="Your name here...">
-
-													   @else
-                                                           <input type="text"
-                                                               placeholder="{{ Auth::user()->billing->name }}">
-                                                       @endif
-                                                       @if (Auth::user()->billing == null)
-													   <input type="text" placeholder="Your name here...">
-
-													   @else
-                                                           <input type="text"
-                                                               placeholder="{{ Auth::user()->billing->email }}">
-                                                       @endif
-                                                       @if (Auth::user()->billing == null)
-													   <input type="text" placeholder="Your name here...">
-
-													   @else
-                                                           <input type="text"
-                                                               placeholder="{{ Auth::user()->billing->phone }}">
-                                                       @endif
-                                                       @if (Auth::user()->billing == null)
-													   <input type="text" placeholder="Your name here...">
-
-													   @else
-                                                           <input type="text"
-                                                               placeholder="{{ Auth::user()->billing->company }}">
-                                                       @endif
-                                                       @if (Auth::user()->billing == null)
-													   <input type="text" placeholder="Your name here...">
-
-													   @else
-                                                           <select class="custom-select mb-15">
-                                                               @foreach ($countries as $country)
-                                                                   <option
-                                                                       {{ Auth::user()->billing->country->name == $country->name ? 'selected' : '' }}
-                                                                       value="{{ $country->id }} ">
-                                                                       {{ $country->name }}
-                                                                   </option>
-                                                               @endforeach
-                                                           </select>
-
-                                                       @endif
-
-                                                       @if (Auth::user()->billing == null)
-													   <input type="text" placeholder="Your name here...">
-
-													   @else
-                                                           <select class="custom-select mb-15">
-                                                               @foreach ($states as $state)
-                                                                   <option
-                                                                       {{ Auth::user()->billing->state_id == $state->id ? 'selected' : '' }}
-                                                                       value="{{ $state->id }} ">{{ $state->name }}
-                                                                   </option>
-                                                               @endforeach
-                                                           </select>
-
-                                                       @endif
-
-                                                       @if (Auth::user()->billing == null)
-													   <input type="text" placeholder="Your name here...">
-
-													   @else
-                                                           <select class="custom-select mb-15">
-                                                               @foreach ($cities as $city)
-                                                                   <option
-                                                                       {{ Auth::user()->billing->city_id == $city->id ? 'selected' : '' }}
-                                                                       value="{{ $city->id }} ">
-                                                                       {{ $city->name }}
-                                                                   </option>
-                                                               @endforeach
-                                                           </select>
-
-                                                       @endif
-
-
-                                                       @if (Auth::user()->billing === null)
-													   <input type="text" placeholder="Your name here...">
-
-													   @else
-                                                           <textarea placeholder="{{ Auth::user()->billing->address }}" class="custom-textarea"></textarea>
-                                                       @endif
-                                                   @else
-                                                       <input type="text" placeholder="Your name here...">
-                                                       <input type="text" placeholder="Email address here...">
-                                                       <input type="text" placeholder="Phone here...">
-                                                       <input type="text" placeholder="Company neme here...">
-                                                       <select class="custom-select mb-15">
-                                                           @foreach ($countries as $country)
-                                                               <option>{{ $country->name }} </option>
-                                                           @endforeach
-                                                       </select>
-                                                       <select class="custom-select mb-15">
-                                                           @foreach ($states as $state)
-                                                               <option>{{ $state->name }} </option>
-                                                           @endforeach
-                                                       </select>
-                                                       <select class="custom-select mb-15">
-                                                           @foreach ($cities as $city)
-                                                               <option>{{ $city->name }} </option>
-                                                           @endforeach
-                                                       </select>
-                                                       <textarea placeholder="Your address here..." class="custom-textarea"></textarea>
-                                                   @endif
+                                                   @if (Auth::check() && Auth::user()->billing != null)
+                                               <input type="text" placeholder="{{ Auth::user()->billing->name }}">
+                                               <input type="text" placeholder="{{ Auth::user()->billing->email }}">
+                                               <input type="text" placeholder="{{ Auth::user()->billing->phone }}">
+                                               <input type="text" placeholder="{{ Auth::user()->billing->company }}">
+                                               <select class="custom-select mb-15">
+                                                   @foreach ($countries as $country)
+                                                       <option
+                                                           {{ Auth::user()->billing->country->name == $country->name ? 'selected' : '' }}
+                                                           value="{{ $country->id }} ">{{ $country->name }}
+                                                       </option>
+                                                   @endforeach
+                                               </select>
+                                               <select class="custom-select mb-15">
+                                                   @foreach ($states as $state)
+                                                       <option
+                                                           {{ Auth::user()->billing->state_id == $state->id ? 'selected' : '' }}
+                                                           value="{{ $state->id }} ">{{ $state->name }} </option>
+                                                   @endforeach
+                                               </select>
+                                               <select class="custom-select mb-15">
+                                                   @foreach ($cities as $city)
+                                                       <option
+                                                           {{ Auth::user()->billing->city_id == $city->id ? 'selected' : '' }}
+                                                           value="{{ $city->id }} ">{{ $city->name }} </option>
+                                                   @endforeach
+                                               </select>
+                                               <textarea placeholder="{{ Auth::user()->billing->address }}" class="custom-textarea"></textarea>
+                                           @else
+                                               <input type="text" placeholder="Your name here...">
+                                               <input type="text" placeholder="Email address here...">
+                                               <input type="text" placeholder="Phone here...">
+                                               <input type="text" placeholder="Company neme here...">
+                                               <select class="custom-select mb-15">
+                                                   @foreach ($countries as $country)
+                                                       <option>{{ $country->name }} </option>
+                                                   @endforeach
+                                               </select>
+                                               <select class="custom-select mb-15">
+                                                   @foreach ($states as $state)
+                                                       <option>{{ $state->name }} </option>
+                                                   @endforeach
+                                               </select>
+                                               <select class="custom-select mb-15">
+                                                   @foreach ($cities as $city)
+                                                       <option>{{ $city->name }} </option>
+                                                   @endforeach
+                                               </select>
+                                               <textarea placeholder="Your address here..." class="custom-textarea"></textarea>
+                                           @endif
                                                </div>
                                            </div>
                                            <div class="col-md-6">
