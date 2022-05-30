@@ -62,7 +62,7 @@
                                            </div>
                                        </div>
                                        <p>{{ $article->content }} </p>
-                                       <a href="#" class="button-2 text-dark-red">Read more...</a>
+                                       <a href="/article/{{ $article->id }}" class="button-2 text-dark-red">Read more...</a>
                                    </div>
                                </div>
                            </a>

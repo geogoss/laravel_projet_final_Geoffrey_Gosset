@@ -114,7 +114,7 @@
                                                        <div class="fix">
                                                            <div class="floatleft mbl-center">
                                                                <h5 class="text-uppercase mb-0"><strong>{{$item->author}} </strong></h5>
-                                                               <p class="reply-date">{{$item->dayMonth}} {{$item->month}}, {{$item->year}} at {{$item->hour}}{{$item->pm}}</p>
+                                                               <p class="reply-date">{{$item->created_at->format('d')}} {{$item->created_at->format('F')}}, {{$item->created_at->format('o')}} at {{$item->created_at->format('H')}} {{$item->created_at->format('a')}}</p>
                                                            </div>
                                                            <div class="comment-reply floatright">
                                                                <a href="#"><i class="zmdi zmdi-mail-reply"></i></a>

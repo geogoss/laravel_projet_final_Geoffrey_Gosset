@@ -65,33 +65,39 @@
                                <div id="my-billing" class="panel-collapse collapse" data-bs-parent="#accordion">
                                    <div class="panel-body">
                                        <div class="billing-details shop-cart-table">
-                                               <input type="text" value="{{ Auth::user()->billing->name }}">
-                                               <input type="text" value="{{ Auth::user()->billing->email }}">
-                                               <input type="text" value="{{ Auth::user()->billing->phone }}">
-                                               <input type="text" value="{{ Auth::user()->billing->company }}">
-                                               <select class="custom-select mb-15">
-                                                   @foreach ($countries as $country)
-                                                       <option
-                                                           {{ Auth::user()->billing->country->name == $country->name ? 'selected' : '' }}
-                                                           value="{{ $country->id }} ">{{ $country->name }}
-                                                       </option>
-                                                   @endforeach
-                                               </select>
-                                               <select class="custom-select mb-15">
-                                                   @foreach ($states as $state)
-                                                       <option
-                                                           {{ Auth::user()->billing->state_id == $state->id ? 'selected' : '' }}
-                                                           value="{{ $state->id }} ">{{ $state->name }} </option>
-                                                   @endforeach
-                                               </select>
-                                               <select class="custom-select mb-15">
-                                                   @foreach ($cities as $city)
-                                                       <option
-                                                           {{ Auth::user()->billing->city_id == $city->id ? 'selected' : '' }}
-                                                           value="{{ $city->id }} ">{{ $city->name }} </option>
-                                                   @endforeach
-                                               </select>
-                                               <textarea value="{{ Auth::user()->billing->address }}" class="custom-textarea"></textarea>
+                                           <input type="text" value="{{ Auth::user()->billing->name }}">
+                                           <input type="text" value="{{ Auth::user()->billing->email }}">
+                                           <input type="text" value="{{ Auth::user()->billing->phone }}">
+                                           <input type="text" value="{{ Auth::user()->billing->company }}">
+                                           <select class="custom-select mb-15">
+                                               @foreach ($countries as $country)
+                                                   <option
+                                                       {{ Auth::user()->billing->country->name == $country->name ? 'selected' : '' }}
+                                                       value="{{ $country->id }} ">{{ $country->name }}
+                                                   </option>
+                                               @endforeach
+                                           </select>
+                                           <select class="custom-select mb-15">
+                                               @foreach ($states as $state)
+                                                   <option
+                                                       {{ Auth::user()->billing->state_id == $state->id ? 'selected' : '' }}
+                                                       value="{{ $state->id }} ">{{ $state->name }} </option>
+                                               @endforeach
+                                           </select>
+                                           <select class="custom-select mb-15">
+                                               @foreach ($cities as $city)
+                                                   <option
+                                                       {{ Auth::user()->billing->city_id == $city->id ? 'selected' : '' }}
+                                                       value="{{ $city->id }} ">{{ $city->name }} </option>
+                                               @endforeach
+                                           </select>
+                                           <textarea value="{{ Auth::user()->billing->address }}" class="custom-textarea"></textarea>
+                                           
+                                           <div class="mt-20">
+                                               <button type="submit" data-text="subscribe"
+                                                   class="submit-button submit-btn-2 button-one">subscribe</button><br>
+                                           </div>
+
                                        </div>
                                    </div>
                                </div>
