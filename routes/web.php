@@ -144,7 +144,8 @@ Route::get('/backHome', function () {
 });
 Route::get('/backProduct', function () {
     $infos = Info::all();
-    return view('pages.backoffice.backProduct', compact('infos'));
+    $products = Product::orderBy('id', 'desc')->get();
+    return view('pages.backoffice.product.backProduct', compact('infos', 'products'));
 });
 Route::get('/backBlog', function () {
     $infos = Info::all();

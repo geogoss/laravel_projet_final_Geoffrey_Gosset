@@ -13,6 +13,7 @@ use App\Models\Note;
 use App\Models\Size;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Truc;
 
 class ProductController extends Controller
 {
@@ -61,7 +62,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $infos = Info::all();
+        $products = Product::all();
+        $types = Type::all();
+        $sizes = Size::all();
+        return view('pages.backoffice.product.backCreateProduct', compact('infos', 'products', 'types', 'sizes'));
     }
 
     /**
@@ -72,7 +77,33 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        //
+        // pour le re-size des images ici en l'occurence l'image de Product
+        $image = $request->file('file');
+        $input['file'] = time().'.'.$image->getClientOriginalExtension();
+        
+        $destinationPath = public_path('/thumbnail');
+        $imgFile = Truc::make($image->getRealPath());
+        $imgFile->resize(270, 270, function ($constraint) {
+		    $constraint->aspectRatio();
+		})->save($destinationPath.'/'.$input['file']);
+        $destinationPath = public_path('/uploads');
+        $image->move($destinationPath, $input['file']);   
+        
+        $product = new Product();
+        $product->name = $request->name;
+        $product->state = $request->state;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->discount = $request->discount;
+        $product->type_id = $request->id;
+        $product->size_id = $request->id;
+        $product->save();
+        return redirect()->back();
+
+
+
+
+
     }
 
     /**
@@ -122,6 +153,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect()->back();
     }
 }
