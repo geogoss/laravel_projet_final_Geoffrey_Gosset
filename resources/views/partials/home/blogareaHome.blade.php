@@ -44,7 +44,7 @@
                                </div>
                                <div class="col-xl-6 col-md-5">
                                    <div class="blog-photo">
-                                       <a href="#"><img src=" {{ 'images/270x230/' . $article->blog->src }} "
+                                       <a href="#"><img src=" {{ '/thumbnail/images/270x230/' . $article->blog->src }} "
                                                alt="" /></a>
                                    </div>
                                </div>

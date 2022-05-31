@@ -8,8 +8,8 @@
                        <!-- Single-pro-slider Big-photo start -->
                        <div class="single-pro-slider single-big-photo view-lightbox slider-for">
                            {{-- Groose image du show --}}
-                           <img src="{{ asset('images/370x450/' . $product->image[0]->src) }} " alt="" />
-                           <a class="view-full-screen" href="{{ asset('images/370x450/' . $product->image[0]->src) }} "
+                           <img src="{{ asset('/thumbnail/images/370x450/' . $product->image[0]->src) }} " alt="" />
+                           <a class="view-full-screen" href="{{ asset('/thumbnail/images/370x450/' . $product->image[0]->src) }} "
                                data-lightbox="roadtrip" data-title="My caption">
                                <i class="zmdi zmdi-zoom-in"></i>
                            </a>
@@ -58,7 +58,7 @@
                            <div class="single-pro-slider single-sml-photo slider-nav">
                                @foreach ($details as $detail)
                                    <div>
-                                       <img src="{{ asset('images/70x83/' . $detail->src) }} " alt="" />
+                                       <img src="{{ asset('/thumbnail/images/70x83/' . $detail->src) }} " alt="" />
                                    </div>
                                @endforeach
 
@@ -108,7 +108,7 @@
                                            @foreach ($notes as $item)
                                                <li class="{{$loop->iteration == 1 ? 'mb-30' : 'threaded-comments' }} ">
                                                    <div class="pro-reviewer">
-                                                       <img src="{{ asset('images/personnes/'.$item->foto->src) }} " alt="" />
+                                                       <img src="{{ asset('/thumbnail/images/personnes/'.$item->foto->src) }} " alt="" />
                                                    </div>
                                                    <div class="pro-reviewer-comment">
                                                        <div class="fix">

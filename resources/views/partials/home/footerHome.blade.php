@@ -45,7 +45,7 @@
 										<div class="row">
 											<div class="col-sm-6 col-12">
 												<div class="footer-thumb">
-													<a href="#"><img src="{{asset('images/footer/cuisine.jpg')}} " alt="" /></a>
+													<a href="#"><img src="{{asset('/thumbnail/images/footer/cuisine.jpg')}} " alt="" /></a>
 													<div class="footer-thumb-info">
 														<p><a href="#">Furniture Product<br>Cuisine rustique</a></p>
 														<h4 class="price-3">$ 5899.00</h4>
@@ -54,7 +54,7 @@
 											</div>
 											<div class="col-sm-6 col-12">
 												<div class="footer-thumb">
-													<a href="#"><img src="{{asset('images/footer/salon.jpg')}} " alt="" /></a>
+													<a href="#"><img src="{{asset('/thumbnail/images/footer/salon.jpg')}} " alt="" /></a>
 													<div class="footer-thumb-info">
 														<p><a href="#">Furniture Product<br>salon moderne</a></p>
 														<h4 class="price-3">$ 6000.00</h4>

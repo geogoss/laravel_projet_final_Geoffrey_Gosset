@@ -17,22 +17,23 @@
        <div class="banner-left floatleft">
            <!-- Slider-banner start -->
            <div class="slider-banner">
+              {{-- {{dd($stars->image[0]->src)}} --}}
                <a href="/product/{{ $stars->id }} ">
                    <div class="single-banner banner-1">
                        <a class="banner-thumb" href="/product/{{ $stars->id }} "><img
-                               src="{{ 'images/450x375/' . $stars->src }} " alt="" /></a>
+                               src="{{ '/thumbnail/images/450x375/' . $stars->image[0]->src }} " alt="" /></a>
                        <span class="pro-label new-label">new</span>
-                       <span class="price">{{ $stars->product->price }} $</span>
+                       <span class="price">{{ $stars->price }} $</span>
                        <div class="banner-brief">
-                           <h2 class="banner-title"><a href="#">{{ $stars->product->name }}</a></h2>
-                           <p class="mb-0">{{ $stars->product->type->name }}</p>
+                           <h2 class="banner-title"><a href="#">{{ $stars->name }}</a></h2>
+                           <p class="mb-0">{{ $stars->type->name }}</p>
                        </div>
                        <a href="#" class="button-one font-16px" data-text="Buy now">Buy now</a>
                    </div>
                </a>
                <a href="/product/{{ $last->id }} ">
-                   <div class="single-banner banner-2">
-                       <a class="banner-thumb" href="/product/{{ $last->id }}"><img src="{{ 'images/450x375/' . $last->src }} "
+                   <div class="single-banner banner-2"> 
+                       <a class="banner-thumb" href="/product/{{ $last->id }}"><img src="{{ '/thumbnail/images/450x375/' . $last->image[0]->src }} "
                                alt="" /></a>
                        <div class="banner-brief">
                            <h2 class="banner-title"><a href="#">New Product 2021</a></h2>
@@ -53,10 +54,10 @@
                    <div id="ensign-nivoslider" class="slides">
                        {{-- {{dd($prems)}} --}}
 
-                       <img src="{{ 'images/1220x800/' . $prems->src }} " alt="" title="#slider-direction-1" />
+                       <img src="{{ '/thumbnail/images/1220x800/' . $prems->src }} " alt="" title="#slider-direction-1" />
                        @foreach ($diapos as $diapo)
                            {{-- utilisation de $loop->iteration pour le carousel elles passent toutes --}}
-                           <img src="{{ 'images/1220x800/' . $diapo->src }} " alt=""
+                           <img src="{{ '/thumbnail/images/1220x800/' . $diapo->src }} " alt=""
                                title="#slider-direction-{{ $loop->iteration + 1 }} " />
                        @endforeach
                    </div>

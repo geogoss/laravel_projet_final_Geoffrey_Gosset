@@ -13,6 +13,7 @@ use App\Models\Note;
 use App\Models\Size;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Truc;
 
 class ProductController extends Controller
@@ -23,22 +24,22 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function search (Request $request) 
+    public function search(Request $request)
     {
         $infos = Info::all();
         $banners = Banner::all();
         $types = Type::all();
         $sizes = Size::all();
-        
+
         $q = $request->input('q');
         $products = Product::where('name', 'like', "%$q%")
             ->orWhere('price', 'like', "%$q%")
             ->paginate(5);
         $produits = Product::where('name', 'like', "%$q%")
-        ->orWhere('discount', 'like', "%$q%")
-        ->paginate(6);
+            ->orWhere('discount', 'like', "%$q%")
+            ->paginate(6);
 
-        return view('pages.shop-list', compact('produits','products', 'infos', 'banners', 'types', 'sizes'));
+        return view('pages.shop-list', compact('produits', 'products', 'infos', 'banners', 'types', 'sizes'));
     }
 
 
@@ -52,7 +53,7 @@ class ProductController extends Controller
         $produits = Product::paginate(6);
         $banners = Banner::all();
 
-        return view('pages.shop-list', compact('produits','products', 'infos', 'banners', 'types', 'sizes', 'banners'));
+        return view('pages.shop-list', compact('produits', 'products', 'infos', 'banners', 'types', 'sizes', 'banners'));
     }
 
     /**
@@ -78,32 +79,62 @@ class ProductController extends Controller
     public function store(StoreProductRequest $request)
     {
         // pour le re-size des images ici en l'occurence l'image de Product
+        // format 270x270
         $image = $request->file('file');
-        $input['file'] = time().'.'.$image->getClientOriginalExtension();
-        
-        $destinationPath = public_path('/thumbnail');
+        $input['file'] = time() . '.' . $image->getClientOriginalExtension();
+        $destinationPath = public_path('/thumbnail/images/270x270');
         $imgFile = Truc::make($image->getRealPath());
         $imgFile->resize(270, 270, function ($constraint) {
-		    $constraint->aspectRatio();
-		})->save($destinationPath.'/'.$input['file']);
+            $constraint->aspectRatio();
+        })->save($destinationPath . '/' . $input['file']);
         $destinationPath = public_path('/uploads');
-        $image->move($destinationPath, $input['file']);   
-        
+        $image->move($destinationPath, $input['file']);
+
+        // format 70x83
+        $destinationPath = public_path('/thumbnail/images/70x83');
+        $imgFile->resize(70, 83, function ($constraint) {
+            $constraint->aspectRatio();
+        })->save($destinationPath . '/' . $input['file']);
+        $destinationPath = public_path('/uploads');
+
+        // format 450x375
+        $destinationPath = public_path('/thumbnail/images/450x375');
+        $imgFile->resize(450, 375, function ($constraint) {
+            $constraint->aspectRatio();
+        })->save($destinationPath . '/' . $input['file']);
+        $destinationPath = public_path('/uploads');
+
+
+
+        // création du product en lui même
         $product = new Product();
         $product->name = $request->name;
         $product->state = $request->state;
         $product->description = $request->description;
         $product->price = $request->price;
         $product->discount = $request->discount;
-        $product->type_id = $request->id;
-        $product->size_id = $request->id;
+        $product->type_id = $request->type_id;
+        $product->size_id = $request->size_id;
+        $product->user_id = Auth::user()->id;
         $product->save();
+        $productbis = $product;
+
+        // création de l'image du product
+        $image = new Image();
+        $image->src = $input['file'];
+        $oldstar = Image::where('bool', true)->first();
+        if ($request->bool != null) {
+            $oldstar->bool = false;
+            $image->bool = true;
+            $oldstar->save();
+        }else {
+            $image->bool = false;
+        }
+        $image->product_id = $productbis->id;
+        $image->save();
+
+
         return redirect()->back();
-
-
-
-
-
     }
 
     /**
@@ -130,7 +161,12 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        $infos = Info::all();
+        $products = Product::all();
+        $types = Type::all();
+        $sizes = Size::all();
+
+        return view('pages.backoffice.product.backEditProduct', compact('product', 'infos', 'products', 'types', 'sizes'));
     }
 
     /**
@@ -142,7 +178,59 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+
+
+        // création du product en lui même
+
+        $product->name = $request->name;
+        $product->state = $request->state;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->discount = $request->discount;
+        $product->type_id = $request->type_id;
+        $product->size_id = $request->size_id;
+        $product->user_id = Auth::user()->id;
+        $product->save();
+        $productbis = $product;
+
+        // pour le re-size des images ici en l'occurence l'image de Product
+        if ($request->file) {
+            $image = $request->file('file');
+            $input['file'] = time() . '.' . $image->getClientOriginalExtension();
+            // format 270x270
+            $destinationPath = public_path('/thumbnail');
+            $imgFile = Truc::make($image->getRealPath());
+            $imgFile->resize(270, 270, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save($destinationPath . '/' . $input['file']);
+            $destinationPath = public_path('/uploads/70x83');
+            $image->move($destinationPath, $input['file']);
+
+
+            // format 70x83
+            $destinationPath = public_path('/thumbnail/images/70x83');
+            $imgFile->resize(70, 83, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save($destinationPath . '/' . $input['file']);
+            $destinationPath = public_path('/uploads');
+
+            // format 450x375
+            $destinationPath = public_path('/thumbnail/images/450x375');
+            $imgFile->resize(450, 375, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save($destinationPath . '/' . $input['file']);
+            $destinationPath = public_path('/uploads');
+
+
+            // création de l'image du product
+            $image = new Image();
+            $image->src = $request['file'];
+            $image->product_id = $productbis->id;
+            $image->save();
+        }
+
+
+        return redirect()->back();
     }
 
     /**

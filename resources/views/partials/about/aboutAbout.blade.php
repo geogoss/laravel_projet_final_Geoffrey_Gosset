@@ -5,7 +5,7 @@
 					<div class="row">
 						<div class="col-lg-6">
 							<div class="about-photo">
-								<img src="{{'images/aboutUs/'.$infos[0]->src}} " alt="" />
+								<img src="{{'/thumbnail/images/aboutUs/'.$infos[0]->src}} " alt="" />
 							</div>
 						</div>
 						<div class="col-lg-6">

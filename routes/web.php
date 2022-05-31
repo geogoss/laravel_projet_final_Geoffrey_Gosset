@@ -49,9 +49,9 @@ Route::get('/', function () {
     $prems = Diapo::where('bool', 1 )->first(); #variable $prems -> pour choisir la première image grâce au bouléen 
     $diapos = Diapo::where('bool', 0)->inRandomOrder()->limit(2)->get(); #$diapos -> pour prendre les autres images grace au bouléen, au hasard et il en prend 2
     // variable $stars pour l'image star que l'on sélectionne grace à un booléen et que l'on pourra modifier dans le backOffice
-    $stars = Image::where('bool', 1)->first();
+    $stars = Product::where('bool', 1)->first();
     // variable $last pour prendre le dernier product ajouté dans la table
-    $last = Image::orderby('created_at', 'desc')->first();
+    $last = Product::where('bool', 0)->orderby('created_at', 'desc')->first();
     // variable $products pour prendre les products 270 x 270 -> 5 au hasard
     $products = Product::all()->random(5);
     // variable pour le blog de la page home
@@ -63,6 +63,7 @@ Route::get('/', function () {
     $newsletters = Newsletter::all();
     return view('welcome', compact('diapos', 'prems', 'stars', 'last', 'products', 'articles', 'comments', 'infos', 'banners', 'newsletters'));
 });
+
 
 // Products
 Route::get('/search', [ProductController::class, 'search']);

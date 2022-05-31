@@ -19,7 +19,7 @@
                                    @else
                                    @endif
                                    <a href="/product/{{$product->id}} "><img
-                                           src="{{ 'images/270x270/' . $product->image[0]->src }}" alt="" /></a>
+                                           src="{{ '/thumbnail/images/270x270/' . $product->image[0]->src }}" alt="" /></a>
 
                                    <div class="product-action clearfix">
                                        <a href="#" data-bs-toggle="modal"

@@ -14,7 +14,7 @@
               <div class="row">
                           <div class="col-lg-3 col-md-6">
                               <div class="single-member text-center bg-white mt-25">
-                                  <img src="{{ asset('images/120x120/' . $chiefs->src) }} " alt="" />
+                                  <img src="{{ asset('/thumbnail/images/120x120/' . $chiefs->src) }} " alt="" />
                                   <h3 class="text-uppercase mt-20">{{ $chiefs->firstname }} {{ $chiefs->name }}</h3>
                                   <h4 class="text-uppercase text-gray">{{ $chiefs->fonction }}</h4>
                                   <p class="text-gray">{{ $chiefs->content }}</p>
@@ -33,7 +33,7 @@
                       @if ($team->fonction != 'The Big Boss')
                           <div class="col-lg-3 col-md-6">
                               <div class="single-member text-center bg-white mt-25">
-                                  <img src="{{ asset('images/120x120/' . $team->src) }} " alt="" />
+                                  <img src="{{ asset('/thumbnail/images/120x120/' . $team->src) }} " alt="" />
                                   <h3 class="text-uppercase mt-20">{{ $team->firstname }} {{ $team->name }}</h3>
                                   <h4 class="text-uppercase text-gray">{{ $team->fonction }}</h4>
                                   <p class="text-gray">{{ $team->content }}</p>

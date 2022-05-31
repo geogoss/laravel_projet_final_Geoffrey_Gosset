@@ -7,7 +7,7 @@
                    <div class="col-lg-12">
                        <div class="single-blog mb-30">
                            <div class="blog-photo">
-                               <a href="#"><img src="{{ asset('images/1090x450/' . $article->blog->src) }} "
+                               <a href="#"><img src="{{ asset('/thumbnail/images/1090x450/' . $article->blog->src) }} "
                                        alt="" /></a>
                                <div class="like-share fix">
                                    <a href="#"><i
@@ -53,7 +53,7 @@
                                                <li
                                                    class=" {{ $loop->iteration == 1 ? 'mb-30' : 'threaded-comments' }}">
                                                    <div class="pro-reviewer">
-                                                       <img src="{{ asset('images/personnes/' . $item->foto->src) }} "
+                                                       <img src="{{ asset('/thumbnail/images/personnes/' . $item->foto->src) }} "
                                                            alt="" />
                                                    </div>
                                                    

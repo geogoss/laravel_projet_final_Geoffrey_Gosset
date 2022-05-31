@@ -18,42 +18,42 @@ class ImageSeeder extends Seeder
         DB::table('images')->insert([
             [
                 'src' => 'meuble1.jpg',
-                'bool' => false,
+                // 'bool' => false,
                 'product_id' => 1,
             ],
             [
                 'src' => 'meuble2.jpg',
-                'bool' => false,
+                // 'bool' => false,
                 'product_id' => 2,
             ],
             [
                 'src' => 'meuble3.jpg',
-                'bool' => false,
+                // 'bool' => false,
                 'product_id' => 3,
             ],
             [
                 'src' => 'meuble4.jpg',
-                'bool' => true,
+                // 'bool' => true,
                 'product_id' => 4,
             ],
             [
                 'src' => 'meuble5.jpg',
-                'bool' => false,
+                // 'bool' => false,
                 'product_id' => 5,
             ],
             [
                 'src' => 'meuble6.jpg',
-                'bool' => false,
+                // 'bool' => false,
                 'product_id' => 6,
             ],
             [
                 'src' => 'meuble7.jpg',
-                'bool' => false,
+                // 'bool' => false,
                 'product_id' => 7,
             ],
             [
                 'src' => 'meuble8.jpg',
-                'bool' => false,
+                // 'bool' => false,
                 'product_id' => 8,
             ],
             

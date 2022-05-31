@@ -80,7 +80,7 @@
                                                                 €</span>
                                                             <a href="/product/{{ $produit->id }} ">
                                                                 @foreach ($produit->image as $item)
-                                                                    <img src="{{ 'images/270x270/' . $item->src }} "
+                                                                    <img src="{{ '/thumbnail/images/270x270/' . $item->src }} "
                                                                         alt="" />
                                                                 @endforeach
                                                             </a>
@@ -138,7 +138,7 @@
 
                                                             <a href="/product/{{ $product->id }} ">
                                                                 @foreach ($product->image as $item)
-                                                                    <img src="{{ 'images/270x270/' . $item->src }} "
+                                                                    <img src="{{ '/thumbnail/images/270x270/' . $item->src }} "
                                                                         alt="" />
                                                                 @endforeach
                                                             </a>
