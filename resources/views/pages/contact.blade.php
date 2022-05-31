@@ -1,6 +1,6 @@
 @extends('layouts.appShop')
 @section('contentShop')
-
+    @include('layouts.flash')
     @include('partials.contact.headingbannerContact')
     @include('partials.contact.contactContact')
 

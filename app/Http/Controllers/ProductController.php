@@ -5,15 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Mail\MessageGoogle;
 use App\Models\Banner;
 use App\Models\Detail;
 use App\Models\Image;
 use App\Models\Info;
+use App\Models\Newsletter;
 use App\Models\Note;
 use App\Models\Size;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Truc;
 
@@ -132,12 +135,21 @@ class ProductController extends Controller
         $request->validate([
             'src' => ['required'],
         ]);
-        
+
         // création de l'image du product
         $image = new Image();
         $image->src = $input['file'];
         $image->product_id = $productbis->id;
         $image->save();
+
+        // envoi du mail à tous ceux inscrit à la newsletter
+        $newsletter = Newsletter::all();
+        $mail = [
+            'message' => 'Un nouveau Product vient de sortir, soyez le premier ou la première à le voir',
+        ];
+
+		#3. Envoi du mail
+		Mail::to($newsletter)->send(new MessageGoogle($mail));
 
         return redirect()->back();
     }

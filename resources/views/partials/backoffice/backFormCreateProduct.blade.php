@@ -57,7 +57,7 @@
 
 
             <div>
-                <input class="mb-3" type="file" name="file">
+                <input class="mb-3" type="file" name="file" value="{{old('src')}} ">
             </div>
 
 
