@@ -11,9 +11,9 @@
               <th scope="col">Description</th>
               <th scope="col">Price</th>
               <th scope="col">Discount</th>
-              <th scope="col">type_id</th>
-              <th scope="col">size_id</th>
-              <th scope="col">user_id</th>
+              <th scope="col">type</th>
+              <th scope="col">size</th>
+              <th scope="col">user</th>
               <th scope="col">Star/Classic</th>
               <th scope="col">Action</th>
             </tr>
@@ -23,19 +23,20 @@
             <tr>
               <th scope="row">{{$item->id}} </th>
               <td>
-                  {{-- <img src="{{asset('/images/270x270/'. $item->image[0]->src)}}" alt=""> </td> --}}
-                {{-- {{dd($item->image)}} --}}
-                <img src="{{asset('/thumbnail/images/70x83/details1.jpg')}}" alt=""> </td>
+                {{-- {{dd($item->image[0]->src)}} --}}
+                  <img style="width: 50px; height: 50px;" src="{{asset('/thumbnail/images/270x270/'. $item->image[0]->src)}}" alt=""> </td>
+                
+                {{-- <img src="{{asset('/thumbnail/images/70x83/details1.jpg')}}" alt=""> </td> --}}
               <td>{{$item->name}} </td>
               <td>{{$item->state}} </td>
               <td>{{substr($item->description, 0, 25)}} </td>
               <td>{{$item->price}} </td>
               <td>{{$item->discount}} </td>
-              <td>{{$item->type_id}} </td>
-              <td>{{$item->size_id}} </td>
-              <td>{{$item->user_id}} </td>
-              
-              <td class="{{$item->image[0]->bool == 1 ? 'table-dark ' : 'table-warning '}} ">{{$item->image[0]->bool == 1 ? 'Star Product' : 'Classic Product'}} </td>
+              <td>{{$item->type->name}} </td>
+              <td>{{$item->size->name}} </td>
+              <td>{{$item->user->name}} </td>
+              {{-- {{dd($item->bool)}} --}}
+              <td class="{{$item->bool == 1 ? 'table-dark ' : 'table-warning '}} ">{{$item->bool == 1 ? 'Star Product' : 'Classic Product'}} </td>
               <td>
                 <div class="d-flex justify-content-center text-center mx-3 mb-5">
                   <form action="/product/{{ $item->id }}" method="POST">

@@ -14,6 +14,7 @@ use App\Models\Size;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Truc;
 
 class ProductController extends Controller
@@ -90,9 +91,9 @@ class ProductController extends Controller
         $destinationPath = public_path('/uploads');
         $image->move($destinationPath, $input['file']);
 
-        // format 70x83
-        $destinationPath = public_path('/thumbnail/images/70x83');
-        $imgFile->resize(70, 83, function ($constraint) {
+        // format 370x450
+        $destinationPath = public_path('/thumbnail/images/370x450');
+        $imgFile->resize(370, 450, function ($constraint) {
             $constraint->aspectRatio();
         })->save($destinationPath . '/' . $input['file']);
         $destinationPath = public_path('/uploads');
@@ -105,7 +106,6 @@ class ProductController extends Controller
         $destinationPath = public_path('/uploads');
 
 
-
         // création du product en lui même
         $product = new Product();
         $product->name = $request->name;
@@ -116,23 +116,28 @@ class ProductController extends Controller
         $product->type_id = $request->type_id;
         $product->size_id = $request->size_id;
         $product->user_id = Auth::user()->id;
+        $oldstar = Product::where('bool', true)->first();
+        if ($request->bool != null) {
+            if ($oldstar != null) {
+                $oldstar->bool = false;               
+                $oldstar->save();
+            }
+            $product->bool = true;
+        }else {
+            $product->bool = false;
+        }
         $product->save();
         $productbis = $product;
 
+        $request->validate([
+            'src' => ['required'],
+        ]);
+        
         // création de l'image du product
         $image = new Image();
         $image->src = $input['file'];
-        $oldstar = Image::where('bool', true)->first();
-        if ($request->bool != null) {
-            $oldstar->bool = false;
-            $image->bool = true;
-            $oldstar->save();
-        }else {
-            $image->bool = false;
-        }
         $image->product_id = $productbis->id;
         $image->save();
-
 
         return redirect()->back();
     }
@@ -190,6 +195,16 @@ class ProductController extends Controller
         $product->type_id = $request->type_id;
         $product->size_id = $request->size_id;
         $product->user_id = Auth::user()->id;
+        $oldstar = Product::where('bool', true)->first();
+        if ($request->bool != null) {
+            if ($oldstar != null) {
+                $oldstar->bool = false;               
+                $oldstar->save();
+            }
+            $product->bool = true;
+        }else {
+            $product->bool = false;
+        }
         $product->save();
         $productbis = $product;
 

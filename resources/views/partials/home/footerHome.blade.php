@@ -18,11 +18,13 @@
 								<div class="single-footer">
 									<h3 class="footer-title  title-border">accounts</h3>
 									<ul class="footer-menu">
-										<li><a href="#"><i class="zmdi zmdi-dot-circle"></i>My Account</a></li>
-										<li><a href="#"><i class="zmdi zmdi-dot-circle"></i>My Wishlist</a></li>
-										<li><a href="#"><i class="zmdi zmdi-dot-circle"></i>My Cart</a></li>
-										<li><a href="#"><i class="zmdi zmdi-dot-circle"></i>Sign In</a></li>
-										<li><a href="#"><i class="zmdi zmdi-dot-circle"></i>Check out</a></li>
+										<li><a href="/myaccount"><i class="zmdi zmdi-dot-circle"></i>My Account</a>
+										</li>
+										<li><a href="#"><i class="zmdi zmdi-dot-circle"></i>My Wishlist</a>
+										</li>
+										<li><a href="/cart"><i class="zmdi zmdi-dot-circle"></i>My Cart</a></li>
+										<li><a href="/login"><i class="zmdi zmdi-dot-circle"></i>Sign In</a></li>
+										<li><a href="/checkout"><i class="zmdi zmdi-dot-circle"></i>Check out</a></li>
 									</ul>
 								</div>
 							</div>

@@ -73,6 +73,12 @@ class RegisteredUserController extends Controller
             Mail::to($request->email)->send(new MessageGoogle($mail));
         }
 
+        // pour que l'image upload et resize soit défini comme avatar
+        $avatar = new Avatar();
+        $avatar->src = $input['file'];
+        $avatar->save();
+        $avatarbis = $avatar;
+
         // create user de base de breeze
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -80,12 +86,6 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-
-        // pour que l'image upload et resize soit défini comme avatar
-        $avatar = new Avatar();
-        $avatar->src = $input['file'];
-        $avatar->save();
-        $avatarbis = $avatar;
 
         $user = User::create([
             'name' => $request->name,

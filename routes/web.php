@@ -50,6 +50,7 @@ Route::get('/', function () {
     $diapos = Diapo::where('bool', 0)->inRandomOrder()->limit(2)->get(); #$diapos -> pour prendre les autres images grace au bouléen, au hasard et il en prend 2
     // variable $stars pour l'image star que l'on sélectionne grace à un booléen et que l'on pourra modifier dans le backOffice
     $stars = Product::where('bool', 1)->first();
+    $starlette = Product::all();
     // variable $last pour prendre le dernier product ajouté dans la table
     $last = Product::where('bool', 0)->orderby('created_at', 'desc')->first();
     // variable $products pour prendre les products 270 x 270 -> 5 au hasard
@@ -61,7 +62,7 @@ Route::get('/', function () {
     $infos = Info::all();
     $banners = Banner::all();
     $newsletters = Newsletter::all();
-    return view('welcome', compact('diapos', 'prems', 'stars', 'last', 'products', 'articles', 'comments', 'infos', 'banners', 'newsletters'));
+    return view('welcome', compact('starlette','diapos', 'prems', 'stars', 'last', 'products', 'articles', 'comments', 'infos', 'banners', 'newsletters'));
 });
 
 
@@ -96,7 +97,8 @@ Route::get('/contact', function () {
 // Panier
 Route::get('/cart', function () {
     $infos = Info::all();
-    return view('pages.panier.cart', compact('infos'));
+    $banners = Banner::all();
+    return view('pages.panier.cart', compact('infos', 'banners'));
 });
 
 Route::get('/checkout', function () {
@@ -105,13 +107,14 @@ Route::get('/checkout', function () {
     $countries = Country::all();
     $states = State::all();
     $cities = City::all();
-
-    return view('pages.panier.checkout', compact('infos', 'billing', 'countries', 'states', 'cities'));
+    $banners = Banner::all();
+    return view('pages.panier.checkout', compact('infos', 'billing', 'countries', 'states', 'cities', 'banners'));
 });
 
 Route::get('/order', function () {
     $infos = Info::all();
-    return view('pages.panier.order', compact('infos'));
+    $banners = Banner::all();
+    return view('pages.panier.order', compact('infos', 'banners'));
 });
 
 

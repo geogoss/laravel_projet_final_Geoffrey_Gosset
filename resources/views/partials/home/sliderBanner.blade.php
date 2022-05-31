@@ -17,24 +17,52 @@
        <div class="banner-left floatleft">
            <!-- Slider-banner start -->
            <div class="slider-banner">
-              {{-- {{dd($stars->image[0]->src)}} --}}
-               <a href="/product/{{ $stars->id }} ">
+
+               @if ($stars == null)
+               {{-- {{dd($test[0]->image[0]->src)}} --}}
+               <a href="/product/{{ $starlette[5]->id }} ">
                    <div class="single-banner banner-1">
-                       <a class="banner-thumb" href="/product/{{ $stars->id }} "><img
-                               src="{{ '/thumbnail/images/450x375/' . $stars->image[0]->src }} " alt="" /></a>
+                       <a class="banner-thumb" href="/product/{{ $starlette[5]->id }} ">
+                           <img src="{{ '/thumbnail/images/450x375/' . $starlette[5]->image[0]->src }} " alt="" />
+                       </a>
                        <span class="pro-label new-label">new</span>
-                       <span class="price">{{ $stars->price }} $</span>
+                       <span class="price">{{ $starlette[5]->price }} $</span>
                        <div class="banner-brief">
-                           <h2 class="banner-title"><a href="#">{{ $stars->name }}</a></h2>
-                           <p class="mb-0">{{ $stars->type->name }}</p>
+                           <h2 class="banner-title"><a href="#">{{ $starlette[5]->name }}</a></h2>
+                           <p class="mb-0">{{ $starlette[5]->type->name }}</p>
                        </div>
                        <a href="#" class="button-one font-16px" data-text="Buy now">Buy now</a>
                    </div>
                </a>
+                   
+               @else
+                   <a href="/product/{{ $stars->id }} ">
+                       <div class="single-banner banner-1">
+                           <a class="banner-thumb" href="/product/{{ $stars->id }} ">
+                               <img src="{{ '/thumbnail/images/450x375/' . $stars->image[0]->src }} " alt="" />
+                           </a>
+                           <span class="pro-label new-label">new</span>
+                           <span class="price">{{ $stars->price }} $</span>
+                           <div class="banner-brief">
+                               <h2 class="banner-title"><a href="#">{{ $stars->name }}</a></h2>
+                               <p class="mb-0">{{ $stars->type->name }}</p>
+                           </div>
+                           <a href="#" class="button-one font-16px" data-text="Buy now">Buy now</a>
+                       </div>
+                   </a>
+               @endif
+               {{-- {{dd($last)}}
+               {{dd($stars)}} --}}
                <a href="/product/{{ $last->id }} ">
-                   <div class="single-banner banner-2"> 
-                       <a class="banner-thumb" href="/product/{{ $last->id }}"><img src="{{ '/thumbnail/images/450x375/' . $last->image[0]->src }} "
-                               alt="" /></a>
+                   <div class="single-banner banner-2">
+                       <a class="banner-thumb" href="/product/{{ $last->id }}">
+                           {{-- @if ($last->id == null) --}}
+                               {{-- <img src="{{ '/thumbnail/images/450x375/' . $products[1]->image->src }} " alt="" /> --}}
+                           {{-- @else --}}
+                               <img src="{{ '/thumbnail/images/450x375/' . $last->image[0]->src }}" alt="" />
+                           {{-- @endif --}}
+
+                       </a>
                        <div class="banner-brief">
                            <h2 class="banner-title"><a href="#">New Product 2021</a></h2>
                            <p class="hidden-md hidden-sm d-none d-md-block">Lorem Ipsum is simply dummy text of the
@@ -54,7 +82,8 @@
                    <div id="ensign-nivoslider" class="slides">
                        {{-- {{dd($prems)}} --}}
 
-                       <img src="{{ '/thumbnail/images/1220x800/' . $prems->src }} " alt="" title="#slider-direction-1" />
+                       <img src="{{ '/thumbnail/images/1220x800/' . $prems->src }} " alt=""
+                           title="#slider-direction-1" />
                        @foreach ($diapos as $diapo)
                            {{-- utilisation de $loop->iteration pour le carousel elles passent toutes --}}
                            <img src="{{ '/thumbnail/images/1220x800/' . $diapo->src }} " alt=""

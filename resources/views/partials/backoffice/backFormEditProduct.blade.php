@@ -60,6 +60,16 @@
                 @endforeach
             </select>
 
+            <p class="mb-3">
+                <input type="checkbox" id="newsletter" name="bool" unchecked>
+                <label for="newsletter"><span>Star product</span></label>
+            </p>
+
+            <div class="mb-3">
+                {{-- {{dd($product->image[0]->src)}} --}}
+                <input type="file" name="file" >
+            </div>
+
             <div class="mb-3">
                 <img src="{{asset('uploads/70x83/'. $product->image[0]->src)}} " alt="">
                 <label for="addTreeInputMax" class="form-label">Photo product</label>
@@ -67,10 +77,6 @@
                     aria-describedby="addTreeInputMaxHelp">
             </div>
 
-            <div class="mb-3">
-                {{-- {{dd($product->image)}} --}}
-                <input value="{{$product->image->src class="mb-3" type="file" name="file" >
-            </div>
             <button type="submit" class="btn btn-primary">Ajouter</button>
         </form>
 
