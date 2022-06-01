@@ -17,34 +17,39 @@
                        <div class="single-blog mt-30">
                            <div class="row">
                                <div class="col-xl-6 col-md-7">
-                                   <div class="blog-info">
-                                       <div class="post-meta fix">
-                                           <div class="post-date floatleft"><span
-                                                   class="text-dark-red">{{ $article->created_at->format('d') }} </span></div>
-                                           <div class="post-year floatleft">
-                                               <p class="text-uppercase text-dark-red mb-0">{{ $article->created_at->format('F') }}
-                                                   ,{{ $article->created_at->format('o') }} </p>
-                                               <h4 class="post-title"><a href="#"
-                                                       tabindex="0">{{ $article->title }}
-                                                       {{ $article->created_at->format('o') }}</a></h4>
+                                   <a href="/article/{{ $article->id }} ">
+                                       <div class="blog-info">
+                                           <div class="post-meta fix">
+                                               <div class="post-date floatleft"><span
+                                                       class="text-dark-red">{{ $article->created_at->format('d') }}
+                                                   </span></div>
+                                               <div class="post-year floatleft">
+                                                   <p class="text-uppercase text-dark-red mb-0">
+                                                       {{ $article->created_at->format('F') }}
+                                                       ,{{ $article->created_at->format('o') }} </p>
+                                                   <h4 class="post-title"><a href="#"
+                                                           tabindex="0">{{ $article->title }}
+                                                           {{ $article->created_at->format('o') }}</a></h4>
+                                               </div>
                                            </div>
-                                       </div>
-                                       <div class="like-share fix">
-                                           <a href="#"><i class="zmdi zmdi-favorite"></i><span>89 Like</span></a>
-                                           <a href="#"><i
-                                                   class="zmdi zmdi-comments"></i><span>{{ $article->comment->count() }}
-                                               </span></a>
-                                           <a href="#"><i class="zmdi zmdi-share"></i><span>29 Share</span></a>
-                                       </div>
+                                           <div class="like-share fix">
+                                               <a href="#"><i class="zmdi zmdi-favorite"></i><span>89 Like</span></a>
+                                               <a href="#"><i
+                                                       class="zmdi zmdi-comments"></i><span>{{ $article->comment->count() }}
+                                                   </span></a>
+                                               <a href="#"><i class="zmdi zmdi-share"></i><span>29 Share</span></a>
+                                           </div>
 
 
-                                       <p>{{ Str::limit($article->content, 110, $end = '.......') }}</p>
-                                       <a href="#" class="button-2 text-dark-red">Read more</a>
-                                   </div>
+                                           <p>{{ Str::limit($article->content, 110, $end = '.......') }}</p>
+                                           <a href="#" class="button-2 text-dark-red">Read more</a>
+                                       </div>
+                                   </a>
                                </div>
                                <div class="col-xl-6 col-md-5">
                                    <div class="blog-photo">
-                                       <a href="#"><img src=" {{ '/thumbnail/images/270x230/' . $article->blog->src }} "
+                                       <a href="/article/{{ $article->id }}"><img
+                                               src=" {{ '/thumbnail/images/270x230/' . $article->blog->src }} "
                                                alt="" /></a>
                                    </div>
                                </div>

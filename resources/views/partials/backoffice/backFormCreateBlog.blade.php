@@ -1,5 +1,5 @@
 <section class="w-50 mx-auto mb-5">
-    <h1 class="text-center my-5"><a class="text-decoration-none text-dark  " href="/backBlock">Voir tous les articles
+    <h1 class="text-center my-5"><a class="text-decoration-none text-dark  " href="/backBlog">Voir tous les articles
             👉</a></h1>
     <div class="bg-success py-5">
         <h1 class="text-center text-white">Créer un Article</h1>
@@ -17,7 +17,7 @@
             </div>
 
             <label for="addTreeInputUrl" class="form-label">Catégorie</label>
-            <select name="type_id" class="custom-select mb-15">
+            <select name="categorie_id" class="custom-select mb-15">
                 @foreach ($categories as $categorie)
                     <option value="{{ $categorie->id }}">{{ $categorie->name }} </option>
                 @endforeach

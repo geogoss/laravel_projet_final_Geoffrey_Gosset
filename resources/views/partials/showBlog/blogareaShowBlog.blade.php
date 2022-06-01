@@ -18,7 +18,7 @@
                                            comments</span></a>
                                </div>
                                <div class="post-date post-date-2">
-                                   <span class="text-dark-red">{{ $article->created_at->format('m') }}</span>
+                                   <span class="text-dark-red">{{ $article->created_at->format('d') }}</span>
                                    <span class="text-dark-red text-uppercase">{{ $article->created_at->format('F') }}</span>
                                </div>
                            </div>
@@ -62,7 +62,7 @@
                                                            <div class="floatleft mbl-center">
                                                                <h5 class="text-uppercase mb-0">
                                                                    <strong>{{ $item->author }}</strong></h5>
-                                                               <p class="reply-date">{{ $article->created_at->format('m') }}
+                                                               <p class="reply-date">{{ $article->created_at->format('d') }}
                                                                    {{ $article->created_at->format('F') }}, {{ $article->created_at->format('o') }} at
                                                                    {{ $article->created_at->format('H') }} {{ $article->created_at->format('a') }}</p>
                                                            </div>

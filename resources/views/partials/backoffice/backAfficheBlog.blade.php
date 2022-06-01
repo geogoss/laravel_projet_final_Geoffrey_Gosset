@@ -33,14 +33,14 @@
               <td> {{$item->comment->count()}}</td>
               <td>
                 <div class="d-flex justify-content-center text-center mx-3 mb-5">
-                  <form action="/product/{{ $item->id }}" method="POST">
+                  <form action="/article/{{ $item->id }}" method="POST">
                       @csrf
                       @method('DELETE')
                       <button type="submit" class="btn btn-danger mx-2">Supprimer</button>
                   </form>
                   <button class="btn btn-primary">
                       @csrf
-                      <a class="text-decoration-none text-white" href="/product/{{ $item->id }}/edit ">Modifier</a>
+                      <a class="text-decoration-none text-white" href="/article/{{ $item->id }}/edit ">Modifier</a>
                   </button>
           
               </div>

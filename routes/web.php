@@ -156,7 +156,7 @@ Route::get('/backProduct', function () {
 });
 Route::get('/backBlog', function () {
     $infos = Info::all();
-    $articles = Article::all();
+    $articles = Article::orderBy('id', 'desc')->get();
     return view('pages.backoffice.blog.backBlog', compact('infos', 'articles'));
 });
 Route::get('/backAbout', function () {
