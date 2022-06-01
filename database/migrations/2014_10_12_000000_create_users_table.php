@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('company')->nullable();
             $table->string('address')->nullable();
             $table->foreignId('avatar_id')->nullable()->constrained();
-            $table->foreignId('role_id')->nullable()->constrained();
+            $table->foreignId('role_id')->default(2)->constrained();
             $table->foreignId('billing_id')->nullable()->constrained();
             $table->foreignId('country_id')->nullable()->constrained();
             $table->foreignId('state_id')->nullable()->constrained();

@@ -8,6 +8,7 @@ use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ResizeController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\TypeController;
 use App\Http\Controllers\UserController;
 use App\Models\Article;
 use App\Models\Banner;
@@ -24,6 +25,7 @@ use App\Models\Product;
 use App\Models\Size;
 use App\Models\State;
 use App\Models\Type;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -122,7 +124,8 @@ Route::get('/order', function () {
 Route::get('/dashboard', function () {
     $infos = Info::all();
     $banners = Banner::all();
-    return view('dashboard', compact('infos', 'banners'));
+    $users = User::all();
+    return view('dashboard', compact('infos', 'banners', 'users'));
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
@@ -130,7 +133,7 @@ require __DIR__.'/auth.php';
 
 // Controller particulier
 Route::resource('/avatar', AvatarController::class);
-
+Route::resource('/type', TypeController::class);
 // Controller image resize ======================================================================
 Route::post('/resize-file', [ResizeController::class, 'resizeImage'])->name('resizeImage');
 
@@ -153,7 +156,8 @@ Route::get('/backProduct', function () {
 });
 Route::get('/backBlog', function () {
     $infos = Info::all();
-    return view('pages.backoffice.backBlog', compact('infos'));
+    $articles = Article::all();
+    return view('pages.backoffice.blog.backBlog', compact('infos', 'articles'));
 });
 Route::get('/backAbout', function () {
     $infos = Info::all();

@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Type;
 use App\Http\Requests\StoreTypeRequest;
 use App\Http\Requests\UpdateTypeRequest;
+use App\Models\Banner;
+use App\Models\Info;
+use App\Models\Product;
+use App\Models\Size;
 
 class TypeController extends Controller
 {
@@ -47,7 +51,15 @@ class TypeController extends Controller
      */
     public function show(Type $type)
     {
-        //
+        $infos = Info::all();
+        $banners = Banner::all();
+        $types = Type::all();
+        $sizes = Size::all();
+        $products = Product::paginate(5);
+        $produits = Product::paginate(6);
+        $banners = Banner::all();
+
+        return view('pages.showTypeProduct', compact('type', 'produits', 'products', 'infos', 'banners', 'types', 'sizes', 'banners'));
     }
 
     /**

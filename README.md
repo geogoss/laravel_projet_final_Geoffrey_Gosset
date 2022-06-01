@@ -1,3 +1,6 @@
+lien Notion :
+https://www.notion.so/e801ac0cd7e346c89152f8e84bd2ae9c?v=de4560729e354178b74b921e64d31d40
+
 # Intro
 
 - [ ]  Dans la template, juste ajouter les photos, comme ça on a le bon format

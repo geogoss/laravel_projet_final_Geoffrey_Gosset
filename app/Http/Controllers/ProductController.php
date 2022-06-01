@@ -132,9 +132,6 @@ class ProductController extends Controller
         $product->save();
         $productbis = $product;
 
-        $request->validate([
-            'src' => ['required'],
-        ]);
 
         // création de l'image du product
         $image = new Image();
@@ -143,13 +140,15 @@ class ProductController extends Controller
         $image->save();
 
         // envoi du mail à tous ceux inscrit à la newsletter
-        $newsletter = Newsletter::all();
+        $newsletters = Newsletter::all();
         $mail = [
             'message' => 'Un nouveau Product vient de sortir, soyez le premier ou la première à le voir',
         ];
 
 		#3. Envoi du mail
-		Mail::to($newsletter)->send(new MessageGoogle($mail));
+        foreach ($newsletters as $newsletter) {
+            Mail::to($newsletter->email)->send(new MessageGoogle($mail));
+        }
 
         return redirect()->back();
     }

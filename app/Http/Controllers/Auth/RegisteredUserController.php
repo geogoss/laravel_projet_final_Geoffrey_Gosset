@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Mail\MessageGoogle;
 use App\Models\Avatar;
 use App\Models\Billing;
+use App\Models\Mailbox;
 use App\Models\Newsletter;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -46,9 +47,9 @@ class RegisteredUserController extends Controller
         $image = $request->file('file');
         $input['file'] = time().'.'.$image->getClientOriginalExtension();
         
-        $destinationPath = public_path('/thumbnail');
+        $destinationPath = public_path('/thumbnail/images/90x100');
         $imgFile = Truc::make($image->getRealPath());
-        $imgFile->resize(150, 150, function ($constraint) {
+        $imgFile->resize(90, 100, function ($constraint) {
 		    $constraint->aspectRatio();
 		})->save($destinationPath.'/'.$input['file']);
         $destinationPath = public_path('/uploads');
@@ -94,14 +95,13 @@ class RegisteredUserController extends Controller
             'avatar_id' => $avatarbis->id,
             'billing_id' => $bill_id->id,
         ]);
-
-
         
-
         event(new Registered($user));
 
         Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);
     }
+
+
 }

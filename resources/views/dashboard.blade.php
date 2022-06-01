@@ -25,5 +25,8 @@
     <div class="w-100 bg-success mx-auto">
 
         @include('partials.backoffice.cardDashboard')
+        @include('partials.backoffice.backAfficheUser')
+
+
     </div>
 @endsection

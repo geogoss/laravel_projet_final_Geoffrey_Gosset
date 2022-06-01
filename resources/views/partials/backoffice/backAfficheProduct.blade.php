@@ -15,6 +15,7 @@
               <th scope="col">size</th>
               <th scope="col">user</th>
               <th scope="col">Star/Classic</th>
+              <th scope="col">Notes</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -23,7 +24,7 @@
             <tr>
               <th scope="row">{{$item->id}} </th>
               <td>
-                {{-- {{dd($item->image[0]->src)}} --}}
+                {{-- {{dd($item->image)}} --}}
                   <img style="width: 50px; height: 50px;" src="{{asset('/thumbnail/images/270x270/'. $item->image[0]->src)}}" alt=""> </td>
                 
                 {{-- <img src="{{asset('/thumbnail/images/70x83/details1.jpg')}}" alt=""> </td> --}}
@@ -37,6 +38,7 @@
               <td>{{$item->user->name}} </td>
               {{-- {{dd($item->bool)}} --}}
               <td class="{{$item->bool == 1 ? 'table-dark ' : 'table-warning '}} ">{{$item->bool == 1 ? 'Star Product' : 'Classic Product'}} </td>
+              <td> {{$item->note->count()}}</td>
               <td>
                 <div class="d-flex justify-content-center text-center mx-3 mb-5">
                   <form action="/product/{{ $item->id }}" method="POST">

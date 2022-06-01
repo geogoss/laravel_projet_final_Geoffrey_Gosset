@@ -6,6 +6,7 @@ use App\Models\Article;
 use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
 use App\Models\Banner;
+use App\Models\Categorie;
 use App\Models\Comment;
 use App\Models\Info;
 
@@ -28,7 +29,9 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        $infos = Info::all();
+        $categories = Categorie::all();
+        return view('pages.backoffice.blog.backCreateBlog', compact('infos', 'categories'));
     }
 
     /**
@@ -39,7 +42,7 @@ class ArticleController extends Controller
      */
     public function store(StoreArticleRequest $request)
     {
-        //
+        
     }
 
     /**
