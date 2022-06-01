@@ -28,7 +28,8 @@ class CommentFactory extends Factory
             'email' => $faker->freeEmail(),
             'content' => $faker->realText($maxNBChars = 250),
             'article_id' => $faker->numberBetween($min=1, $max=11),
-            'foto_id' => $faker->numberBetween($min = 1, $max = 38)
+            'foto_id' => $faker->numberBetween($min = 1, $max = 38),
+            'user_id' => $faker->numberBetween($min = 1, $max = 2)
         ];
     }
 }

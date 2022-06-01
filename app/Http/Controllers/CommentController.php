@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use App\Http\Requests\StoreCommentRequest;
 use App\Http\Requests\UpdateCommentRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\URL;
 
 class CommentController extends Controller
 {
@@ -36,7 +38,14 @@ class CommentController extends Controller
      */
     public function store(StoreCommentRequest $request)
     {
-        //
+        $comment = new Comment();
+        $comment->author = $request->author;
+        $comment->email = $request->email;
+        $comment->content = $request->content;
+        $comment->article_id = substr(URL::previous(),-1);
+        $comment->user_id = Auth::user()->id;
+        $comment->save();
+        return redirect()->back(); 
     }
 
     /**

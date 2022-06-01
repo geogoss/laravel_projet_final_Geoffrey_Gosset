@@ -45,6 +45,10 @@ class User extends Authenticatable
         return $this->belongsTo(City::class);
     }
 
+    public function comment () {
+        return $this->hasMany(Comment::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *

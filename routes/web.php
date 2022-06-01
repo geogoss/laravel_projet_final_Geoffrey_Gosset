@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AvatarController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\ProductController;
@@ -134,6 +135,9 @@ require __DIR__.'/auth.php';
 // Controller particulier
 Route::resource('/avatar', AvatarController::class);
 Route::resource('/type', TypeController::class);
+Route::resource('/comment', CommentController::class);
+
+
 // Controller image resize ======================================================================
 Route::post('/resize-file', [ResizeController::class, 'resizeImage'])->name('resizeImage');
 
