@@ -7,6 +7,7 @@ use App\Http\Requests\StoreTeamRequest;
 use App\Http\Requests\UpdateTeamRequest;
 use App\Models\Banner;
 use App\Models\Info;
+use Truc;
 
 class TeamController extends Controller
 {
@@ -68,7 +69,8 @@ class TeamController extends Controller
      */
     public function edit(Team $team)
     {
-        //
+        $infos = Info::all();
+        return view('pages.backoffice.aboutus.backEditTeam', compact('team', 'infos')  );
     }
 
     /**
@@ -80,7 +82,45 @@ class TeamController extends Controller
      */
     public function update(UpdateTeamRequest $request, Team $team)
     {
-        //
+
+        if ($request->file) {
+            $image = $request->file('file');
+            $input['file'] = time() . '.' . $image->getClientOriginalExtension();
+            // format 270x270
+            $destinationPath = public_path('/thumbnail/images/120x120');
+            $imgFile = Truc::make($image->getRealPath());
+            $imgFile->resize(120, 120, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save($destinationPath . '/' . $input['file']);
+            $destinationPath = public_path('/uploads');
+            $image->move($destinationPath, $input['file']);
+
+
+
+            $team->src = $input['file'];
+            
+        }
+
+
+        $team->name = $request->name;
+        $team->firstname = $request->firstname;
+        $team->age = $request->age;
+        $team->content = $request->content;
+        $team->fonction = $request->fonction;
+        $oldBoss = Team::where('fonction', 'like', 'The Big Boss')->first();
+        if ($request->fonction == 'The Big Boss') {
+           if ($oldBoss != null) {
+               $oldBoss->fonction = 'Employe';
+               $oldBoss->save();  
+           }
+            $team->fonction = $request->fonction;
+        }else{
+            $team->fonction = $request->fonction;
+
+        }
+        $team->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -91,6 +131,7 @@ class TeamController extends Controller
      */
     public function destroy(Team $team)
     {
-        //
+        $team->delete();
+        return redirect()->back();
     }
 }

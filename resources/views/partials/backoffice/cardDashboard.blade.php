@@ -49,7 +49,7 @@
         </a>
     </div>
     <div class="col">
-        <a href="/backContact">
+        <a href="/backAbout">
             <div class="card w-50">
                 <img src="{{ asset('/thumbnail/images/backoffice/contact.jpg') }}" class="card-img-top" alt="...">
                 <div class="card-body">

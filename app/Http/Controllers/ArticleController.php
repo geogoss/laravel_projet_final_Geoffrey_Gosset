@@ -10,6 +10,7 @@ use App\Models\Blog;
 use App\Models\Categorie;
 use App\Models\Comment;
 use App\Models\Info;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Truc;
 
@@ -95,6 +96,8 @@ class ArticleController extends Controller
         $infos = Info::all();
         $banners = Banner::all();
         $comments = Comment::orderBy('id', 'desc')->limit(5)->get();
+        // $art = rsort($article->comment);
+        // $comments = rsort($article->comment)::limit(5)->get();
         return view('pages.showBlog', compact('article', 'infos', 'banners', 'comments'));
     }
 

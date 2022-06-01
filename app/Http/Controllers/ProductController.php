@@ -224,12 +224,12 @@ class ProductController extends Controller
             $image = $request->file('file');
             $input['file'] = time() . '.' . $image->getClientOriginalExtension();
             // format 270x270
-            $destinationPath = public_path('/thumbnail');
+            $destinationPath = public_path('/thumbnail/images/270/270');
             $imgFile = Truc::make($image->getRealPath());
             $imgFile->resize(270, 270, function ($constraint) {
                 $constraint->aspectRatio();
             })->save($destinationPath . '/' . $input['file']);
-            $destinationPath = public_path('/uploads/70x83');
+            $destinationPath = public_path('/uploads');
             $image->move($destinationPath, $input['file']);
 
 

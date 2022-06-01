@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Note;
 use App\Http\Requests\StoreNoteRequest;
 use App\Http\Requests\UpdateNoteRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\URL;
 
 class NoteController extends Controller
 {
@@ -36,7 +38,17 @@ class NoteController extends Controller
      */
     public function store(StoreNoteRequest $request)
     {
-        //
+        $note = new Note();
+        $note->author = $request->author;
+        $note->subject = $request->subject;
+        $note->content = $request->content;
+        $note->product_id = substr(URL::previous(),-1);
+        $note->user_id = Auth::user()->id;
+        $note->save();
+        return redirect()->back(); 
+
+
+
     }
 
     /**

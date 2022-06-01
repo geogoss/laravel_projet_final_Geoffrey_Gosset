@@ -105,10 +105,11 @@
                                        <h3 class="tab-title title-border mb-30">Customer review</h3>
                                        <ul class="product-comments clearfix">
                                            
-                                           @foreach ($notes as $item)
+                                           @foreach ($product->note as $item)
+                                           
                                                <li class="{{$loop->iteration == 1 ? 'mb-30' : 'threaded-comments' }} ">
                                                    <div class="pro-reviewer">
-                                                       <img src="{{ asset('/thumbnail/images/personnes/'.$item->foto->src) }} " alt="" />
+                                                       <img src="{{ asset('/thumbnail/images/90x100/'.$item->user->avatar->src) }} " alt="" />
                                                    </div>
                                                    <div class="pro-reviewer-comment">
                                                        <div class="fix">
@@ -133,18 +134,19 @@
                                        <h3 class="tab-title title-border mb-30">Leave your review</h3>
 
                                        <div class="reply-box">
-                                           <form action="#">
-                                               <div class="row">
+                                        <form class="w-75 mx-auto text-white" action="/note" method="POST">
+                                            @csrf
+                                            <div class="row">
                                                    <div class="col-md-6">
-                                                       <input type="text" placeholder="Your name here..." name="name" />
+                                                       <input type="text" placeholder="Your name here..." name="author" />
                                                    </div>
                                                    <div class="col-md-6">
-                                                       <input type="text" placeholder="Subject..." name="name" />
+                                                       <input type="text" placeholder="Subject..." name="subject" />
                                                    </div>
                                                </div>
                                                <div class="row">
                                                    <div class="col-md-12">
-                                                       <textarea class="custom-textarea" name="message" placeholder="Your review here..."></textarea>
+                                                       <textarea class="custom-textarea" name="content" placeholder="Your review here..."></textarea>
                                                        <button type="submit" data-text="submit review"
                                                            class="button-one submit-button mt-20">submit review</button>
                                                    </div>

@@ -28,7 +28,8 @@ class NoteFactory extends Factory
             'subject' => $faker->realText($maxNBChars = 15),
             'content' => $faker->realText($maxNBChars = 200),
             'product_id' => $faker->numberBetween($min = 1, $max = 7),
-            'foto_id' => $faker->numberBetween($min = 1, $max = 38)
+            'foto_id' => $faker->numberBetween($min = 1, $max = 38),
+            'user_id' => $faker->numberBetween($min = 1, $max = 2)
         ];
     }
 }

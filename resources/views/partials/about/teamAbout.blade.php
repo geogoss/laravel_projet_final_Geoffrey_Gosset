@@ -14,6 +14,8 @@
               <div class="row">
                           <div class="col-lg-3 col-md-6">
                               <div class="single-member text-center bg-white mt-25">
+                                  {{-- {{dd($chiefs)}} --}}
+                                  @if ($chiefs != null)
                                   <img src="{{ asset('/thumbnail/images/120x120/' . $chiefs->src) }} " alt="" />
                                   <h3 class="text-uppercase mt-20">{{ $chiefs->firstname }} {{ $chiefs->name }}</h3>
                                   <h4 class="text-uppercase text-gray">{{ $chiefs->fonction }}</h4>
@@ -27,6 +29,23 @@
                                           <li><a href="#"><i class="zmdi zmdi-pinterest"></i></a></li>
                                       </ul>
                                   </div>
+                                  
+                                  @else
+                                  <img src="{{ asset('/thumbnail/images/120x120/' . $teams[0]->src) }} " alt="" />
+                                  <h3 class="text-uppercase mt-20">{{ $teams[0]->firstname }} {{ $teams[0]->name }}</h3>
+                                  <h4 class="text-uppercase text-gray">{{ $teams[0]->fonction }}</h4>
+                                  <p class="text-gray">{{ $teams[0]->content }}</p>
+                                  <div class="team-social">
+                                      <ul>
+                                          <li><a href="#"><i class="zmdi zmdi-twitter"></i></a></li>
+                                          <li><a href="#"><i class="zmdi zmdi-rss"></i></a></li>
+                                          <li><a href="#"><i class="zmdi zmdi-facebook"></i></a></li>
+                                          <li><a href="#"><i class="zmdi zmdi-linkedin"></i></a></li>
+                                          <li><a href="#"><i class="zmdi zmdi-pinterest"></i></a></li>
+                                      </ul>
+                                  </div>
+                                      
+                                  @endif
                               </div>
                           </div>
                   @foreach ($teams as $team)

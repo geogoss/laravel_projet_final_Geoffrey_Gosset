@@ -10,10 +10,7 @@
           <a class="text-dark" class="nav-link" href="/backBlog">Back Blog</a>
         </li>
         <li class="nav-item">
-          <a class="text-dark" class="nav-link" href="/backAbout">Back About Us</a>
-        </li>
-        <li class="nav-item">
-          <a class="text-dark" class="nav-link" href="/backContact">Back Contact</a>
+          <a class="text-dark" class="nav-link" href="/backAbout">Back About Us et Contact</a>
         </li>
         <li class="nav-item">
           <a class="text-dark" class="nav-link" href="/backPanier">Back Panier</a>

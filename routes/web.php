@@ -4,8 +4,10 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AvatarController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\InfoController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\NoteController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ResizeController;
 use App\Http\Controllers\TeamController;
@@ -25,6 +27,7 @@ use App\Models\Newsletter;
 use App\Models\Product;
 use App\Models\Size;
 use App\Models\State;
+use App\Models\Team;
 use App\Models\Type;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -136,6 +139,8 @@ require __DIR__.'/auth.php';
 Route::resource('/avatar', AvatarController::class);
 Route::resource('/type', TypeController::class);
 Route::resource('/comment', CommentController::class);
+Route::resource('/note', NoteController::class);
+Route::resource('/info', InfoController::class);
 
 
 // Controller image resize ======================================================================
@@ -166,7 +171,8 @@ Route::get('/backBlog', function () {
 Route::get('/backAbout', function () {
     $infos = Info::all();
     $banners = Banner::all();
-    return view('pages.backoffice.backAbout', compact('infos', 'banners'));
+    $teams = Team::all();
+    return view('pages.backoffice.aboutus.backAbout', compact('infos', 'banners', 'teams'));
 });
 Route::get('/backContact', function () {
     $infos = Info::all();

@@ -15,17 +15,18 @@ return new class extends Migration
     {
         Schema::create('notes', function (Blueprint $table) {
             $table->id();
-            $table->string('year');
-            $table->string('month');
-            $table->string('dayMonth');
-            $table->string('dayWeek');
-            $table->string('hour');
-            $table->string('pm');
-            $table->string('author');
-            $table->string('subject');
-            $table->longText('content');
+            $table->string('year')->nullable();
+            $table->string('month')->nullable();
+            $table->string('dayMonth')->nullable();
+            $table->string('dayWeek')->nullable();
+            $table->string('hour')->nullable();
+            $table->string('pm')->nullable();
+            $table->string('author')->nullable();
+            $table->string('subject')->nullable();
+            $table->longText('content')->nullable();
             $table->foreignId('product_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('foto_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
             $table->timestamps();
         });
     }

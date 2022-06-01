@@ -51,8 +51,8 @@
                                        <h3 class="tab-title title-border mb-30">Customer comments</h3>
                                        <ul class="product-comments clearfix">
 
-                                           @foreach ($comments as $item)
-                                               <li
+                                           @foreach ($article->comment as $item)
+                                           <li
                                                    class=" {{ $loop->iteration == 1 ? 'mb-30 w-100' : 'threaded-comments w-100 mb-3' }}">
                                                    <div class="pro-reviewer">
                                                        {{-- {{dd($item->user)}} --}}

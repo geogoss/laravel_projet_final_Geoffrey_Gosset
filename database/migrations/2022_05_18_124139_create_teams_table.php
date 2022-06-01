@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('teams', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('firstname');
-            $table->integer('age');
-            $table->string('fonction');
-            $table->string('content');
-            $table->string('src');
+            $table->string('name')->nullable();
+            $table->string('firstname')->nullable();
+            $table->integer('age')->nullable();
+            $table->string('fonction')->nullable();
+            $table->string('content')->nullable();
+            $table->string('src')->nullable();
             $table->foreignId('foto_id')->nullable()->constrained();
             $table->timestamps();
         });
