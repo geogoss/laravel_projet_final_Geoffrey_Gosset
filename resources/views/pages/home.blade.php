@@ -2,7 +2,7 @@
 @section('content')
     @include('layouts.flash')
     @include('partials.home.mobileHeader')
-    @include('partials.home.headerHome')
+    @include('partials.shop.headerShop')
     @include('partials.home.mobileMenuHome')
     @include('partials.home.sliderBanner')
     @include('partials.home.sidebarHome')

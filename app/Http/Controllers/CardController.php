@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Card;
 use App\Http\Requests\StoreCardRequest;
 use App\Http\Requests\UpdateCardRequest;
+use App\Models\CardProduct;
+use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 
 class CardController extends Controller
 {
@@ -36,7 +39,26 @@ class CardController extends Controller
      */
     public function store(StoreCardRequest $request)
     {
-        //
+        if (Auth::check()) {
+        $prod = CardProduct::where('card_id', Auth::user()->card->id)->where('product_id', $request->productId)->first();
+            if ($prod == null) {
+        
+                $pivot = new CardProduct();
+                $pivot->amount = $request->qtybutton;
+                $pivot->card_id = Auth::user()->card->id;
+                $pivot->product_id = $request->productId;
+                $pivot->save();
+            }else {
+                
+                $amount = $request->qtybutton;
+                $prod->amount += $amount;
+                $prod->save();
+            }
+
+
+        }
+
+        return redirect()->back();
     }
 
     /**

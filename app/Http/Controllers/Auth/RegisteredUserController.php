@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Mail\MessageGoogle;
 use App\Models\Avatar;
 use App\Models\Billing;
+use App\Models\Card;
 use App\Models\Mailbox;
 use App\Models\Newsletter;
 use App\Models\User;
@@ -96,6 +97,13 @@ class RegisteredUserController extends Controller
             'billing_id' => $bill_id->id,
         ]);
         
+        $userbis = $user;
+
+        $card = new Card();
+        $card->user_id = $userbis->id;
+        $card->save();
+
+
         event(new Registered($user));
 
         Auth::login($user);

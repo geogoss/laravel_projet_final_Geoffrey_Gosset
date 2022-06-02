@@ -29,84 +29,36 @@
 															</tr>
 														</thead>
 														<tbody>
+															@foreach ($cards as $item)
+																
 															<tr>
 																<td class="product-thumbnail  text-left">
 																	<!-- Single-product start -->
 																	<div class="single-product">
 																		<div class="product-img">
-																			<a href="single-product.html"><img src="{{asset('img/product/2.jpg')}} " alt="" /></a>
+																			<a href="single-product.html"><img src="{{asset('thumbnail/images/270x270/'.$item->product->image[0]->src)}} " alt="" /></a>
 																		</div>
 																		<div class="product-info">
-																			<h4 class="post-title"><a class="text-light-black" href="#">dummy product name</a></h4>
+																			<h4 class="post-title"><a class="text-light-black" href="#">{{$item->product->name}}</a></h4>
 																			<p class="mb-0">Color :  Black</p>
-																			<p class="mb-0">Size :     SL</p>
+																			<p class="mb-0">Size :     {{$item->product->size->name}}</p>
 																		</div>
 																	</div>
 																	<!-- Single-product end -->												
 																</td>
-																<td class="product-price">$56.00</td>
+																<td class="product-price">$ {{$item->product->price}}</td>
 																<td class="product-quantity">
 																	<div class="cart-plus-minus">
 																		<input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
 																	</div>
+																	<div>update</div>
 																</td>
-																<td class="product-subtotal">$112.00</td>
+																<td class="product-subtotal">${{$sum}} </td>
 																<td class="product-remove">
 																	<a href="#"><i class="zmdi zmdi-close"></i></a>
 																</td>
 															</tr>
-															<tr>
-																<td class="product-thumbnail  text-left">
-																	<!-- Single-product start -->
-																	<div class="single-product">
-																		<div class="product-img">
-																			<a href="single-product.html"><img src="{{asset('img/product/12.jpg')}} " alt="" /></a>
-																		</div>
-																		<div class="product-info">
-																			<h4 class="post-title"><a class="text-light-black" href="#">dummy product name</a></h4>
-																			<p class="mb-0">Color :  Black</p>
-																			<p class="mb-0">Size :     SL</p>
-																		</div>
-																	</div>
-																	<!-- Single-product end -->												
-																</td>
-																<td class="product-price">$56.00</td>
-																<td class="product-quantity">
-																	<div class="cart-plus-minus">
-																		<input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
-																	</div>
-																</td>
-																<td class="product-subtotal">$112.00</td>
-																<td class="product-remove">
-																	<a href="#"><i class="zmdi zmdi-close"></i></a>
-																</td>
-															</tr>
-															<tr>
-																<td class="product-thumbnail  text-left">
-																	<!-- Single-product start -->
-																	<div class="single-product">
-																		<div class="product-img">
-																			<a href="single-product.html"><img src="{{asset('img/product/6.jpg')}} " alt="" /></a>
-																		</div>
-																		<div class="product-info">
-																			<h4 class="post-title"><a class="text-light-black" href="#">dummy product name</a></h4>
-																			<p class="mb-0">Color :  Black</p>
-																			<p class="mb-0">Size :     SL</p>
-																		</div>
-																	</div>
-																	<!-- Single-product end -->												
-																</td>
-																<td class="product-price">$56.00</td>
-																<td class="product-quantity">
-																	<div class="cart-plus-minus">
-																		<input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
-																	</div>
-																</td>
-																<td class="product-subtotal">$112.00</td>
-																<td class="product-remove">
-																	<a href="#"><i class="zmdi zmdi-close"></i></a>
-																</td>
-															</tr>
+															@endforeach
 														</tbody>
 													</table>
 												</div>

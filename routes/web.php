@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AvatarController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CardController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\MailboxController;
@@ -17,6 +18,8 @@ use App\Http\Controllers\UserController;
 use App\Models\Article;
 use App\Models\Banner;
 use App\Models\Billing;
+use App\Models\Card;
+use App\Models\CardProduct;
 use App\Models\City;
 use App\Models\Comment;
 use App\Models\Country;
@@ -33,6 +36,7 @@ use App\Models\Team;
 use App\Models\Type;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -70,7 +74,9 @@ Route::get('/', function () {
     $infos = Info::all();
     $banners = Banner::all();
     $newsletters = Newsletter::all();
-    return view('welcome', compact('starlette','diapos', 'prems', 'stars', 'last', 'products', 'articles', 'comments', 'infos', 'banners', 'newsletters'));
+    $cards = CardProduct::where('card_id', Auth::user()->card->id)->get();
+
+    return view('welcome', compact('cards', 'starlette','diapos', 'prems', 'stars', 'last', 'products', 'articles', 'comments', 'infos', 'banners', 'newsletters'));
 });
 
 
@@ -106,7 +112,19 @@ Route::get('/contact', function () {
 Route::get('/cart', function () {
     $infos = Info::all();
     $banners = Banner::all();
-    return view('pages.panier.cart', compact('infos', 'banners'));
+    $cards = CardProduct::where('card_id', Auth::user()->card->id)->get();
+    $card = Card::all();
+    $sum = 0;
+    $quantity = 1;
+
+        foreach ($cards as $item) {
+            if ($item->user_id == Auth::user()->id) {
+                $sum += ($item->product->price * $item->cardproduct->amount);
+            }
+        }
+
+
+    return view('pages.panier.cart', compact('infos', 'banners', 'cards', 'sum'));
 });
 
 Route::get('/checkout', function () {
@@ -144,6 +162,7 @@ Route::resource('/comment', CommentController::class);
 Route::resource('/note', NoteController::class);
 Route::resource('/info', InfoController::class);
 Route::resource('/mailbox', MailboxController::class);
+Route::resource('card', CardController::class);
 
 
 // Controller image resize ======================================================================

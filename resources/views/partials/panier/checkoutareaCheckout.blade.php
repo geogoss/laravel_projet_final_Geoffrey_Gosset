@@ -24,17 +24,17 @@
                                                    </h4>
                                                    @if (Auth::check() && Auth::user()->billing != null)
                                                        <input type="text"
-                                                           placeholder="{{ Auth::user()->billing->name }}">
+                                                           value="{{ Auth::user()->billing->name }}">
                                                        <input type="text"
-                                                           placeholder="{{ Auth::user()->billing->email }}">
+                                                           value="{{ Auth::user()->billing->email }}">
                                                        <input type="text"
-                                                           placeholder="{{ Auth::user()->billing->phone }}">
+                                                           value="{{ Auth::user()->billing->phone }}">
                                                        <input type="text"
-                                                           placeholder="{{ Auth::user()->billing->company }}">
+                                                           value="{{ Auth::user()->billing->company }}">
                                                        <select class="custom-select mb-15">
                                                            @foreach ($countries as $country)
                                                                <option
-                                                                   {{ Auth::user()->billing->country->name == $country->name ? 'selected' : '' }}
+                                                                   {{Auth::user()->billing->country != null && Auth::user()->billing->country->name == $country->name ? 'selected' : '' }}
                                                                    value="{{ $country->id }} ">{{ $country->name }}
                                                                </option>
                                                            @endforeach
@@ -42,7 +42,7 @@
                                                        <select class="custom-select mb-15">
                                                            @foreach ($states as $state)
                                                                <option
-                                                                   {{ Auth::user()->billing->state_id == $state->id ? 'selected' : '' }}
+                                                                   {{Auth::user()->billing->state != null && Auth::user()->billing->state_id == $state->id ? 'selected' : '' }}
                                                                    value="{{ $state->id }} ">{{ $state->name }}
                                                                </option>
                                                            @endforeach
@@ -50,7 +50,7 @@
                                                        <select class="custom-select mb-15">
                                                            @foreach ($cities as $city)
                                                                <option
-                                                                   {{ Auth::user()->billing->city_id == $city->id ? 'selected' : '' }}
+                                                                   {{Auth::user()->billing->city != null && Auth::user()->billing->city_id == $city->id ? 'selected' : '' }}
                                                                    value="{{ $city->id }} ">{{ $city->name }}
                                                                </option>
                                                            @endforeach

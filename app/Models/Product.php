@@ -33,6 +33,9 @@ class Product extends Model
             return $this->belongsToMany(Card::class);
         }
     
-
+        public function cardproduct () {
+            return $this->hasMany(CardProduct::class);
+        }
+    
 
 }

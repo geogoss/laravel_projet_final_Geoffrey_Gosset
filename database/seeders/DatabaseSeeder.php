@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             TypeSeeder::class,
             SizeSeeder::class,
+            CardSeeder::class,
             CategorieSeeder::class,
             MailboxSeeder::class,
             ProductSeeder::class,

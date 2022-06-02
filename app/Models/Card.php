@@ -13,4 +13,12 @@ class Card extends Model
         return $this->belongsToMany(Product::class);
     }
 
+    public function cardproduct () {
+        return $this->belongsToMany(CardProduct::class);
+    }
+
+    public function user () {
+        return $this->belongsTo(User::class);
+    }
+
 }

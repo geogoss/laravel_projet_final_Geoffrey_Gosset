@@ -21,7 +21,7 @@
                             <div id="cat-treeview" class="widget-info product-cat boxscrol2">
                                 <ul>
                                     @foreach ($types as $type)
-                                        <li><a href="/type/{{$type->id}}">{{ $type->name }}</a></li>
+                                        <li><a href="/type/{{ $type->id }}">{{ $type->name }}</a></li>
                                     @endforeach
 
                                 </ul>
@@ -166,19 +166,28 @@
                                                                 <p>{{ $product->content }} </p>
                                                             </div>
                                                             <div class="clearfix">
-                                                                <div class="cart-plus-minus">
-                                                                    <input type="text" value="02" name="qtybutton"
-                                                                        class="cart-plus-minus-box">
-                                                                </div>
-                                                                <div class="product-action clearfix">
-                                                                    <a href="#" data-bs-toggle="modal"
-                                                                        data-bs-target="#productModal{{ $product->id }}"
-                                                                        title="Quick View"><i
-                                                                            class="zmdi zmdi-zoom-in"></i></a>
-                                                                    <a href="cart.html" data-bs-toggle="tooltip"
-                                                                        data-placement="top" title="Add To Cart"><i
-                                                                            class="zmdi zmdi-shopping-cart-plus"></i></a>
-                                                                </div>
+                                                                <form class="w-75 mx-auto text-white" action="/card"
+                                                                    method="POST">
+                                                                    @csrf
+                                            
+
+                                                                    <div class="cart-plus-minus">
+                                                                        <input type="text" value="02" name="qtybutton"
+                                                                            class="cart-plus-minus-box">
+                                                                    </div>
+                                                                    <input name="productId" type="number" hidden value="{{$product->id}}">
+                                                                    <div class="product-action clearfix">
+                                                                        <a href="#" data-bs-toggle="modal"
+                                                                            data-bs-target="#productModal{{ $product->id }}"
+                                                                            title="Quick View"><i
+                                                                                class="zmdi zmdi-zoom-in"></i></a>
+                                                                                <button type="submit">
+                                                                                    <a href="" data-bs-toggle="tooltip"
+                                                                                        data-placement="top" title="Add To Cart"><i
+                                                                                            class="zmdi zmdi-shopping-cart-plus"></i></a>
+                                                                                </button>
+                                                                    </div>
+                                                                </form>
                                                             </div>
                                                         </div>
                                                     </div>
