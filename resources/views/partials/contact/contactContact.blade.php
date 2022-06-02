@@ -40,7 +40,8 @@
                    </div>
                    <div class="col-lg-8 col-md-7 mt-xs-30">
                        <div class="map-area">
-                           <div id="googleMap" style="width:100%;height:600px;"></div>
+                        <iframe src="https://maps.google.com/maps?&q={{str_replace(' ', '+', $infos[0]->address1)}}&output=embed" frameborder="0" style="border:0; width: 100%; height: 600px;" allowfullscreen></iframe>   
+                        {{-- <div id="googleMap" style="width:100%;height:600px;"></div> --}}
                        </div>
                    </div>
                </div>

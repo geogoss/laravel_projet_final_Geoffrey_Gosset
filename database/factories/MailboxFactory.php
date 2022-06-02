@@ -18,8 +18,8 @@ class MailboxFactory extends Factory
     {
         $faker = $this->faker;
         return [
-           'author' => $faker->name(),
-           'subject' => $faker->realText($maxNBChars = 20),
+           'name' => $faker->name(),
+           'email' => $faker->freeEmail(),
            'content' => $faker->realText($maxNBChars = 140) 
         ];
     }

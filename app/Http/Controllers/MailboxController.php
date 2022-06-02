@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Mailbox;
 use App\Http\Requests\StoreMailboxRequest;
 use App\Http\Requests\UpdateMailboxRequest;
+use App\Models\Info;
 
 class MailboxController extends Controller
 {
@@ -52,7 +53,10 @@ class MailboxController extends Controller
      */
     public function show(Mailbox $mailbox)
     {
-        //
+        $infos = Info::all();
+        $mailbox->bool = true;
+        $mailbox->save();
+        return view('pages.backoffice.mailBox.backShowMailBox', compact('mailbox', 'infos'));
     }
 
     /**
@@ -86,6 +90,7 @@ class MailboxController extends Controller
      */
     public function destroy(Mailbox $mailbox)
     {
-        //
+        $mailbox->delete();
+        return redirect('/backMailBox');
     }
 }

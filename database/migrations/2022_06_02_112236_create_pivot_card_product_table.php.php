@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('mailboxes', function (Blueprint $table) {
+        Schema::create('card_product', function (Blueprint $table) {
             $table->id();
-            $table->boolean('bool')->default(false);
-            $table->string('name')->nullable();
-            $table->string('email')->nullable();
-            $table->longText('content')->nullable();
+            $table->foreignId('card_id')->constrained()->onDelete('cascade');
+            $table->foreignId('product_id')->constrained()->onDelete('cascade');
+            $table->integer('amount')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mailboxes');
+        //
     }
 };

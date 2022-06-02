@@ -13,6 +13,9 @@
           <a class="text-dark" class="nav-link" href="/backAbout">Back About Us et Contact</a>
         </li>
         <li class="nav-item">
+          <a class="text-dark" class="nav-link" href="/backMailBox">Back MailBox</a>
+        </li>
+        <li class="nav-item">
           <a class="text-dark" class="nav-link" href="/backPanier">Back Panier</a>
         </li>
       </ul>

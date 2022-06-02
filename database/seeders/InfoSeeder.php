@@ -35,7 +35,7 @@ class InfoSeeder extends Seeder
 
                 'src' => 'teamWork1.jpg',
 
-                'address1' => '28 Green Tower, Street Name,',
+                'address1' => 'Molengeek',
 
                 'address2' => 'New York City, USA',
 

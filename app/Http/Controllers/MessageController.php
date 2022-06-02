@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 //Importation des classes pour le mail
 use App\Mail\MessageGoogle;
-
+use App\Models\Mailbox;
 
 class MessageController extends Controller
 {
@@ -35,6 +35,12 @@ class MessageController extends Controller
             'message' => 'Nous avons bien reçu le message',
 
         ];
+
+		$mailbox = new Mailbox();
+        $mailbox->name = $request->name;
+        $mailbox->email = $request->email;
+        $mailbox->content = $request->message;
+        $mailbox->save();
 
 		#3. Envoi du mail
 		Mail::to("geoffreygosset123@gmail.com")->send(new MessageGoogle($mail));

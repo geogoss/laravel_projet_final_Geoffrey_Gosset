@@ -5,6 +5,7 @@ use App\Http\Controllers\AvatarController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\InfoController;
+use App\Http\Controllers\MailboxController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\NoteController;
@@ -23,6 +24,7 @@ use App\Models\Detail;
 use App\Models\Diapo;
 use App\Models\Image;
 use App\Models\Info;
+use App\Models\Mailbox;
 use App\Models\Newsletter;
 use App\Models\Product;
 use App\Models\Size;
@@ -141,6 +143,7 @@ Route::resource('/type', TypeController::class);
 Route::resource('/comment', CommentController::class);
 Route::resource('/note', NoteController::class);
 Route::resource('/info', InfoController::class);
+Route::resource('/mailbox', MailboxController::class);
 
 
 // Controller image resize ======================================================================
@@ -177,6 +180,11 @@ Route::get('/backAbout', function () {
 Route::get('/backContact', function () {
     $infos = Info::all();
     return view('pages.backoffice.backContact', compact('infos'));
+});
+Route::get('/backMailBox', function () {
+    $infos = Info::all();
+    $emails = Mailbox::orderBy('id', 'desc')->get();
+    return view('pages.backoffice.mailbox.backMailBox', compact('infos', 'emails'));
 });
 Route::get('/backPanier', function () {
     $infos = Info::all();

@@ -13,7 +13,8 @@
                                 <div class="product-images">
                                     <div class="main-image images">
                                         <img alt="#"
-                                            src="{{ asset('images/370x450/' . $product->image[0]->src) }} " />
+                                        {{-- {{dd($product->image[0]->src)}} --}}
+                                            src="{{ asset('/thumbnail/images/370x450/' . $product->image[0]->src) }} " />
                                     </div>
                                 </div><!-- .product-images -->
 
