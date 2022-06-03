@@ -35,6 +35,11 @@ class MessageController extends Controller
             'message' => 'Nous avons bien reçu le message',
 
         ];
+        $reponse = [
+            'email' => $request->email,
+            'message' => 'Nous avons bien reçu le message',
+
+        ];
 
 		$mailbox = new Mailbox();
         $mailbox->name = $request->name;

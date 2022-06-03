@@ -49,21 +49,9 @@
         </a>
     </div>
     <div class="col">
-        <a href="/backAbout">
-            <div class="card w-50">
-                <img src="{{ asset('/thumbnail/images/backoffice/contact.jpg') }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Contact</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
-                </div>
-            </div>
-        </a>
-    </div>
-    <div class="col">
         <a href="/backMailBox">
             <div class="card w-50">
-                <img src="{{ asset('/thumbnail/images/backoffice/panier.jpg') }}" class="card-img-top" alt="...">
+                <img src="{{ asset('/thumbnail/images/backoffice/contact.jpg') }}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Mail Box</h5>
                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to

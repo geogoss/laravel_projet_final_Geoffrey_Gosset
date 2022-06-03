@@ -120,7 +120,7 @@ Route::get('/cart', function () {
         $total += $item->product->price * $item->amount;
     }
     return view('pages.panier.cart', compact('infos', 'banners', 'panier', 'cardProducts', 'total'));
-});
+})->middleware(['auth']);
 
 Route::get('/checkout', function () {
     $infos = Info::all();
@@ -137,7 +137,7 @@ Route::get('/checkout', function () {
 
 
     return view('pages.panier.checkout', compact('infos', 'billing', 'countries', 'states', 'cities', 'banners', 'cardProducts', 'total'));
-});
+})->middleware(['auth']);
 
 Route::get('/order', function () {
     $infos = Info::all();
@@ -149,7 +149,7 @@ Route::get('/order', function () {
     }
 
     return view('pages.panier.order', compact('infos', 'banners', 'cardProducts', 'total'));
-});
+})->middleware(['auth']);
 
 
 // Dashboard
@@ -170,6 +170,8 @@ Route::resource('/comment', CommentController::class);
 Route::resource('/note', NoteController::class);
 Route::resource('/info', InfoController::class);
 Route::resource('/mailbox', MailboxController::class);
+Route::get('/show/{id}', [MailboxController::class, ('showMessage')]);
+Route::post('/message', [MailboxController::class, ('message')]);
 Route::resource('/card', CardController::class);
 Route::resource('cardProduct', CardProductController::class);
 
@@ -188,35 +190,35 @@ Route::post('/message/send', [MessageController::class, 'sendMessageGoogle'])->n
 Route::get('/backHome', function () {
     $infos = Info::all();
     return view('pages.backoffice.backHome', compact('infos'));
-});
+})->middleware(['auth']);
 Route::get('/backProduct', function () {
     $infos = Info::all();
     $products = Product::orderBy('id', 'desc')->get();
     return view('pages.backoffice.product.backProduct', compact('infos', 'products'));
-});
+})->middleware(['auth']);
 Route::get('/backBlog', function () {
     $infos = Info::all();
     $articles = Article::orderBy('id', 'desc')->get();
     return view('pages.backoffice.blog.backBlog', compact('infos', 'articles'));
-});
+})->middleware(['auth']);
 Route::get('/backAbout', function () {
     $infos = Info::all();
     $banners = Banner::all();
     $teams = Team::all();
     return view('pages.backoffice.aboutus.backAbout', compact('infos', 'banners', 'teams'));
-});
+})->middleware(['auth']);
 Route::get('/backContact', function () {
     $infos = Info::all();
     return view('pages.backoffice.backContact', compact('infos'));
-});
+})->middleware(['auth']);
 Route::get('/backMailBox', function () {
     $infos = Info::all();
     $emails = Mailbox::orderBy('id', 'desc')->get();
     return view('pages.backoffice.mailbox.backMailBox', compact('infos', 'emails'));
-});
+})->middleware(['auth']);
 Route::get('/backPanier', function () {
     $infos = Info::all();
     return view('pages.backoffice.backPanier', compact('infos'));
-});
+})->middleware(['auth']);
 
 

@@ -14,7 +14,12 @@
                     @csrf
                     <a class="text-decoration-none text-white" href="/backMailBox">MailBox</a>
                 </button>
+                
             </div>
+            <button class="btn btn-info mt-3">
+                @csrf
+                <a class="text-decoration-none text-white" href="/show/{{ $mailbox->id }} ">Répondre</a>
+            </button>
         </div>
     </div>
 </div>

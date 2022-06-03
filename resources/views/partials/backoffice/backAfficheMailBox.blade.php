@@ -29,6 +29,11 @@
                       @method('DELETE')
                       <button type="submit" class="btn btn-danger mx-2">Supprimer</button>
                   </form>
+                  <button class="btn btn-success">
+                    @csrf
+                    <a class="text-decoration-none text-white" href="/show/{{ $item->id }} ">Répondre</a>
+                </button>
+
           
               </div>
           

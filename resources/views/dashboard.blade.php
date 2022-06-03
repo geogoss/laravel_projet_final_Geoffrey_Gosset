@@ -21,7 +21,7 @@
     @include('partials.backoffice.backBanner')
     <p class="text-center my-5 fs-2">Choisissez la partie du site pour laquelle vous souhaitez apporter des modifications</p>
     @include('partials.backoffice.backNavbar')
-    
+
     <div class="w-100 bg-success mx-auto">
 
         @include('partials.backoffice.cardDashboard')

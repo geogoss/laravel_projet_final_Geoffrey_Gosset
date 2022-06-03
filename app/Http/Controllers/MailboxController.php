@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Mailbox;
 use App\Http\Requests\StoreMailboxRequest;
 use App\Http\Requests\UpdateMailboxRequest;
+use App\Mail\MessageGoogle;
 use App\Models\Info;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class MailboxController extends Controller
 {
@@ -59,6 +62,28 @@ class MailboxController extends Controller
         return view('pages.backoffice.mailBox.backShowMailBox', compact('mailbox', 'infos'));
     }
 
+    public function showMessage(Mailbox $mailbox)
+    {
+        $infos = Info::all();
+        return view('pages.backoffice.mailBox.backShowReponse', compact('mailbox', 'infos'));
+    }
+
+    public function message(Request $request)
+    {
+        
+        // $mailbox = Mailbox::where('id', $request->id)->first();
+       
+        $reponse = [
+            'email' => 'geoffreygosset123@gmail.com',
+            'message' => $request->message,
+        ];
+
+        Mail::to($request->email)->send(new MessageGoogle($reponse));
+
+        return redirect()->back();
+    }
+
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -79,7 +104,7 @@ class MailboxController extends Controller
      */
     public function update(UpdateMailboxRequest $request, Mailbox $mailbox)
     {
-        //
+
     }
 
     /**

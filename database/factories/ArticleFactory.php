@@ -29,7 +29,7 @@ class ArticleFactory extends Factory
             'content1' => $faker->realText($maxNBChars = 450),
             'content2' => $faker->realText($maxNBChars = 750),
             'categorie_id' => $faker->numberBetween($min = 1, $max = 3),
-            'user_id' => $faker->numberBetween($min = 1, $max = 2),
+            'user_id' => $faker->numberBetween($min = 1, $max = 4),
             'blog_id' => $faker->numberBetween($min = 1, $max = 11),
         ];
     }

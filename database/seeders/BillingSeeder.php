@@ -38,6 +38,28 @@ class BillingSeeder extends Seeder
                 'city_id' => 6,
 
             ],
+            [
+                'name' => 'Remy',
+                'phone' => '0485 987654',
+                'email' => 'vete@vete.com',
+                'company' => 'vete',
+                'address' => 'Venise j\'adore',
+                'country_id' => 5,
+                'state_id' => 5,
+                'city_id' => 5,
+
+            ],
+            [
+                'name' => 'Gate',
+                'phone' => '0499 999654',
+                'email' => 'microsoft@microsoft.com',
+                'company' => 'Microsoft',
+                'address' => 'New York j\'adore',
+                'country_id' => 4,
+                'state_id' => 4,
+                'city_id' => 4,
+
+            ],
 
         ]);
     }
