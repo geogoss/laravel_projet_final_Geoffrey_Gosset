@@ -1,5 +1,6 @@
 @extends('layouts.appUser')
 @section('content')
+    @include('layouts.flash')
     @include('partials.home.mobileHeader')
     @include('partials.home.headerHome')
     @include('partials.home.mobileMenuHome')

@@ -21,8 +21,8 @@
                                            <p class="mb-0">You have <span>03 items</span> in your shopping bag
                                            </p>
                                        </div>
-                                       
-                                       @php
+                                    
+                                       {{-- @php
                                        use App\Models\CardProduct;
                                        use Illuminate\Support\Facades\Auth;
 
@@ -34,7 +34,7 @@
                                                
                                            <div class="single-cart clearfix">
                                                <div class="cart-photo">
-                                                   {{-- {{dd($product->cardproduct)}} --}}
+                                                  
                                                        <a href="#"><img src="{{asset('thumbnail/images/270x270/'.$product->product->image[0]->src)}} " alt="" /></a>
                                                </div>
                                                <div class="cart-info">
@@ -45,7 +45,7 @@
                                                                class="zmdi zmdi-close"></i></a></span>
                                                </div>
                                            </div>
-                                           @endforeach
+                                           @endforeach --}}
                                        <div class="cart-totals">
                                            <h5 class="mb-0">Total <span class="floatright">$500.00</span>
                                            </h5>

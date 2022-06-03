@@ -50,29 +50,26 @@
 																	</tr>
 																</thead>
 																<tbody>
+																	@foreach ($cardProducts as $item)
 																	<tr>
-																		<td>Dummy Product Name  x 2</td>
-																		<td class="text-end">$86.00</td>
+																		<td>{{$item->product->name}} x {{$item->amount}}</td>
+																		<td class="text-end">${{$item->product->price * $item->amount}}</td>
 																	</tr>
-																	<tr>
-																		<td>Dummy Product Name  x 1</td>
-																		<td class="text-end">$69.00</td>
-																	</tr>
+																		
+																	@endforeach
+																   
 																	<tr>
 																		<td>Cart Subtotal</td>
-																		<td class="text-end">$155.00</td>
+																		<td class="text-end">${{$total - number_format($total / 121 * 21, 2)}} </td>
 																	</tr>
-																	<tr>
-																		<td>Shipping and Handing</td>
-																		<td class="text-end">$15.00</td>
-																	</tr>
+																	
 																	<tr>
 																		<td>Vat</td>
-																		<td class="text-end">$00.00</td>
+																		<td class="text-end">${{number_format($total / 121 * 21, 2)}}</td>
 																	</tr>
 																	<tr>
 																		<td>Order Total</td>
-																		<td class="text-end">$170.00</td>
+																		<td class="text-end">${{$total}}</td>
 																	</tr>
 																</tbody>
 															</table>

@@ -1,47 +1,51 @@
         <!-- QUICKVIEW PRODUCT -->
         <div id="quickview-wrapper">
             <!-- Modal -->
-            <div class="modal fade" id="productModal{{$product->id}}" tabindex="-1" role="dialog">
+            <div class="modal fade" id="productModal{{ $product->id }}" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="close" data-bs-dismiss="modal"
-                                aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
                         </div>
                         <div class="modal-body">
                             <div class="modal-product">
                                 <div class="product-images">
                                     <div class="main-image images">
-                                        <img alt="#" src="{{asset('img/product/quickview-photo.jpg')}} " />
+                                        <img alt="#"
+                                            src="{{ asset('/thumbnail/images/370x450/' . $product->image[0]->src) }} " />
                                     </div>
                                 </div><!-- .product-images -->
 
                                 <div class="product-info">
-                                    <h1>{{$product->name}}</h1>
+                                    <h1>{{ $product->name }}</h1>
                                     <div class="price-box-3">
                                         <hr />
                                         <div class="s-price-box">
                                             @if ($product->discount == 0)
-                                            <span class="new-price">{{$product->price}}€</span>
+                                                <span class="new-price">{{ $product->price }}€</span>
                                             @else
-                                            <span class="new-price">{{$product->discount}}€</span>
-                                            <span class="old-price">{{$product->price}}€</span>
+                                                <span class="new-price">{{ $product->discount }}€</span>
+                                                <span class="old-price">{{ $product->price }}€</span>
                                             @endif
                                         </div>
                                         <hr />
                                     </div>
-                                    <a href="shop.html" class="see-all">See all features</a>
+                                    <a href="/product/{{ $product->id }}" class="see-all">See all features</a>
                                     <div class="quick-add-to-cart">
-                                        <form method="post" class="cart">
+                                        <form class="w-75 mx-auto text-white" action="/card" method="POST">
+                                            @csrf
                                             <div class="numbers-row">
-                                                <input type="number" id="french-hens" value="3" min="1">
+                                                <input name="qtybutton" type="number" id="french-hens" value="3" min="1">
                                             </div>
+                                            <input name="productId" type="number" hidden value="{{$product->id}}">
+
                                             <button class="single_add_to_cart_button" type="submit">Add to
                                                 cart</button>
                                         </form>
                                     </div>
                                     <div class="quick-desc">
-                                        {{$product->description}}
+                                        {{ $product->description }}
                                     </div>
                                     <div class="social-sharing">
                                         <div class="widget widget_socialsharing_widget">

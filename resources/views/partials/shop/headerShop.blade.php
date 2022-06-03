@@ -5,14 +5,14 @@
                     <div class="row">
                         <div class="col-md-4 offset-md-4 col-7">
                             <div class="logo text-md-center">
-                                <a href="index.html"><img src="{{asset('img/logo/logo.png')}} " alt="" /></a>
+                                <a href="index.html"><img src="{{ asset('img/logo/logo.png') }} " alt="" /></a>
                             </div>
                         </div>
                         <div class="col-md-4 col-5">
                             <div class="mini-cart text-end">
                                 <ul>
                                     <li>
-                                        
+
                                         <a class="cart-icon" href="#">
                                             <i class="zmdi zmdi-shopping-cart"></i>
                                             <span>3</span>
@@ -23,33 +23,47 @@
                                                     shopping bag</p>
                                             </div>
                                             @php
-                                            use App\Models\CardProduct;
-                                            use Illuminate\Support\Facades\Auth;
-
-                                                $cards = CardProduct::where('card_id', Auth::user()->card->id)->get();
+                                                use App\Models\CardProduct;
+                                                use Illuminate\Support\Facades\Auth;
+                                                if (Auth::check()) {
+                                                    $cards = CardProduct::where('card_id', Auth::user()->card->id)->get();
+                                                } else {
+                                                    $cards = [];
+                                                }
+                                                $sum = 0;
+                                                $quantity = 1;
+                                                
+                                                foreach ($cards as $item) {
+                                                    if ($item->card->user->id == Auth::user()->id) {
+                                                        $sum += $item->product->price * $item->amount;
+                                                    }
+                                                }
+                                                
                                             @endphp
 
                                             <div class="all-cart-product clearfix">
                                                 @foreach ($cards as $item)
-                                                    
-                                                <div class="single-cart clearfix">
-                                                    <div class="cart-photo">
-                                                        {{-- {{dd($product->cardproduct)}} --}}
-                                                            <a href="#"><img src="{{asset('thumbnail/images/270x270/'.$item->product->image[0]->src)}} " alt="" /></a>
+                                                    <div class="single-cart clearfix">
+                                                        <div class="cart-photo">
+
+                                                            <a href="#"><img
+                                                                    src="{{ asset('thumbnail/images/270x270/' . $item->product->image[0]->src) }} "
+                                                                    alt="" /></a>
+                                                        </div>
+                                                        <div class="cart-info">
+                                                            <h5><a href="#">{{ $item->product->name }}</a></h5>
+                                                            <p class="mb-0">Price : $
+                                                                {{ $item->product->price }}</p>
+                                                            <p class="mb-0">Qty : {{ $item->amount }} </p>
+                                                            <span class="cart-delete"><a href="#"><i
+                                                                        class="zmdi zmdi-close"></i></a></span>
+                                                        </div>
                                                     </div>
-                                                    <div class="cart-info">
-                                                        <h5><a href="#">{{$item->product->name}}</a></h5>
-                                                        <p class="mb-0">Price : $ {{$item->product->price}}</p>
-                                                        <p class="mb-0">Qty : {{$item->amount}} </p>
-                                                        <span class="cart-delete"><a href="#"><i
-                                                                    class="zmdi zmdi-close"></i></a></span>
-                                                    </div>
-                                                </div>
                                                 @endforeach
                                             </div>
                                             <div class="cart-totals">
                                                 <h5 class="mb-0">Total <span
-                                                        class="floatright">$500.00</span></h5>
+                                                        class="floatright">${{$sum}}</span></h5>
                                             </div>
                                             <div class="cart-bottom  clearfix">
                                                 <a href="/cart" class="button-one floatleft text-uppercase"

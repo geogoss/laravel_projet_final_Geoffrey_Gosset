@@ -69,7 +69,10 @@ class CardProductController extends Controller
      */
     public function update(Request $request, CardProduct $cardProduct)
     {
-        //
+       
+        $cardProduct->amount = $request->name;
+        $cardProduct->save();
+        return redirect()->back();
     }
 
     /**
@@ -80,6 +83,7 @@ class CardProductController extends Controller
      */
     public function destroy(CardProduct $cardProduct)
     {
-        //
+        $cardProduct->delete();
+        return redirect()->back();
     }
 }

@@ -31,7 +31,7 @@
                            <h2 class="banner-title"><a href="#">{{ $starlette[5]->name }}</a></h2>
                            <p class="mb-0">{{ $starlette[5]->type->name }}</p>
                        </div>
-                       <a href="#" class="button-one font-16px" data-text="Buy now">Buy now</a>
+                       <a href="/product/{{ $starlette[5]->id }}" class="button-one font-16px" data-text="Buy now">Buy now</a>
                    </div>
                </a>
                    
@@ -47,7 +47,7 @@
                                <h2 class="banner-title"><a href="#">{{ $stars->name }}</a></h2>
                                <p class="mb-0">{{ $stars->type->name }}</p>
                            </div>
-                           <a href="#" class="button-one font-16px" data-text="Buy now">Buy now</a>
+                           <a href="/product/{{ $stars->id }}" class="button-one font-16px" data-text="Buy now">Buy now</a>
                        </div>
                    </a>
                @endif

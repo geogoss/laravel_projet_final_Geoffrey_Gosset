@@ -4,6 +4,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AvatarController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CardController;
+use App\Http\Controllers\CardProductController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\MailboxController;
@@ -74,9 +75,9 @@ Route::get('/', function () {
     $infos = Info::all();
     $banners = Banner::all();
     $newsletters = Newsletter::all();
-    $cards = CardProduct::where('card_id', Auth::user()->card->id)->get();
+    // $cards = CardProduct::where('card_id', Auth::user()->card->id)->get();
 
-    return view('welcome', compact('cards', 'starlette','diapos', 'prems', 'stars', 'last', 'products', 'articles', 'comments', 'infos', 'banners', 'newsletters'));
+    return view('welcome', compact( 'starlette','diapos', 'prems', 'stars', 'last', 'products', 'articles', 'comments', 'infos', 'banners', 'newsletters'));
 });
 
 
@@ -112,19 +113,13 @@ Route::get('/contact', function () {
 Route::get('/cart', function () {
     $infos = Info::all();
     $banners = Banner::all();
-    $cards = CardProduct::where('card_id', Auth::user()->card->id)->get();
-    $card = Card::all();
-    $sum = 0;
-    $quantity = 1;
-
-        foreach ($cards as $item) {
-            if ($item->user_id == Auth::user()->id) {
-                $sum += ($item->product->price * $item->cardproduct->amount);
-            }
-        }
-
-
-    return view('pages.panier.cart', compact('infos', 'banners', 'cards', 'sum'));
+    $panier = Card::where( 'id', Auth::user()->card->id)->first();
+    $cardProducts = CardProduct::where('card_id', Auth::user()->card->id)->get();
+    $total = 0;
+    foreach ($cardProducts as $item) {
+        $total += $item->product->price * $item->amount;
+    }
+    return view('pages.panier.cart', compact('infos', 'banners', 'panier', 'cardProducts', 'total'));
 });
 
 Route::get('/checkout', function () {
@@ -134,13 +129,26 @@ Route::get('/checkout', function () {
     $states = State::all();
     $cities = City::all();
     $banners = Banner::all();
-    return view('pages.panier.checkout', compact('infos', 'billing', 'countries', 'states', 'cities', 'banners'));
+    $cardProducts = CardProduct::where('card_id', Auth::user()->card->id)->get();
+    $total = 0;
+    foreach ($cardProducts as $item) {
+        $total += $item->product->price * $item->amount;
+    }
+
+
+    return view('pages.panier.checkout', compact('infos', 'billing', 'countries', 'states', 'cities', 'banners', 'cardProducts', 'total'));
 });
 
 Route::get('/order', function () {
     $infos = Info::all();
     $banners = Banner::all();
-    return view('pages.panier.order', compact('infos', 'banners'));
+    $cardProducts = CardProduct::where('card_id', Auth::user()->card->id)->get();
+    $total = 0;
+    foreach ($cardProducts as $item) {
+        $total += $item->product->price * $item->amount;
+    }
+
+    return view('pages.panier.order', compact('infos', 'banners', 'cardProducts', 'total'));
 });
 
 
@@ -162,7 +170,8 @@ Route::resource('/comment', CommentController::class);
 Route::resource('/note', NoteController::class);
 Route::resource('/info', InfoController::class);
 Route::resource('/mailbox', MailboxController::class);
-Route::resource('card', CardController::class);
+Route::resource('/card', CardController::class);
+Route::resource('cardProduct', CardProductController::class);
 
 
 // Controller image resize ======================================================================

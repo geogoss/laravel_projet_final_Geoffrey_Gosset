@@ -12,8 +12,7 @@
                             <div class="modal-product">
                                 <div class="product-images">
                                     <div class="main-image images">
-                                        <img alt="#"
-                                        {{-- {{dd($product->image[0]->src)}} --}}
+                                        <img alt="#" {{-- {{dd($product->image[0]->src)}} --}}
                                             src="{{ asset('/thumbnail/images/370x450/' . $product->image[0]->src) }} " />
                                     </div>
                                 </div><!-- .product-images -->
@@ -38,15 +37,19 @@
                                     </div>
                                     <a href="/product/{{ $product->id }}" class="see-all">See all features</a>
                                     <div class="quick-add-to-cart">
-                                        <form method="post" class="cart">
+                                        <form class="w-75 mx-auto text-white" action="/card" method="POST">
+                                            @csrf
                                             <div class="numbers-row">
-                                                <input type="number" id="french-hens" value="3" min="1">
+                                                <input name="qtybutton" type="number" id="french-hens" value="3" min="1">
                                             </div>
+                                            <input name="productId" type="number" hidden value="{{ $product->id }}">
+
                                             <button class="single_add_to_cart_button" type="submit">Add to
                                                 cart</button>
                                         </form>
                                     </div>
-                                    <div class="quick-desc">{{ Str::limit($product->description, 110, $end = '.......') }}</div>
+                                    <div class="quick-desc">
+                                        {{ Str::limit($product->description, 110, $end = '.......') }}</div>
                                     <div class="social-sharing">
                                         <div class="widget widget_socialsharing_widget">
                                             <h3 class="widget-title-modal">Share this product</h3>

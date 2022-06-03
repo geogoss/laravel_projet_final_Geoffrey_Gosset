@@ -80,7 +80,7 @@ class CardController extends Controller
      */
     public function edit(Card $card)
     {
-        //
+        // 
     }
 
     /**
@@ -92,7 +92,20 @@ class CardController extends Controller
      */
     public function update(UpdateCardRequest $request, Card $card)
     {
-        //
+        // $quantity = $request->qtybutton;
+        // $card->amount += $card->product->price * $quantity; 
+        // $card->save();
+        // return redirect()->back();
+        
+            // $card->cardproduct = $request->qtybutton;
+            // $card->cardproduct->save();
+            
+        
+            return redirect()->back();
+    
+
+
+
     }
 
     /**

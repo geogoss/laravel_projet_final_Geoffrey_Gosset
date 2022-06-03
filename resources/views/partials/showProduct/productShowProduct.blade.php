@@ -9,7 +9,8 @@
                        <div class="single-pro-slider single-big-photo view-lightbox slider-for">
                            {{-- Groose image du show --}}
                            <img src="{{ asset('/thumbnail/images/370x450/' . $product->image[0]->src) }} " alt="" />
-                           <a class="view-full-screen" href="{{ asset('/thumbnail/images/370x450/' . $product->image[0]->src) }} "
+                           <a class="view-full-screen"
+                               href="{{ asset('/thumbnail/images/370x450/' . $product->image[0]->src) }} "
                                data-lightbox="roadtrip" data-title="My caption">
                                <i class="zmdi zmdi-zoom-in"></i>
                            </a>
@@ -42,18 +43,26 @@
                                </ul>
                            </div>
                            <!-- Size end -->
-                           <div class="clearfix">
-                               <div class="cart-plus-minus">
-                                   <input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
+                           <form class="w-75 mx-auto text-white" action="/card" method="POST">
+                               @csrf
+
+                               <div class="clearfix">
+                                   <div class="cart-plus-minus">
+                                       <input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
+                                   </div>
+                                   <input name="productId" type="number" hidden value="{{$product->id}}">
+                                   <div class="product-action clearfix">
+                                       <a href="#" data-bs-toggle="modal"
+                                           data-bs-target="#productModal{{ $product->id }} " title="Quick View"><i
+                                               class="zmdi zmdi-zoom-in"></i></a>
+                                       <button type="submit">
+                                           <a href="cart.html" data-bs-toggle="tooltip" data-placement="top"
+                                               title="Add To Cart"><i class="zmdi zmdi-shopping-cart-plus"></i></a>
+                                       </button>
+
+                                   </div>
                                </div>
-                               <div class="product-action clearfix">
-                                   <a href="#" data-bs-toggle="modal"
-                                       data-bs-target="#productModal{{ $product->id }} " title="Quick View"><i
-                                           class="zmdi zmdi-zoom-in"></i></a>
-                                   <a href="cart.html" data-bs-toggle="tooltip" data-placement="top"
-                                       title="Add To Cart"><i class="zmdi zmdi-shopping-cart-plus"></i></a>
-                               </div>
-                           </div>
+                           </form>
                            <!-- Single-pro-slider Small-photo start -->
                            <div class="single-pro-slider single-sml-photo slider-nav">
                                @foreach ($details as $detail)
@@ -104,25 +113,33 @@
                                    <div class="customer-review mb-60">
                                        <h3 class="tab-title title-border mb-30">Customer review</h3>
                                        <ul class="product-comments clearfix">
-                                           
+
                                            @foreach ($product->note as $item)
-                                           
-                                               <li class="{{$loop->iteration == 1 ? 'mb-30' : 'threaded-comments' }} ">
+                                               <li
+                                                   class="{{ $loop->iteration == 1 ? 'mb-30' : 'threaded-comments' }} ">
                                                    <div class="pro-reviewer">
-                                                       <img src="{{ asset('/thumbnail/images/90x100/'.$item->user->avatar->src) }} " alt="" />
+                                                       <img src="{{ asset('/thumbnail/images/90x100/' . $item->user->avatar->src) }} "
+                                                           alt="" />
                                                    </div>
                                                    <div class="pro-reviewer-comment">
                                                        <div class="fix">
                                                            <div class="floatleft mbl-center">
-                                                               <h5 class="text-uppercase mb-0"><strong>{{$item->author}} </strong></h5>
-                                                               <p class="reply-date">{{$item->created_at->format('d')}} {{$item->created_at->format('F')}}, {{$item->created_at->format('o')}} at {{$item->created_at->format('H')}} {{$item->created_at->format('a')}}</p>
+                                                               <h5 class="text-uppercase mb-0">
+                                                                   <strong>{{ $item->author }} </strong>
+                                                               </h5>
+                                                               <p class="reply-date">
+                                                                   {{ $item->created_at->format('d') }}
+                                                                   {{ $item->created_at->format('F') }},
+                                                                   {{ $item->created_at->format('o') }} at
+                                                                   {{ $item->created_at->format('H') }}
+                                                                   {{ $item->created_at->format('a') }}</p>
                                                            </div>
                                                            <div class="comment-reply floatright">
                                                                <a href="#"><i class="zmdi zmdi-mail-reply"></i></a>
                                                                <a href="#"><i class="zmdi zmdi-close"></i></a>
                                                            </div>
                                                        </div>
-                                                       <p class="mb-0">{{$item->content}} </p>
+                                                       <p class="mb-0">{{ $item->content }} </p>
                                                    </div>
                                                </li>
                                            @endforeach
@@ -134,11 +151,12 @@
                                        <h3 class="tab-title title-border mb-30">Leave your review</h3>
 
                                        <div class="reply-box">
-                                        <form class="w-75 mx-auto text-white" action="/note" method="POST">
-                                            @csrf
-                                            <div class="row">
+                                           <form class="w-75 mx-auto text-white" action="/note" method="POST">
+                                               @csrf
+                                               <div class="row">
                                                    <div class="col-md-6">
-                                                       <input type="text" placeholder="Your name here..." name="author" />
+                                                       <input type="text" placeholder="Your name here..."
+                                                           name="author" />
                                                    </div>
                                                    <div class="col-md-6">
                                                        <input type="text" placeholder="Subject..." name="subject" />
